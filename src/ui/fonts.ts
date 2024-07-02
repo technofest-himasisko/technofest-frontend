@@ -28,7 +28,6 @@ export const extatica = localFont({
       weight: "200",
       style: "italic",
     },
-
     {
       path: "../../fonts/Extatica-Light.otf",
       weight: "300",
@@ -39,7 +38,6 @@ export const extatica = localFont({
       weight: "300",
       style: "italic",
     },
-
     {
       path: "../../fonts/Extatica-Regular.otf",
       weight: "400",
@@ -50,7 +48,6 @@ export const extatica = localFont({
       weight: "400",
       style: "italic",
     },
-
     {
       path: "../../fonts/Extatica-Medium.otf",
       weight: "500",
@@ -61,7 +58,6 @@ export const extatica = localFont({
       weight: "500",
       style: "italic",
     },
-
     {
       path: "../../fonts/Extatica-SemiBold.otf",
       weight: "600",
@@ -72,7 +68,6 @@ export const extatica = localFont({
       weight: "600",
       style: "italic",
     },
-
     {
       path: "../../fonts/Extatica-Bold.otf",
       weight: "700",
@@ -83,7 +78,6 @@ export const extatica = localFont({
       weight: "700",
       style: "italic",
     },
-
     {
       path: "../../fonts/Extatica-ExtraBold.otf",
       weight: "800",

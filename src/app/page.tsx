@@ -22,14 +22,14 @@ export default function Home() {
     <div className="relative flex flex-col min-h-dvh items-center overflow-hidden justify-center bg-slate-950 px-4 text-center">
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 28, ease: "linear" }}
-        className="absolute opacity-10 md:-top-[100%] -top-[30vh] w-[calc(100vw+300px)] md:w-auto"
+        transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+        className="absolute opacity-10 w-[200vw] md:w-[80vw] -top-1/2 md:-top-[130%]"
       >
         <Image
-          src="/logo_frame.png"
+          src="/tf2024_Frame.svg"
           alt="Technology Festival 2024"
-          width={1300}
-          height={1300}
+          width={130}
+          height={130}
           className="w-full"
         />
       </motion.div>
@@ -40,7 +40,7 @@ export default function Home() {
           transition={{ type: "spring", stiffness: 300, damping: 100 }}
         >
           <Image
-            src="/logo_frame.png"
+            src="/tf2024_Frame.svg"
             alt="Technology Festival 2024"
             width={120}
             height={120}
@@ -48,15 +48,19 @@ export default function Home() {
         </motion.div>
 
         <Image
-          src="/logo_letter.png"
+          src="/tf2024_T.svg"
           alt="Technology Festival 2024"
-          width={20}
-          height={20}
+          width={120}
+          height={120}
           className="absolute inset-0 m-auto"
         />
       </div>
-      <h1 className="mt-10 text-xl text-pink-700">Technology Festival 2024</h1>
-      <p className="text-slate-400">Coming Soon</p>
+      <h1 className="mt-10 text-xl md:text-2xl bg-gradient-to-br from-primary to-secondary text-transparent bg-clip-text">
+        Technology Festival 2024
+      </h1>
+      <p className="bg-gradient-to-br from-slate-500 to-slate-400 text-transparent bg-clip-text">
+        Coming Soon
+      </p>
     </div>
   );
 }
