@@ -19,7 +19,7 @@ export default function Home() {
   }, [direction]);
 
   return (
-    <div className="relative flex flex-col min-h-dvh items-center overflow-hidden justify-center bg-slate-950 px-4">
+    <div className="relative flex flex-col min-h-dvh items-center overflow-hidden justify-center bg-slate-950 px-4 text-center">
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, duration: 28, ease: "linear" }}
