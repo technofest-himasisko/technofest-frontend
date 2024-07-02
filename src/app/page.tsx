@@ -19,11 +19,11 @@ export default function Home() {
   }, [direction]);
 
   return (
-    <div className="flex flex-col min-h-dvh items-center overflow-hidden justify-center bg-slate-950 px-4">
+    <div className="relative flex flex-col min-h-dvh items-center overflow-hidden justify-center bg-slate-950 px-4">
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, duration: 28, ease: "linear" }}
-        className="absolute opacity-5 md:-top-[100%] -top-[30vh] w-[calc(100vw+300px)] md:w-auto"
+        className="absolute opacity-10 md:-top-[100%] -top-[30vh] w-[calc(100vw+300px)] md:w-auto"
       >
         <Image
           src="/logo_frame.png"
