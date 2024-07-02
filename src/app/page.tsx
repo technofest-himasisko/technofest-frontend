@@ -42,8 +42,8 @@ export default function Home() {
           className="absolute inset-0 m-auto"
         />
       </div>
-      <h1 className="mt-10 text-xl">Technology Festival 2024</h1>
-      <p>Coming Soon</p>
+      <h1 className="mt-10 text-xl text-pink-700">Technology Festival 2024</h1>
+      <p className="text-slate-400">Coming Soon</p>
     </div>
   );
 }
