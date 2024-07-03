@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "@/ui/globals.css";
-import { goodTimes } from "@/ui/fonts";
+import { extatica } from "@/ui/fonts";
 import { cn } from "@/lib/utils";
 import config from "@/config";
+import Header from "@/ui/organisms/header";
+import Footer from "@/ui/organisms/footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.baseUrl),
@@ -28,8 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={config.appLang}>
-      <body className={cn(goodTimes.className, "overflow-hidden")}>
-        {children}
+      <body className={cn(extatica.className)}>
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
