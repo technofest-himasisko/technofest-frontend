@@ -1,5 +1,5 @@
 const config = {
-  baseUrl: process.env.BASE_URL || "https://technofest-frontend.vercel.app",
+  baseUrl: process.env.BASE_URL || "http://localhost:3000",
   appShortName: "Technofest 2024",
   appName: "Technology Festival 2024",
   appLang: "id",
