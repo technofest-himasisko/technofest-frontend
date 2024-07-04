@@ -71,16 +71,6 @@ export default function ComingSoon() {
       <p className="bg-gradient-to-br from-slate-500 to-slate-400 bg-clip-text text-transparent">
         Coming Soon
       </p>
-      <p
-        className={cn(
-          extatica.className,
-          "absolute bottom-0 mb-10 max-w-xl text-sm text-slate-700",
-        )}
-      >
-        Technology Festival 2024. Himpunan Mahasiswa Jurusan Sistem Komputer
-        Universitas Sriwijaya. © Copyright 2024 - Built by Tech Team at
-        Himasisko.
-      </p>
     </section>
   );
 }

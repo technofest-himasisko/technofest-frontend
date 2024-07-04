@@ -5,26 +5,32 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn, tw } from "@/lib/utils";
 
 const buttonVariants = cva(
-  tw`inline-flex items-center justify-center whitespace-nowrap text-sm font-semibold transition-colors disabled:pointer-events-none disabled:opacity-50`,
+  tw`relative z-[1] inline-flex h-10 items-center justify-center whitespace-nowrap text-sm font-bold transition-all duration-200 ease-out after:absolute after:-z-[1] after:bg-slate-100 after:transition-all after:duration-200 after:ease-out active:top-[1px] disabled:pointer-events-none disabled:opacity-50`,
   {
     variants: {
       variant: {
-        default: tw`bg-primary text-white hover:bg-primary/90`,
-        outline: tw`border-input bg-background hover:bg-accent hover:text-accent-foreground border`,
-        secondary: tw`text-secondary-foreground bg-secondary hover:bg-secondary/80`,
-        ghost: tw`hover:bg-accent hover:text-accent-foreground`,
+        default: tw`border border-primary/30 bg-primary text-white hover:text-primary`,
+        gradient: tw`border border-secondary bg-gradient-to-br from-primary to-secondary text-white hover:text-primary`,
+        outline: tw`border border-primary text-primary`,
+        secondary: tw`border border-secondary/30 bg-secondary hover:text-secondary`,
+        ghost: tw`text-primary`,
         link: tw`text-primary underline-offset-4 hover:underline`,
       },
       size: {
-        default: tw`h-10 px-4 py-2`,
+        default: tw`h-10 px-6 py-2`,
         sm: tw`h-9 px-3`,
         lg: tw`h-11 px-8`,
         icon: tw`h-10 w-10`,
+      },
+      hover: {
+        horizontal: tw`after:right-0 after:top-0 after:h-full after:w-0 hover:after:left-0 hover:after:w-full`,
+        vertical: tw`after:bottom-0 after:left-0 after:h-0 after:w-full hover:after:top-0 hover:after:h-full`,
       },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
+      hover: "horizontal",
     },
   },
 );
@@ -36,11 +42,11 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, hover, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size, hover, className }))}
         ref={ref}
         {...props}
       />

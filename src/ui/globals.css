@@ -4,7 +4,21 @@
 
 @layer base {
   body {
-    @apply bg-slate-900 text-slate-100;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-slate-950 text-slate-100;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  body::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  body::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 hover:bg-primary/90;
   }
 }

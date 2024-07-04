@@ -1,3 +1,9 @@
+import CommonPageHeader from "@/ui/molecules/common-page-header";
+
 export default function ParticipantEventHeader() {
-  return <section></section>;
+  return (
+    <header>
+      <CommonPageHeader title="Event List" />
+    </header>
+  );
 }

@@ -1,3 +1,9 @@
+import CommonPageHeader from "@/ui/molecules/common-page-header";
+
 export default function FaqsHeader() {
-  return <section></section>;
+  return (
+    <header>
+      <CommonPageHeader title="Faqs" />
+    </header>
+  );
 }

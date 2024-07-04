@@ -30,9 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={config.appLang}>
-      <body className={cn(extatica.className)}>
+      <body className={cn(extatica.className, "flex min-h-dvh flex-col")}>
         <Header />
-        <main>{children}</main>
+        <main className="grow">{children}</main>
         <Footer />
       </body>
     </html>
