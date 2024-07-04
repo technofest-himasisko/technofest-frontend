@@ -7,12 +7,7 @@ import React, { useEffect, useState } from "react";
 import { goodTimes } from "../fonts";
 import MenuButton from "../atoms/menu-button";
 import config from "@/config";
-import {
-  CaretDown,
-  Fingerprint,
-  FingerprintSimple,
-  SignIn,
-} from "@phosphor-icons/react";
+import { CaretDown, FingerprintSimple } from "@phosphor-icons/react";
 import { Button } from "../atoms/button";
 import {
   Collapsible,
@@ -34,9 +29,9 @@ export default function Header() {
     setIsMobileNavOpened(false);
   }, [pathname]);
 
-  // if (isComingSoon()) {
-  //   return undefined;
-  // }
+  if (isComingSoon()) {
+    return undefined;
+  }
 
   return (
     <header className="relative">

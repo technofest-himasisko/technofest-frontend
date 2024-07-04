@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn, isComingSoon } from "@/lib/utils";
 import Image from "next/image";
 import { goodTimes } from "../fonts";
 import Link from "next/link";
@@ -6,9 +6,9 @@ import config from "@/config";
 import { ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
 
 export default function Footer() {
-  // if (isComingSoon()) {
-  //   return undefined;
-  // }
+  if (isComingSoon()) {
+    return undefined;
+  }
 
   return (
     <footer className="mt-10 flex flex-col bg-primary/10">
