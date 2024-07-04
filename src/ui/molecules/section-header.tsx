@@ -27,11 +27,13 @@ export default function SectionHeader({
         )}
       >
         <Circle weight="duotone" className="text-[0.6em]" />
-        <span className="bg-gradient-to-br from-slate-200 to-slate-400 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-br from-slate-200 to-slate-400 bg-clip-text text-sm text-transparent md:text-base">
           {title}
         </span>
       </h2>
-      <p className="text-4xl font-bold uppercase text-primary">{subtitle}</p>
+      <p className="text-3xl font-bold uppercase text-primary md:text-4xl">
+        {subtitle}
+      </p>
     </header>
   );
 }
