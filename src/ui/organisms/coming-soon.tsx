@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { extatica, goodTimes } from "@/ui/fonts";
+import useCountdown from "@/lib/hooks/use-countdown";
 
 export default function ComingSoon() {
   const [direction, setDirection] = useState<number>(0);
+  const { countdownString } = useCountdown(new Date(2024, 7, 1));
 
   const handleDirectionChange = () => {
     setTimeout(
@@ -70,6 +72,15 @@ export default function ComingSoon() {
       </h1>
       <p className="bg-gradient-to-br from-slate-500 to-slate-400 bg-clip-text text-transparent">
         Coming Soon
+      </p>
+
+      <p
+        className={cn(
+          extatica.className,
+          "mt-4 bg-gradient-to-br from-slate-500 to-slate-400 bg-clip-text text-3xl font-extrabold text-transparent",
+        )}
+      >
+        {countdownString}
       </p>
     </section>
   );
