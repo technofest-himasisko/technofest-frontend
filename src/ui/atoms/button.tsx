@@ -17,9 +17,9 @@ const buttonVariants = cva(
         link: tw`text-primary underline-offset-4 hover:underline`,
       },
       size: {
-        default: tw`h-10 px-6 py-2`,
+        default: tw`h-10 px-6`,
         sm: tw`h-9 px-3`,
-        lg: tw`h-11 px-8`,
+        lg: tw`h-10 px-6 md:h-12 md:px-10`,
         icon: tw`h-10 w-10`,
       },
       hover: {

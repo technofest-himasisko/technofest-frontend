@@ -6,8 +6,8 @@ interface Props {
 
 export default function CommonPageHeader({ title }: Props) {
   return (
-    <div className="mb-20 mt-36 flex flex-col">
-      <h1 className="container z-10 flex flex-row items-center gap-x-2 text-6xl font-bold uppercase">
+    <div className="mb-10 mt-20 flex flex-col md:mb-20 md:mt-36">
+      <h1 className="container z-10 flex flex-row items-center gap-x-2 text-4xl font-bold uppercase md:text-6xl">
         <Circle weight="duotone" className="text-[0.6em] text-primary" />
         {title}
       </h1>

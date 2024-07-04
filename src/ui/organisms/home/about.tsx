@@ -1,9 +1,13 @@
+import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import SectionHeader from "@/ui/molecules/section-header";
 import { Compass } from "@phosphor-icons/react/dist/ssr";
 
 export default function HomeAbout() {
   return (
-    <section className="container mt-20 flex flex-col items-center justify-between gap-y-10 md:mt-40 md:flex-row md:gap-x-10 md:gap-y-0">
+    <CommonPageSection
+      id="about"
+      className="container flex flex-col items-center justify-between gap-y-10 md:flex-row md:gap-x-10 md:gap-y-0"
+    >
       <div>
         <Compass
           weight="duotone"
@@ -25,6 +29,6 @@ export default function HomeAbout() {
           dapat berinovasi dan memajukan teknologi di Indonesia.
         </p>
       </div>
-    </section>
+    </CommonPageSection>
   );
 }

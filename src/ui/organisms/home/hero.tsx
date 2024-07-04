@@ -3,12 +3,13 @@
 import useCountdown from "@/lib/hooks/use-countdown";
 import { Messenger } from "@/lib/text-transformer";
 import { cn } from "@/lib/utils";
-import { Button } from "@/ui/atoms/button";
+import { Button, buttonVariants } from "@/ui/atoms/button";
 import { goodTimes } from "@/ui/fonts";
 import { Lightning } from "@phosphor-icons/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function HomeHero() {
   const [messenger, setMessenger] = useState("2024");
@@ -40,21 +41,21 @@ export default function HomeHero() {
         >
           Himasisko Fasilkom Universitas Sriwijaya
         </p>
-        <div className="mt-10 flex flex-row gap-x-4">
-          <Button
-            variant="gradient"
-            className="flex flex-row items-center gap-x-2"
-          >
-            <Lightning weight="duotone" /> <span>More Info</span>
+        <div className="mt-10 flex flex-row gap-x-2 md:gap-x-4">
+          <Button variant="gradient" size="lg">
+            <Link href="#about" className="flex flex-row items-center gap-x-2">
+              <Lightning weight="duotone" /> <span>More Info</span>
+            </Link>
           </Button>
-          <Button variant="outline">Baca Guidebook</Button>
+          <Button variant="outline" size="lg">
+            Baca Guidebook
+          </Button>
         </div>
 
         <div className="absolute -bottom-[150%] -z-10 h-[170%] w-[170%] opacity-20 md:-bottom-[14%] md:h-[50%] md:w-[50%]">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-            className=""
           >
             <Image
               src="/images/tf2024_Frame.svg"

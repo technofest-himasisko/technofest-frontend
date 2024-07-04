@@ -88,64 +88,64 @@ export default function Header() {
           <MenuButton onClick={toggleMobileNav} className="md:hidden" />
         </div>
       </div>
-
       {/* MOBILE MENU */}
-      <div
-        className={cn(
-          !isMobileNavOpened ? "hidden" : "flex",
-          "fixed bottom-0 z-50 h-[calc(100dvh-4rem)] w-full flex-col bg-slate-950/50 backdrop-blur md:hidden",
-        )}
-      >
-        <div className="container flex flex-col gap-y-6 pt-6 text-lg">
-          {config.headerNavigations.map((navigation: any, key) => (
-            <div key={key} className="w-full">
-              {navigation.children ? (
-                <Collapsible>
-                  <CollapsibleTrigger asChild>
-                    <button className="flex w-full flex-row items-center justify-between font-semibold text-slate-100">
-                      <span>{navigation.label}</span>
-                      <CaretDown size="1em" />
-                    </button>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <div className="ml-1 mt-4 flex flex-col gap-y-6 border-l-2 border-slate-300 pl-4">
-                      {navigation.children.map(
-                        (subnavigation: any, subkey: number) => (
-                          <div key={subkey}>
-                            <Link
-                              href={subnavigation.href}
-                              className="block font-semibold focus:underline"
-                            >
-                              {subnavigation.label}
-                            </Link>
-                          </div>
-                        ),
-                      )}
-                    </div>
-                  </CollapsibleContent>
-                </Collapsible>
-              ) : (
-                <Link
-                  href={navigation.href}
-                  className="block font-semibold focus:underline"
-                >
-                  {navigation.label}
-                </Link>
-              )}
-            </div>
-          ))}
+      {isMobileNavOpened && (
+        <div
+          className={cn(
+            "no-doc-scroll fixed bottom-0 z-50 flex h-[calc(100dvh-4rem)] w-full flex-col bg-slate-950/50 backdrop-blur md:hidden",
+          )}
+        >
+          <div className="container flex flex-col gap-y-6 pt-6 text-lg">
+            {config.headerNavigations.map((navigation: any, key) => (
+              <div key={key} className="w-full">
+                {navigation.children ? (
+                  <Collapsible>
+                    <CollapsibleTrigger asChild>
+                      <button className="flex w-full flex-row items-center justify-between font-semibold text-slate-100">
+                        <span>{navigation.label}</span>
+                        <CaretDown size="1em" />
+                      </button>
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                      <div className="ml-1 mt-4 flex flex-col gap-y-6 border-l-2 border-slate-300 pl-4">
+                        {navigation.children.map(
+                          (subnavigation: any, subkey: number) => (
+                            <div key={subkey}>
+                              <Link
+                                href={subnavigation.href}
+                                className="block font-semibold focus:underline"
+                              >
+                                {subnavigation.label}
+                              </Link>
+                            </div>
+                          ),
+                        )}
+                      </div>
+                    </CollapsibleContent>
+                  </Collapsible>
+                ) : (
+                  <Link
+                    href={navigation.href}
+                    className="block font-semibold focus:underline"
+                  >
+                    {navigation.label}
+                  </Link>
+                )}
+              </div>
+            ))}
 
-          <Button asChild>
-            <Link href="/login">
-              <FingerprintSimple
-                weight="duotone"
-                className="inline text-[1.5em]"
-              />
-              &nbsp;Login
-            </Link>
-          </Button>
+            <Button asChild>
+              <Link href="/login">
+                <FingerprintSimple
+                  weight="duotone"
+                  className="inline text-[1.5em]"
+                />
+                &nbsp;Login
+              </Link>
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }
@@ -184,7 +184,7 @@ function NavigationDropdown({ navigation }: { navigation: any }) {
         <div
           className={cn(
             !isDropdownVisible && "h-0",
-            "absolute -left-4 top-10 overflow-hidden bg-slate-900/80",
+            "absolute -left-4 top-10 overflow-hidden bg-slate-900",
           )}
         >
           <ul className="flex w-[24rem] flex-col p-5">

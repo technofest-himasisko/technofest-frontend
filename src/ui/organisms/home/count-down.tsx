@@ -2,12 +2,13 @@
 
 import useCountdown from "@/lib/hooks/use-countdown";
 import { cn } from "@/lib/utils";
+import { CommonPageSection } from "@/ui/molecules/common-page-section";
 
 export default function HomeCountDown() {
   const { countdownString } = useCountdown(new Date(2024, 7, 5));
 
   return (
-    <section className="container mt-20 md:mt-40">
+    <CommonPageSection id="count-down" className="container">
       <div className="mx-auto flex flex-col items-center text-center">
         <p className="uppercase text-primary md:text-xl">
           Pembukaan Pendaftaran
@@ -16,6 +17,6 @@ export default function HomeCountDown() {
           {countdownString}
         </p>
       </div>
-    </section>
+    </CommonPageSection>
   );
 }

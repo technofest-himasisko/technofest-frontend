@@ -3,8 +3,6 @@ import "@/ui/globals.css";
 import { extatica } from "@/ui/fonts";
 import { cn } from "@/lib/utils";
 import config from "@/config";
-import Header from "@/ui/organisms/header";
-import Footer from "@/ui/organisms/footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.baseUrl),
@@ -23,17 +21,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface Props {
   children: React.ReactNode;
-}>) {
+}
+
+export default function RootLayout({ children }: Readonly<Props>) {
   return (
-    <html lang={config.appLang}>
+    <html lang={config.appLang} className="scroll-smooth">
       <body className={cn(extatica.className, "flex min-h-dvh flex-col")}>
-        <Header />
-        <main className="grow">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

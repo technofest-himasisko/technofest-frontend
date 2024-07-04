@@ -1,9 +1,10 @@
+import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import SectionHeader from "@/ui/molecules/section-header";
 import Image from "next/image";
 
 export default function HomeSponsors() {
   return (
-    <section className="container mt-20 md:mt-40">
+    <CommonPageSection id="sponsors" className="container">
       <SectionHeader title="Sponsor" position="center" />
       <ul className="mt-10 flex flex-wrap justify-center gap-1.5 md:gap-2">
         {Array.from({ length: 20 }).map((_, i) => (
@@ -21,6 +22,6 @@ export default function HomeSponsors() {
           </li>
         ))}
       </ul>
-    </section>
+    </CommonPageSection>
   );
 }
