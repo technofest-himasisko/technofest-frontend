@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn, tw } from "@/lib/utils";
 
 const badgeVariants = cva(
-  tw`inline-flex items-center border px-1 uppercase transition-colors md:text-xs`,
+  tw`inline-flex items-center border px-1 text-xs uppercase transition-colors`,
   {
     variants: {
       variant: {

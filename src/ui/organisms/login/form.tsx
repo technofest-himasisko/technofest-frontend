@@ -12,6 +12,7 @@ import {
 } from "@/ui/atoms/form";
 import { Input } from "@/ui/atoms/input";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -66,7 +67,7 @@ export default function LoginForm() {
           )}
         />
         <Button type="submit" hover="vertical" className="mt-4 w-full">
-          Login
+          <Link href="/u/home">Login</Link>
         </Button>
       </form>
     </Form>
