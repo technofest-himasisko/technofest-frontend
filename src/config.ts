@@ -1,4 +1,8 @@
-import { Camera, FigmaLogo, NotePencil } from "@phosphor-icons/react/dist/ssr";
+import {
+  Aperture,
+  FigmaLogo,
+  ImageSquare,
+} from "@phosphor-icons/react/dist/ssr";
 
 const config = {
   baseUrl: process.env.BASE_URL || "http://localhost:3000",
@@ -23,7 +27,7 @@ const config = {
           label: "Fotografi",
           description: "lorem ipsum dolor sit amet, consectetur",
           href: "/events/photography",
-          icon: Camera,
+          icon: Aperture,
         },
         {
           label: "UI/UX",
@@ -32,10 +36,10 @@ const config = {
           icon: FigmaLogo,
         },
         {
-          label: "Essay",
+          label: "Poster",
           description: "lorem ipsum dolor sit amet, consectetur",
-          href: "/events/essay",
-          icon: NotePencil,
+          href: "/events/poster",
+          icon: ImageSquare,
         },
       ],
     },

@@ -18,6 +18,9 @@ export default function HomeFaqs() {
           <Button className="w-full md:w-auto">
             <Link href="/faqs">Faqs</Link>
           </Button>
+          <Button variant="ghost" className="w-full md:w-auto">
+            <Link href="#">Guidebook</Link>
+          </Button>
         </div>
         <QuestionMark className="absolute bottom-0 right-0 hidden text-primary/20 md:block md:size-[14rem]" />
       </Card>

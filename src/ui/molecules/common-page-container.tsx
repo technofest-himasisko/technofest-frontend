@@ -3,5 +3,5 @@ interface Props {
 }
 
 export default function CommonPageContainer({ children }: Props) {
-  return <div className="mt-16">{children}</div>;
+  return <div className="min-h-[100dvh] pb-10 pt-16">{children}</div>;
 }

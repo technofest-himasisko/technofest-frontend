@@ -9,7 +9,7 @@ export default function Page() {
   return (
     <>
       <SectionHeader title="Register" />
-      <Card className="mt-4">
+      <Card className="mb-10 mt-4">
         <p className="mb-8 text-2xl font-semibold">Registrasi dengan</p>
         <RegisterForm />
         <div className="relative flex items-center py-8">

@@ -15,7 +15,7 @@ export default function Footer({ minimal = false }: Props) {
   }
 
   return (
-    <footer className={cn(!minimal && "bg-primary/10", "mt-10 flex flex-col")}>
+    <footer className={cn(!minimal && "bg-primary/10", "flex flex-col")}>
       {!minimal && (
         <div className="relative overflow-hidden">
           <div className="container flex flex-col gap-x-20 py-10 md:flex-row">
