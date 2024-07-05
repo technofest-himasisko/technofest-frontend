@@ -18,7 +18,10 @@ export default function HomeCompetition() {
         subtitle="Kompetisi Tahun Ini"
         position="center"
       />
-      <Tabs defaultValue="photography" className="mt-10">
+      <Tabs
+        defaultValue="photography"
+        className="mt-10 flex flex-col-reverse gap-y-6 md:flex-col md:gap-y-10"
+      >
         <TabsContent value="photography" className="md:h-[20rem]">
           <div className="flex flex-col gap-y-4 md:flex-row md:gap-x-10 md:gap-y-0">
             <div className="flex items-center justify-center bg-primary/10 p-4 group-hover:bg-primary/20 md:aspect-square md:p-14">
@@ -97,7 +100,7 @@ export default function HomeCompetition() {
             </Card>
           </div>
         </TabsContent>
-        <TabsList className="mx-auto mt-6 grid max-w-2xl grid-cols-3 md:mt-10">
+        <TabsList className="mx-auto grid w-full max-w-2xl grid-cols-3">
           <TabsTrigger value="photography">Fotografi</TabsTrigger>
           <TabsTrigger value="uiux">UI/UX</TabsTrigger>
           <TabsTrigger value="poster">Poster</TabsTrigger>

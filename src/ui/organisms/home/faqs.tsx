@@ -14,7 +14,7 @@ export default function HomeFaqs() {
           Punya pertanyaan seputar event perlombaan atau seminar? Silakan masuk
           ke halaman Faqs yaa.
         </p>
-        <div className="mt-8 flex gap-x-2">
+        <div className="mt-8 flex flex-col gap-y-2 md:flex-row md:gap-x-2 md:gap-y-0">
           <Button className="w-full md:w-auto">
             <Link href="/faqs">Faqs</Link>
           </Button>

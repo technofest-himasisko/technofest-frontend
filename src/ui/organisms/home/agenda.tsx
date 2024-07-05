@@ -8,8 +8,12 @@ export default function HomeAgenda() {
       <SectionHeader title="Agenda" subtitle="Timeline Tecnofest" />
       <div>
         <Card>
-          <p className="font-semibold text-primary">5 Agustus 2024</p>
-          <h3 className="text-3xl font-semibold uppercase">Opening Caremony</h3>
+          <p className="text-sm font-semibold text-primary md:text-base">
+            5 Agustus 2024
+          </p>
+          <h3 className="text-xl font-semibold uppercase md:text-3xl">
+            Opening Caremony
+          </h3>
           <p className="mt-2 font-light text-slate-400 md:mt-4 md:text-xl">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
             inventore tempora sit, nam corrupti porro cumque neque cum, ducimus
@@ -19,8 +23,12 @@ export default function HomeAgenda() {
         </Card>
         <div className="mx-auto h-6 w-1 bg-primary/20 md:ml-10" />
         <Card>
-          <p className="font-semibold text-primary">5 Agustus 2024</p>
-          <h3 className="text-3xl font-semibold uppercase">Kompetisi</h3>
+          <p className="text-sm font-semibold text-primary md:text-base">
+            5 Agustus 2024
+          </p>
+          <h3 className="text-xl font-semibold uppercase md:text-3xl">
+            Kompetisi
+          </h3>
           <p className="mt-2 font-light text-slate-400 md:mt-4 md:text-xl">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
             inventore tempora sit, nam
@@ -29,8 +37,12 @@ export default function HomeAgenda() {
         <div className="mx-auto h-6 w-1 bg-primary/20 md:ml-10" />
 
         <Card>
-          <p className="font-semibold text-primary">5 Agustus 2024</p>
-          <h3 className="text-3xl font-semibold uppercase">Seminar</h3>
+          <p className="text-sm font-semibold text-primary md:text-base">
+            5 Agustus 2024
+          </p>
+          <h3 className="text-xl font-semibold uppercase md:text-3xl">
+            Seminar
+          </h3>
           <p className="mt-2 font-light text-slate-400 md:mt-4 md:text-xl">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
             inventore tempora

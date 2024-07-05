@@ -36,12 +36,12 @@ export default function HomeHero() {
         <p
           className={cn(
             goodTimes.className,
-            "mt-4 bg-gradient-to-br from-slate-200 to-slate-400 bg-clip-text text-center text-xs text-transparent md:text-xl",
+            "mt-4 max-w-[22rem] bg-gradient-to-br from-slate-200 to-slate-400 bg-clip-text text-center text-sm text-transparent md:max-w-full md:text-xl",
           )}
         >
           Internet of Things (IoT): Connecting Our World
         </p>
-        <div className="mt-10 flex flex-row gap-x-2 md:gap-x-4">
+        <div className="container mt-10 flex w-full flex-col justify-center gap-y-2 md:flex-row md:gap-x-4 md:gap-y-0">
           <Button variant="gradient" size="lg">
             <Link href="#about" className="flex flex-row items-center gap-x-2">
               <Lightning weight="duotone" /> <span>More Info</span>
