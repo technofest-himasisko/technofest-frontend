@@ -14,6 +14,7 @@ const buttonVariants = cva(
         outline: tw`border border-primary text-primary`,
         secondary: tw`border border-secondary/30 bg-secondary hover:text-secondary`,
         ghost: tw`text-primary`,
+        danger: tw`text-red-500`,
         link: tw`text-primary underline-offset-4 hover:underline`,
       },
       size: {
