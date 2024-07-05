@@ -81,8 +81,8 @@ export default function Footer({ minimal = false }: Props) {
       )}
       <div
         className={cn(
-          !minimal && "bg-slate-950/40 py-6",
-          "text-center text-xs text-slate-100/30 md:text-sm",
+          !minimal && "bg-slate-950/40",
+          "py-6 text-center text-xs text-slate-100/30 md:text-sm",
         )}
       >
         <p className="container">

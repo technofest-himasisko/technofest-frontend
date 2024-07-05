@@ -1,8 +1,6 @@
-import { Card } from "@/ui/atoms/card";
 import CommonPageContainer from "@/ui/molecules/common-page-container";
-import CommonPageHeader from "@/ui/molecules/common-page-header";
 import { CommonPageSection } from "@/ui/molecules/common-page-section";
-import SectionHeader from "@/ui/molecules/section-header";
+import Footer from "@/ui/organisms/footer";
 import Header from "@/ui/organisms/header";
 
 interface Props {
@@ -17,6 +15,7 @@ export default function Layout({ children }: Readonly<Props>) {
         <CommonPageContainer>
           <CommonPageSection className="container mx-auto max-w-lg py-20">
             {children}
+            <Footer minimal />
           </CommonPageSection>
         </CommonPageContainer>
       </main>

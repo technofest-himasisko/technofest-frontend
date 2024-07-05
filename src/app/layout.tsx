@@ -3,6 +3,7 @@ import "@/ui/globals.css";
 import { extatica } from "@/ui/fonts";
 import { cn } from "@/lib/utils";
 import config from "@/config";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.baseUrl),
@@ -29,7 +30,7 @@ export default function RootLayout({ children }: Readonly<Props>) {
   return (
     <html lang={config.appLang} className="scroll-smooth">
       <body className={cn(extatica.className, "flex min-h-dvh flex-col")}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
