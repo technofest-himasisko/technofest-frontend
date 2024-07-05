@@ -16,7 +16,11 @@ import {
 } from "../atoms/collabsible";
 import { usePathname } from "next/navigation";
 
-export default function Header() {
+interface Props {
+  minimal?: boolean;
+}
+
+export default function Header({ minimal = false }: Props) {
   const pathname = usePathname();
 
   const [isMobileNavOpened, setIsMobileNavOpened] = useState<boolean>(false);
@@ -52,40 +56,41 @@ export default function Header() {
             </p>
           </Link>
 
-          {/* NAVIGATIONS */}
-          <nav className="hidden md:block">
-            <ul className="flex flex-row gap-x-6">
-              {config.headerNavigations.map((navigation, key) => (
-                <li key={key}>
-                  {navigation.children ? (
-                    <NavigationDropdown navigation={navigation} />
-                  ) : (
-                    <Link
-                      href={navigation.href}
-                      className={cn(navigationLinkClassName)}
-                    >
-                      {navigation.label}
-                    </Link>
-                  )}
-                </li>
-              ))}
+          {!minimal && (
+            <>
+              <nav className="hidden md:block">
+                <ul className="flex flex-row gap-x-6">
+                  {config.headerNavigations.map((navigation, key) => (
+                    <li key={key}>
+                      {navigation.children ? (
+                        <NavigationDropdown navigation={navigation} />
+                      ) : (
+                        <Link
+                          href={navigation.href}
+                          className={cn(navigationLinkClassName)}
+                        >
+                          {navigation.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
 
-              <li className="ml-4">
-                <Button asChild>
-                  <Link href="/login">
-                    <FingerprintSimple
-                      weight="duotone"
-                      className="inline text-[1.5em]"
-                    />
-                    &nbsp;Login
-                  </Link>
-                </Button>
-              </li>
-            </ul>
-          </nav>
-
-          {/* MOBILE NAV TOGGLE */}
-          <MenuButton onClick={toggleMobileNav} className="md:hidden" />
+                  <li className="ml-4">
+                    <Button asChild>
+                      <Link href="/login">
+                        <FingerprintSimple
+                          weight="duotone"
+                          className="inline text-[1.5em]"
+                        />
+                        &nbsp;Login
+                      </Link>
+                    </Button>
+                  </li>
+                </ul>
+              </nav>
+              <MenuButton onClick={toggleMobileNav} className="md:hidden" />
+            </>
+          )}
         </div>
       </div>
       {/* MOBILE MENU */}
