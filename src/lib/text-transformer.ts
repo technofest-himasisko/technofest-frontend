@@ -21,15 +21,17 @@ export class Messenger {
     this.current_length = 0;
     this.fadeBuffer = [];
     this.messages = [
-      "2024",
-      "technology",
       "iot",
+      "technology",
+      "2024",
       "innovation",
       "festival",
       "internet",
       "things",
       "digital",
       "network",
+      "Connection",
+      "World",
     ];
     this.setMessenger = setMessenger;
     this.animateIn();

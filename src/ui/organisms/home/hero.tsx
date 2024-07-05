@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function HomeHero() {
-  const [messenger, setMessenger] = useState("2024");
+  const [messenger, setMessenger] = useState("IoT");
 
   useEffect(() => {
     // eslint-disable-next-line no-new
@@ -20,7 +20,7 @@ export default function HomeHero() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-t from-primary/[6%] to-transparent to-25%">
+    <div className="bg-gradient-to-t from-primary/10 to-transparent to-25%">
       <header className="relative flex h-[calc(100dvh-4rem)] flex-col items-center overflow-hidden pt-[30vh] md:pt-[18vh]">
         <p className="-mr-[1.6em] text-center font-mono text-sm font-medium uppercase tracking-[1.1em] md:text-xl md:tracking-[1.6em]">
           {messenger}
@@ -39,7 +39,7 @@ export default function HomeHero() {
             "mt-4 bg-gradient-to-br from-slate-200 to-slate-400 bg-clip-text text-center text-xs text-transparent md:text-xl",
           )}
         >
-          Himasisko Fasilkom Universitas Sriwijaya
+          Internet of Things (IoT): Connecting Our World
         </p>
         <div className="mt-10 flex flex-row gap-x-2 md:gap-x-4">
           <Button variant="gradient" size="lg">
