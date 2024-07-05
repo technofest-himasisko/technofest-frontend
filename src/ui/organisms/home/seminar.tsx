@@ -85,7 +85,7 @@ export default function HomeSeminar() {
                 className="w-full"
               />
             </div>
-            <div className="absolute h-full w-full bg-slate-950/90 p-5 text-left backdrop-blur transition-all duration-300 group-hover:bottom-0 md:-bottom-[70%]">
+            <div className="absolute -bottom-[70%] h-full w-full bg-slate-950/90 p-5 text-left backdrop-blur transition-all duration-300 group-hover:bottom-0">
               <h3 className="text-xl font-semibold uppercase md:text-3xl">
                 Mark Zuckebek
               </h3>
