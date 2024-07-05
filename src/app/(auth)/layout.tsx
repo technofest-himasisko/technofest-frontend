@@ -15,7 +15,7 @@ export default function Layout({ children }: Readonly<Props>) {
       <Header minimal />
       <main className="grow">
         <CommonPageContainer>
-          <CommonPageSection className="mx-auto max-w-lg py-20">
+          <CommonPageSection className="container mx-auto max-w-lg py-20">
             {children}
           </CommonPageSection>
         </CommonPageContainer>

@@ -21,7 +21,7 @@ export default function HomeHero() {
 
   return (
     <div className="bg-gradient-to-t from-primary/10 to-transparent to-25%">
-      <header className="relative flex h-[calc(100dvh-4rem)] flex-col items-center overflow-hidden pt-[30vh] md:pt-[18vh]">
+      <header className="relative flex h-[calc(100dvh-4rem)] flex-col items-center overflow-hidden pt-[20vh] md:pt-[18vh]">
         <p className="-mr-[1.6em] text-center font-mono text-sm font-medium uppercase tracking-[1.1em] md:text-xl md:tracking-[1.6em]">
           {messenger}
         </p>
