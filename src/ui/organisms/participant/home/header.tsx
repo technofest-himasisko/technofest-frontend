@@ -1,3 +1,4 @@
+import useCopy from "@/lib/hooks/use-copy";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/ui/atoms/avatar";
 import { goodTimes } from "@/ui/fonts";
@@ -5,6 +6,12 @@ import { Copy } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 
 export default function ParticipantHomeHeader() {
+  const { copyToClipboard } = useCopy();
+
+  function handleCopyClick() {
+    copyToClipboard("081367436851");
+  }
+
   return (
     <section className="container mt-4 md:mt-10">
       <div className="relative h-36 border border-primary/20 bg-gradient-to-br from-primary/20 to-secondary/20 md:h-40">
@@ -45,7 +52,10 @@ export default function ParticipantHomeHeader() {
 
         <div className="mt-4 flex flex-row border border-primary/20 bg-primary/10">
           <p className="px-4 py-2 font-medium">ID: U-05390979</p>
-          <button className="bg-primary/10 px-4 py-2 text-primary transition-colors hover:bg-primary/20">
+          <button
+            onClick={handleCopyClick}
+            className="bg-primary/10 px-4 py-2 text-primary transition-colors hover:bg-primary/20"
+          >
             <Copy />
           </button>
         </div>

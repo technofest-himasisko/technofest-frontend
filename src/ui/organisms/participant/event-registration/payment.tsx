@@ -1,7 +1,7 @@
 "use client";
 
+import useCopy from "@/lib/hooks/use-copy";
 import { Alert, AlertDescription, AlertTitle } from "@/ui/atoms/alert";
-import { Button } from "@/ui/atoms/button";
 import {
   Form,
   FormControl,
@@ -21,6 +21,8 @@ const formSchema = z.object({
 });
 
 export default function ParticipantEventRegistrationPayment() {
+  const { copyToClipboard } = useCopy();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -32,6 +34,10 @@ export default function ParticipantEventRegistrationPayment() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+  }
+
+  function handleCopyClick() {
+    copyToClipboard("081367436851");
   }
 
   return (
@@ -62,7 +68,10 @@ export default function ParticipantEventRegistrationPayment() {
               <span className="bg-brand-dana px-2 font-medium">Dana</span>
               <span className="font-semibold">082121222</span>
               <span className="text-slate-100/50">a.n. Marzuki</span>
-              <button className="px-4 py-2 text-primary transition-colors hover:bg-primary/20">
+              <button
+                onClick={handleCopyClick}
+                className="px-4 py-2 text-primary transition-colors hover:bg-primary/20"
+              >
                 <Copy />
               </button>
             </div>
@@ -71,7 +80,10 @@ export default function ParticipantEventRegistrationPayment() {
               <span className="bg-brand-bni px-2 font-medium">BNI</span>
               <span className="font-semibold">082121222</span>
               <span className="text-slate-100/50">a.n. Marzuki</span>
-              <button className="px-4 py-2 text-primary transition-colors hover:bg-primary/20">
+              <button
+                onClick={handleCopyClick}
+                className="px-4 py-2 text-primary transition-colors hover:bg-primary/20"
+              >
                 <Copy />
               </button>
             </div>

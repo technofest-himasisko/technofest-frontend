@@ -1,4 +1,6 @@
-import { Button } from "@/ui/atoms/button";
+"use client";
+
+import useCopy from "@/lib/hooks/use-copy";
 import {
   Menubar,
   MenubarContent,
@@ -9,13 +11,22 @@ import {
 import { Copy, List, TrashSimple } from "@phosphor-icons/react/dist/ssr";
 
 export default function ParticipantEventRegistrationActions() {
+  const { copyToClipboard } = useCopy();
+
+  function handleCopyClick() {
+    copyToClipboard("081367436851");
+  }
+
   return (
     <section className="container flex flex-row items-center justify-between gap-y-4">
       <div className="flex flex-row border border-primary/20 bg-primary/10">
         <p className="px-4 py-1 text-xl font-semibold md:py-2 md:text-3xl">
           ID: E-05390979
         </p>
-        <button className="bg-primary/10 px-4 py-1 text-primary transition-colors hover:bg-primary/20 md:py-2">
+        <button
+          onClick={handleCopyClick}
+          className="bg-primary/10 px-4 py-1 text-primary transition-colors hover:bg-primary/20 md:py-2"
+        >
           <Copy />
         </button>
       </div>

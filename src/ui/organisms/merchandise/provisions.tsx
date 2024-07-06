@@ -1,7 +1,16 @@
+"use client";
+
+import useCopy from "@/lib/hooks/use-copy";
 import { Card } from "@/ui/atoms/card";
 import Link from "next/link";
 
 export default function MerchandiseProvisions() {
+  const { copyToClipboard } = useCopy();
+
+  function handleCopyClick() {
+    copyToClipboard("081367436851");
+  }
+
   return (
     <section className="container mt-10">
       <Card>
@@ -16,7 +25,10 @@ export default function MerchandiseProvisions() {
             <li>
               Pembayaran dapat dilakukan melalui aplikasi Dana dengan nomor
               081367436851 a.n. Ika Putri Aprilia.
-              <button className="block bg-primary px-2 py-1 text-sm font-medium text-slate-100 hover:bg-primary/90">
+              <button
+                onClick={handleCopyClick}
+                className="block bg-primary px-2 py-1 text-sm font-medium text-slate-100 hover:bg-primary/90"
+              >
                 Salin nomor Dana
               </button>
             </li>

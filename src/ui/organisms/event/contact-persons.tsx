@@ -1,4 +1,3 @@
-import { Button } from "@/ui/atoms/button";
 import { Card } from "@/ui/atoms/card";
 import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import SectionHeader from "@/ui/molecules/section-header";
