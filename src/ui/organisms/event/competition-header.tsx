@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function EventCompetitionHeader() {
   return (
-    <section className="container mt-2 flex flex-col items-center text-center md:mt-10">
+    <section className="container flex flex-col items-center pt-2 text-center md:pt-10">
       <div className="flex w-full items-center justify-center bg-primary/10 p-10 group-hover:bg-primary/20 md:p-14">
         <FigmaLogo
           weight="duotone"
