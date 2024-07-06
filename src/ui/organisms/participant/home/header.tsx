@@ -1,3 +1,5 @@
+"use client";
+
 import useCopy from "@/lib/hooks/use-copy";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/ui/atoms/avatar";
