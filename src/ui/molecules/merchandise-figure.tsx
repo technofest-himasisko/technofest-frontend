@@ -9,7 +9,7 @@ export default function MerchandiseFigure() {
         alt=""
         width={400}
         height={400}
-        className="object-cover"
+        className="aspect-video bg-slate-900/40 object-cover"
       />
       <figcaption className="p-2">
         <h2 className="text-lg">Gantungan Kunci Acrylic: Lady Tifa</h2>
