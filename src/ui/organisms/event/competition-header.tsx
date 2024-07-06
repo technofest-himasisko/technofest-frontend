@@ -8,16 +8,21 @@ import Link from "next/link";
 export default function EventCompetitionHeader() {
   return (
     <CommonPageSection className="container flex flex-col items-center text-center">
-      <div className="flex w-full items-center justify-center bg-primary/10 p-4 group-hover:bg-primary/20 md:p-14">
+      <div className="flex w-full items-center justify-center bg-primary/10 p-10 group-hover:bg-primary/20 md:p-14">
         <FigmaLogo
           weight="duotone"
           className="size-[4rem] text-primary/80 group-hover:text-primary md:size-[10rem]"
         />
       </div>
-      <h1 className={cn(goodTimes.className, "mt-4 text-6xl text-primary")}>
-        UI/UX
+      <h1
+        className={cn(
+          goodTimes.className,
+          "mt-4 max-w-4xl text-2xl text-primary md:text-6xl",
+        )}
+      >
+        Fotografi
       </h1>
-      <p className={cn(goodTimes.className, "mt-1")}>
+      <p className={cn(goodTimes.className, "mt-1 text-xs md:text-base")}>
         Technology Festival 2024
       </p>
       <p className="mt-4 max-w-xl font-light text-slate-400 md:text-xl">
