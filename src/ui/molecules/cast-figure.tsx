@@ -13,7 +13,7 @@ export default function CastFigure() {
           height={200}
           className="w-full"
         />
-        <figcaption className="absolute -bottom-[76%] h-full w-full bg-slate-950/90 p-5 text-left backdrop-blur transition-all duration-300 group-hover:bottom-0">
+        <figcaption className="absolute -bottom-[72%] h-full w-full bg-slate-950/90 p-5 text-left backdrop-blur transition-all duration-300 group-hover:bottom-0">
           <h3 className="text-xl font-semibold uppercase md:text-3xl">
             Mark Zuckebek
           </h3>
