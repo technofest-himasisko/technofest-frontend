@@ -48,7 +48,7 @@ export default function EventItem({ event, color }: Props) {
             <p className="text-sm text-slate-100/50">Biaya: Rp{event.price}</p>
           </div>
         </div>
-        <div className="mt-2 flex justify-end gap-x-2 md:mt-0">
+        <div className="mt-4 flex justify-end gap-x-2 md:mt-0">
           <Button asChild variant="ghost">
             <Link href={`/u/events/${event.codename}/registration`}>Info</Link>
           </Button>

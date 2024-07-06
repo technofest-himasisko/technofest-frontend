@@ -3,44 +3,85 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/ui/atoms/avatar";
 import { Badge } from "@/ui/atoms/badge";
 import { Button } from "@/ui/atoms/button";
-import { Card } from "@/ui/atoms/card";
+
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from "@/ui/atoms/form";
 import { Input } from "@/ui/atoms/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Check } from "@phosphor-icons/react";
+import { Check, CheckCircle } from "@phosphor-icons/react";
 import {
   PencilSimple,
   Plus,
   TrashSimple,
   X,
 } from "@phosphor-icons/react/dist/ssr";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-const formSchema = z.object({
-  email: z.string(),
-  password: z.string(),
+const teamFormSchema = z.object({
+  teamName: z.string(),
+});
+
+const participantFormSchema = z.object({
+  participantId: z.string(),
 });
 
 export default function ParticipantEventRegistrationRegistrant() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const [isEditingTeamName, setIsEditingTeamName] = useState<boolean>(false);
+  const [isAddingParticipant, setIsAddingParticipant] =
+    useState<boolean>(false);
+
+  const teamForm = useForm<z.infer<typeof teamFormSchema>>({
+    resolver: zodResolver(teamFormSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      teamName: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  const participantForm = useForm<z.infer<typeof participantFormSchema>>({
+    resolver: zodResolver(participantFormSchema),
+    defaultValues: {
+      participantId: "",
+    },
+  });
+
+  function onTeamFormSubmit(values: z.infer<typeof teamFormSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+  }
+
+  function onParticipantFormSubmit(
+    values: z.infer<typeof participantFormSchema>,
+  ) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+  }
+
+  function handleEditTeamNameClick() {
+    setIsEditingTeamName(true);
+  }
+
+  function handleCancelEditTeamNameClick() {
+    setIsEditingTeamName(false);
+    teamForm.reset();
+  }
+
+  function handleAddParticipantClick() {
+    setIsAddingParticipant(true);
+  }
+
+  function handleCancelAddParticipantClick() {
+    setIsAddingParticipant(false);
+    participantForm.reset();
   }
 
   return (
@@ -53,22 +94,22 @@ export default function ParticipantEventRegistrationRegistrant() {
       <div className="bg-slate-900 p-4 shadow-lg md:p-6">
         <div className="max-w-xl">
           <h3 className="text-lg font-semibold">Nama Tim</h3>
-          <Form {...form}>
+          <Form {...teamForm}>
             <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="mt-2 flex gap-y-4"
+              onSubmit={teamForm.handleSubmit(onTeamFormSubmit)}
+              className="mt-2 flex"
             >
               <div className="grow">
                 <FormField
-                  control={form.control}
-                  name="email"
+                  control={teamForm.control}
+                  name="teamName"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
                         <Input
-                          type="email"
-                          placeholder="Email"
-                          disabled
+                          type="text"
+                          placeholder="Nama tim"
+                          disabled={!isEditingTeamName}
                           {...field}
                         />
                       </FormControl>
@@ -78,18 +119,31 @@ export default function ParticipantEventRegistrationRegistrant() {
                 />
               </div>
 
-              <Button type="submit">
-                <PencilSimple weight="bold" className="text-[1.5em]" />
-              </Button>
+              {!isEditingTeamName && (
+                <button
+                  onClick={handleEditTeamNameClick}
+                  className="bg-primary/20 px-2.5 text-primary hover:bg-primary/30 md:px-4"
+                >
+                  <PencilSimple weight="bold" className="text-[1.5em]" />
+                </button>
+              )}
 
-              <div className="hidden">
-                <Button type="submit">
-                  <Check weight="bold" className="text-[1.5em]" />
-                </Button>
-                <Button type="submit" variant="outline">
-                  <X weight="bold" className="text-[1.5em]" />
-                </Button>
-              </div>
+              {isEditingTeamName && (
+                <div className="flex">
+                  <button
+                    type="submit"
+                    className="bg-primary/20 px-2.5 text-primary hover:bg-primary/30 md:px-4"
+                  >
+                    <Check weight="bold" className="text-[1.5em]" />
+                  </button>
+                  <button
+                    onClick={handleCancelEditTeamNameClick}
+                    className="border border-primary/20 px-2.5 text-primary hover:bg-primary/30 md:px-4"
+                  >
+                    <X weight="bold" className="text-[1.5em]" />
+                  </button>
+                </div>
+              )}
             </form>
           </Form>
         </div>
@@ -135,17 +189,87 @@ export default function ParticipantEventRegistrationRegistrant() {
                 </div>
               </div>
               <div>
-                <button className="flex items-center text-xs text-red-500 hover:text-red-500/80 md:px-4 md:text-base">
+                <button className="flex items-center text-base text-red-500 hover:text-red-500/80 md:px-4">
                   <TrashSimple weight="duotone" className="text-[1.5em]" />
                 </button>
               </div>
             </div>
 
-            <button className="flex h-20 flex-col items-center justify-center border border-primary/50 bg-primary/10 p-4 text-sm text-slate-100/50 hover:bg-primary/20 hover:text-slate-100 md:text-base">
-              <Plus weight="bold" className="text-2em" />
-              <span>Tambah Peserta</span>
-            </button>
+            {!isAddingParticipant && (
+              <button
+                onClick={handleAddParticipantClick}
+                className="flex h-20 flex-col items-center justify-center border border-primary/50 bg-primary/10 p-4 text-sm text-slate-100/50 hover:bg-primary/20 hover:text-slate-100 md:text-base"
+              >
+                <Plus weight="bold" className="text-2em" />
+                <span>Tambah Peserta</span>
+              </button>
+            )}
+
+            {isAddingParticipant && (
+              <div className="flex items-center gap-x-4 border border-primary/50 bg-primary/10 p-4">
+                <Form {...participantForm}>
+                  <form
+                    onSubmit={participantForm.handleSubmit(
+                      onParticipantFormSubmit,
+                    )}
+                    className="mt-2 flex w-full flex-col gap-y-4"
+                  >
+                    <div className="grow">
+                      <FormField
+                        control={participantForm.control}
+                        name="participantId"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Masukkan ID peserta</FormLabel>
+                            <div className="flex">
+                              <div className="flex w-14 items-center justify-center bg-primary/20 font-semibold">
+                                U
+                              </div>
+                              <FormControl>
+                                <Input
+                                  type="text"
+                                  placeholder="xxxxxxxx"
+                                  {...field}
+                                />
+                              </FormControl>
+                            </div>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <div className="flex justify-end">
+                      <div className="flex">
+                        <button
+                          type="submit"
+                          className="bg-primary/20 px-2.5 py-2 text-primary hover:bg-primary/30 md:px-4"
+                        >
+                          <Check weight="bold" className="text-[1.5em]" />
+                        </button>
+                        <button
+                          onClick={handleCancelAddParticipantClick}
+                          className="border border-primary/20 px-2.5 py-2 text-primary hover:bg-primary/30 md:px-4"
+                        >
+                          <X weight="bold" className="text-[1.5em]" />
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </Form>
+              </div>
+            )}
           </div>
+        </div>
+
+        <div className="mt-10">
+          <button
+            type="submit"
+            className="flex w-full items-center justify-center space-x-1 bg-primary/20 px-2.5 py-2 text-center font-semibold text-primary hover:bg-primary/30 md:w-auto md:px-4"
+          >
+            <CheckCircle weight="duotone" className="text-[1.5em]" />
+            <span>Konfirmasi</span>
+          </button>
         </div>
       </div>
     </section>

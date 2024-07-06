@@ -4,7 +4,7 @@ import ComingSoon from "@/ui/organisms/coming-soon";
 import HomeAbout from "@/ui/organisms/home/about";
 import HomeAgenda from "@/ui/organisms/home/agenda";
 import HomeCompetition from "@/ui/organisms/home/competitions";
-import HomeCountDown from "@/ui/organisms/home/count-down";
+import HomeCountDown from "@/ui/organisms/home/countdown";
 import HomeFaqs from "@/ui/organisms/home/faqs";
 import HomeHero from "@/ui/organisms/home/hero";
 import HomeMediaPartners from "@/ui/organisms/home/media-partners";

@@ -1,12 +1,15 @@
 import CastFigure from "@/ui/molecules/cast-figure";
 import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import SectionHeader from "@/ui/molecules/section-header";
+import { ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function HomeSeminar() {
+export default function EventSeminarSpeakers() {
   return (
-    <CommonPageSection className="container">
+    <CommonPageSection>
       <SectionHeader
-        title="Seminar"
+        title="Pembicara"
         subtitle="Our Speakers"
         position="center"
       />

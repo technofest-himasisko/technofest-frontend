@@ -17,6 +17,10 @@ const config: Config = {
       colors: {
         primary: "#BC477F",
         secondary: "#3C0344",
+        "brand-dana": "#008FE9",
+        "brand-bni": "#D35C2E",
+        "brand-line": "#06C755",
+        "brand-whatsapp": "#27D045",
       },
       boxShadow: {
         card: "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;",

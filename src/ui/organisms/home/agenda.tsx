@@ -7,7 +7,7 @@ export default function HomeAgenda() {
     <CommonPageSection className="container flex flex-col gap-y-10 md:flex-row md:gap-x-20 md:gap-y-0">
       <SectionHeader title="Agenda" subtitle="Timeline Tecnofest" />
       <div>
-        <Card>
+        <Card className="backdrop-blur">
           <p className="text-sm font-semibold text-primary md:text-base">
             5 Agustus 2024
           </p>
@@ -21,8 +21,8 @@ export default function HomeAgenda() {
             autem temporibus fugit?
           </p>
         </Card>
-        <div className="mx-auto h-6 w-1 bg-primary/20 md:ml-10" />
-        <Card>
+        <div className="mx-auto h-6 w-1 bg-primary md:ml-10" />
+        <Card className="backdrop-blur">
           <p className="text-sm font-semibold text-primary md:text-base">
             5 Agustus 2024
           </p>
@@ -34,9 +34,9 @@ export default function HomeAgenda() {
             inventore tempora sit, nam
           </p>
         </Card>
-        <div className="mx-auto h-6 w-1 bg-primary/20 md:ml-10" />
+        <div className="mx-auto h-6 w-1 bg-primary md:ml-10" />
 
-        <Card>
+        <Card className="backdrop-blur">
           <p className="text-sm font-semibold text-primary md:text-base">
             5 Agustus 2024
           </p>
