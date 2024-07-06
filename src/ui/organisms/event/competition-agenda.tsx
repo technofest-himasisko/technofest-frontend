@@ -2,7 +2,7 @@ import { Card } from "@/ui/atoms/card";
 import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import SectionHeader from "@/ui/molecules/section-header";
 
-export default function EventAgenda() {
+export default function EventCompetitionAgenda() {
   return (
     <CommonPageSection className="container flex flex-col gap-y-10">
       <SectionHeader
