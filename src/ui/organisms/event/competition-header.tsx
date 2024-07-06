@@ -1,13 +1,12 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/ui/atoms/button";
 import { goodTimes } from "@/ui/fonts";
-import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import { FigmaLogo } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 
 export default function EventCompetitionHeader() {
   return (
-    <CommonPageSection className="container flex flex-col items-center text-center">
+    <section className="container mt-2 flex flex-col items-center text-center md:mt-10">
       <div className="flex w-full items-center justify-center bg-primary/10 p-10 group-hover:bg-primary/20 md:p-14">
         <FigmaLogo
           weight="duotone"
@@ -39,6 +38,6 @@ export default function EventCompetitionHeader() {
           Baca Guidebook
         </Button>
       </div>
-    </CommonPageSection>
+    </section>
   );
 }

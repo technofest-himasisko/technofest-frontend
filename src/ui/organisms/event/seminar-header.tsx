@@ -1,12 +1,11 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/ui/atoms/button";
 import { goodTimes } from "@/ui/fonts";
-import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import Link from "next/link";
 
 export default function EventSeminarHeader() {
   return (
-    <CommonPageSection className="container flex flex-col items-center text-center">
+    <section className="container mt-2 flex flex-col items-center text-center md:mt-10">
       <h1
         className={cn(
           goodTimes.className,
@@ -26,6 +25,6 @@ export default function EventSeminarHeader() {
           </Link>
         </Button>
       </div>
-    </CommonPageSection>
+    </section>
   );
 }
