@@ -34,10 +34,20 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        down: {
+          from: { height: "0" },
+          to: { height: "100%" },
+        },
+        up: {
+          from: { height: "100%" },
+          to: { height: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        down: "down 0.2s ease-out",
+        up: "up 0.2s ease-out",
       },
     },
   },

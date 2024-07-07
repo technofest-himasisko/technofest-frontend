@@ -115,10 +115,8 @@ export default function EventItem({ event, color }: Props) {
             </div>
           </div>
           <div className="mt-4 flex justify-end gap-x-2 md:mt-0">
-            <FormButton asChild variant="ghost">
-              <Link href={`/u/events/${event.codename}/registration`}>
-                Info
-              </Link>
+            <FormButton asChild variant="outline">
+              <Link href={`/events/${event.codename}`}>Info</Link>
             </FormButton>
             {event.isRegistered ? (
               <FormButton asChild variant="green">

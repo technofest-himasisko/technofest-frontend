@@ -1,8 +1,8 @@
 "use client";
 
+import { Alert, AlertDescription } from "@/ui/atoms/alert";
 import { Avatar, AvatarFallback, AvatarImage } from "@/ui/atoms/avatar";
 import { Badge } from "@/ui/atoms/badge";
-import { Button } from "@/ui/atoms/button";
 
 import {
   Form,
@@ -26,6 +26,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
+
 const teamFormSchema = z.object({
   teamName: z.string(),
 });
@@ -37,6 +39,12 @@ const participantFormSchema = z.object({
 export default function ParticipantEventRegistrationRegistrant() {
   const [isEditingTeamName, setIsEditingTeamName] = useState<boolean>(false);
   const [isAddingParticipant, setIsAddingParticipant] =
+    useState<boolean>(false);
+
+  const [isEditingTeamNameLoading, setIsEditingTeamNameLoading] =
+    useState<boolean>(false);
+
+  const [isAddingParticipantLoading, setIsAddingParticipantLoading] =
     useState<boolean>(false);
 
   const teamForm = useForm<z.infer<typeof teamFormSchema>>({
@@ -57,6 +65,11 @@ export default function ParticipantEventRegistrationRegistrant() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    setIsEditingTeamNameLoading(true);
+    wait().then(() => {
+      setIsEditingTeamName(false);
+      setIsEditingTeamNameLoading(false);
+    });
   }
 
   function onParticipantFormSubmit(
@@ -65,6 +78,12 @@ export default function ParticipantEventRegistrationRegistrant() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    setIsAddingParticipantLoading(true);
+    wait().then(() => {
+      participantForm.reset();
+      setIsAddingParticipant(false);
+      setIsAddingParticipantLoading(false);
+    });
   }
 
   function handleEditTeamNameClick() {
@@ -95,58 +114,69 @@ export default function ParticipantEventRegistrationRegistrant() {
       <div className="bg-slate-900 p-4 shadow-lg md:p-6">
         <div className="max-w-xl">
           <h3 className="text-lg font-semibold">Nama Tim</h3>
-          <Form {...teamForm}>
-            <form
-              onSubmit={teamForm.handleSubmit(onTeamFormSubmit)}
-              className="mt-2 flex"
-            >
-              <div className="grow">
-                <FormField
-                  control={teamForm.control}
-                  name="teamName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          type="text"
-                          placeholder="Nama tim"
-                          disabled={!isEditingTeamName}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
+          {!isEditingTeamName && (
+            <div className="flex space-x-2">
+              <p className="text-2xl font-semibold text-primary">Margarin</p>
 
-              {!isEditingTeamName && (
-                <button
+              <div className="flex">
+                <FormButton
                   onClick={handleEditTeamNameClick}
-                  className="bg-primary/20 px-2.5 text-primary hover:bg-primary/30 md:px-4"
+                  className="h-full px-2.5 md:px-4"
                 >
                   <PencilSimple weight="bold" className="text-[1.5em]" />
-                </button>
-              )}
+                </FormButton>
+              </div>
+            </div>
+          )}
 
-              {isEditingTeamName && (
+          {isEditingTeamName && (
+            <Form {...teamForm}>
+              <form
+                onSubmit={teamForm.handleSubmit(onTeamFormSubmit)}
+                className="mt-2 flex"
+              >
+                <div className="grow">
+                  <FormField
+                    control={teamForm.control}
+                    name="teamName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            type="text"
+                            placeholder="Nama tim"
+                            disabled={isEditingTeamNameLoading}
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
                 <div className="flex">
-                  <button
+                  <FormButton
+                    loading={isEditingTeamNameLoading}
+                    size="icon"
                     type="submit"
-                    className="bg-primary/20 px-2.5 text-primary hover:bg-primary/30 md:px-4"
+                    className="h-full px-2.5 md:px-4"
                   >
                     <Check weight="bold" className="text-[1.5em]" />
-                  </button>
-                  <button
+                  </FormButton>
+                  <FormButton
                     onClick={handleCancelEditTeamNameClick}
-                    className="border border-primary/20 px-2.5 text-primary hover:bg-primary/30 md:px-4"
+                    disabled={isEditingTeamNameLoading}
+                    size="icon"
+                    variant="outline"
+                    className="h-full px-2.5 md:px-4"
                   >
                     <X weight="bold" className="text-[1.5em]" />
-                  </button>
+                  </FormButton>
                 </div>
-              )}
-            </form>
-          </Form>
+              </form>
+            </Form>
+          )}
         </div>
 
         <div className="mt-6 max-w-xl">
@@ -237,21 +267,28 @@ export default function ParticipantEventRegistrationRegistrant() {
                         )}
                       />
                     </div>
-
+                    <Alert variant="error">
+                      <AlertDescription>
+                        Peserta tidak ditemukan.
+                      </AlertDescription>
+                    </Alert>
                     <div className="flex justify-end">
                       <div className="flex">
-                        <button
+                        <FormButton
                           type="submit"
-                          className="bg-primary/20 px-2.5 py-2 text-primary hover:bg-primary/30 md:px-4"
+                          className="px-2.5 py-1.5 md:px-4"
+                          loading={isAddingParticipantLoading}
                         >
                           <Check weight="bold" className="text-[1.5em]" />
-                        </button>
-                        <button
+                        </FormButton>
+                        <FormButton
+                          variant="outline"
                           onClick={handleCancelAddParticipantClick}
-                          className="border border-primary/20 px-2.5 py-2 text-primary hover:bg-primary/30 md:px-4"
+                          disabled={isAddingParticipantLoading}
+                          className="border border-primary/20 px-2.5 py-1.5 md:px-4"
                         >
                           <X weight="bold" className="text-[1.5em]" />
-                        </button>
+                        </FormButton>
                       </div>
                     </div>
                   </form>

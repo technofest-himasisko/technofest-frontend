@@ -31,6 +31,7 @@ import {
   DropdownMenuTrigger,
 } from "../atoms/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../atoms/avatar";
+import { FormButton } from "../atoms/form-button";
 
 interface Props {
   minimal?: boolean;
@@ -112,19 +113,24 @@ export default function Header({ minimal = false }: Props) {
               <div className="flex items-center gap-x-4">
                 {isAuthenticated && (
                   <>
-                    <Button asChild size="sm" variant="ghost">
+                    <FormButton
+                      asChild
+                      size="sm"
+                      variant="ghost"
+                      className="space-x-1 px-0 hover:bg-transparent"
+                    >
                       <Link href="/u/home">
                         <Compass
                           weight="duotone"
-                          className="inline text-[1.3em]"
+                          className="inline size-8 md:size-7"
                         />
-                        &nbsp;Dashboard
+                        <span className="hidden md:inline">Dashboard</span>
                       </Link>
-                    </Button>
+                    </FormButton>
 
                     <DropdownMenu>
                       <DropdownMenuTrigger className="outline-none">
-                        <Avatar>
+                        <Avatar className="size-7 md:size-10">
                           <AvatarImage
                             src="https://github.com/shadcn.png"
                             alt="@shadcn"
@@ -132,7 +138,10 @@ export default function Header({ minimal = false }: Props) {
                           <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent className="min-w-56">
+                      <DropdownMenuContent
+                        collisionPadding={{ left: 10, right: 10 }}
+                        className="min-w-56"
+                      >
                         <DropdownMenuLabel>
                           <p>Kevin Anggara</p>
                           <p className="text-xs font-normal text-slate-100/40">
