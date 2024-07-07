@@ -11,7 +11,7 @@ export default function HomeAgenda() {
       </Reveal>
       <div>
         <Reveal opacityOnly>
-          <Card className="backdrop-blur">
+          <Card className="max-w-3xl backdrop-blur">
             <p className="text-sm font-semibold text-primary md:text-base">
               5 Agustus 2024
             </p>
@@ -30,7 +30,7 @@ export default function HomeAgenda() {
           <div className="mx-auto h-6 w-1 bg-primary md:ml-10" />
         </Reveal>
         <Reveal opacityOnly>
-          <Card className="backdrop-blur">
+          <Card className="max-w-3xl backdrop-blur">
             <p className="text-sm font-semibold text-primary md:text-base">
               5 Agustus 2024
             </p>
@@ -47,7 +47,7 @@ export default function HomeAgenda() {
           <div className="mx-auto h-6 w-1 bg-primary md:ml-10" />
         </Reveal>
         <Reveal opacityOnly>
-          <Card className="backdrop-blur">
+          <Card className="max-w-3xl backdrop-blur">
             <p className="text-sm font-semibold text-primary md:text-base">
               5 Agustus 2024
             </p>

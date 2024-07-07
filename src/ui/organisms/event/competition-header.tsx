@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function EventCompetitionHeader() {
   return (
     <section className="container flex flex-col items-center pt-2 text-center md:pt-10">
-      <Reveal width="100%">
+      <Reveal noDelay width="100%">
         <div className="flex w-full items-center justify-center bg-primary/10 p-10 group-hover:bg-primary/20 md:p-14">
           <FigmaLogo
             weight="duotone"
@@ -17,7 +17,7 @@ export default function EventCompetitionHeader() {
         </div>
       </Reveal>
 
-      <Reveal>
+      <Reveal noDelay>
         <h1
           className={cn(
             goodTimes.className,
@@ -28,20 +28,20 @@ export default function EventCompetitionHeader() {
         </h1>
       </Reveal>
 
-      <Reveal>
+      <Reveal noDelay>
         <p className={cn(goodTimes.className, "mt-1 text-xs md:text-base")}>
           Technology Festival 2024
         </p>
       </Reveal>
 
-      <Reveal>
+      <Reveal noDelay>
         <p className="mt-4 max-w-xl font-light text-slate-400 md:text-xl">
           Kompetisi UI/UX adalah kompetisi desain yang fokus pada pembangunan
           antarmuka yang ramah pengguna dan nyaman untuk sistem/produk.
         </p>
       </Reveal>
 
-      <Reveal>
+      <Reveal noDelay>
         <div className="mt-10 flex w-full flex-col justify-center gap-y-2 md:flex-row md:gap-x-4 md:gap-y-0">
           <Button variant="gradient" size="lg">
             <Link href="#about" className="flex flex-row items-center gap-x-2">

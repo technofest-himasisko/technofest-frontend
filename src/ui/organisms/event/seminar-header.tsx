@@ -18,7 +18,7 @@ export default function EventSeminarHeader() {
         />
       </div>
       <div className="mt-28 md:mt-40">
-        <Reveal width="100%">
+        <Reveal noDelay width="100%">
           <h1
             className={cn(
               goodTimes.className,
@@ -29,13 +29,13 @@ export default function EventSeminarHeader() {
           </h1>
         </Reveal>
 
-        <Reveal width="100%">
+        <Reveal noDelay width="100%">
           <p className={cn(goodTimes.className, "mt-1 text-xs md:text-base")}>
             Seminar Technology Festival 2024
           </p>
         </Reveal>
 
-        <Reveal width="100%">
+        <Reveal noDelay width="100%">
           <div className="mt-10 flex w-full flex-col justify-center gap-y-2 md:flex-row md:gap-x-4 md:gap-y-0">
             <Button variant="gradient" size="lg">
               <Link

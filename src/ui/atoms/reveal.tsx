@@ -8,6 +8,7 @@ interface Props {
   width?: "fit-content" | "100%";
   direction?: "up" | "left" | "right";
   opacityOnly?: boolean;
+  noDelay?: boolean;
 }
 
 export default function Reveal({
@@ -15,6 +16,8 @@ export default function Reveal({
   width = "fit-content",
   direction = "up",
   opacityOnly = false,
+  noDelay = false,
+  //...rest
 }: Props) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -44,7 +47,7 @@ export default function Reveal({
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.3, delay: 0.3 }}
+        transition={{ duration: 0.3, delay: noDelay ? 0 : 0.3 }}
       >
         {children}
       </motion.div>
