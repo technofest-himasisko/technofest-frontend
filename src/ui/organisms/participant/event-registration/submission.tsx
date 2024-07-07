@@ -9,6 +9,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/ui/atoms/form";
+import { FormButton } from "@/ui/atoms/form-button";
 import { Input } from "@/ui/atoms/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UploadSimple } from "@phosphor-icons/react";
@@ -76,13 +77,13 @@ export default function ParticipantEventRegistrationSubmission() {
               </div>
 
               <div>
-                <button
+                <FormButton
                   type="submit"
-                  className="flex w-full items-center justify-center space-x-1 bg-primary/20 px-2.5 py-2 text-center font-semibold text-primary hover:bg-primary/30 md:w-auto md:px-4"
+                  className="w-full space-x-1 md:w-auto"
                 >
                   <UploadSimple weight="duotone" className="text-[1.5em]" />
                   <span>Unggah</span>
-                </button>
+                </FormButton>
               </div>
             </form>
           </Form>

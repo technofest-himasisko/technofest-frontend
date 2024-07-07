@@ -10,6 +10,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/ui/atoms/form";
+import { FormButton } from "@/ui/atoms/form-button";
 import { Input } from "@/ui/atoms/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -89,13 +90,9 @@ export default function ParticipantProfilePasswordForm() {
         />
 
         <div>
-          <Button
-            type="submit"
-            hover="vertical"
-            className="mt-4 w-full md:w-auto"
-          >
+          <FormButton type="submit" className="mt-4 w-full md:w-auto">
             Perbarui
-          </Button>
+          </FormButton>
         </div>
       </form>
     </Form>

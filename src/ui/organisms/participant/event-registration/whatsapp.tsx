@@ -1,5 +1,6 @@
 import { Alert, AlertDescription, AlertTitle } from "@/ui/atoms/alert";
-import { SignIn } from "@phosphor-icons/react/dist/ssr";
+import { FormButton } from "@/ui/atoms/form-button";
+import { WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 
 export default function ParticipantEventRegistrationWhatsapp() {
   return (
@@ -28,13 +29,10 @@ export default function ParticipantEventRegistrationWhatsapp() {
           </div>
 
           <div>
-            <button
-              type="submit"
-              className="flex w-full items-center justify-center space-x-1 bg-primary/20 px-2.5 py-2 text-center font-semibold text-primary hover:bg-primary/30 md:w-auto md:px-4"
-            >
-              <SignIn className="text-[1.5em]" />
-              <span>Join grup</span>
-            </button>
+            <FormButton type="submit" className="w-full space-x-1 md:w-auto">
+              <WhatsappLogo weight="duotone" className="text-[1.5em]" />
+              <span>Join Grup</span>
+            </FormButton>
           </div>
         </div>
       </div>

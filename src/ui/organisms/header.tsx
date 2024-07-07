@@ -7,7 +7,14 @@ import React, { useEffect, useState } from "react";
 import { goodTimes } from "../fonts";
 import MenuButton from "../atoms/menu-button";
 import config from "@/config";
-import { CaretDown, FingerprintSimple } from "@phosphor-icons/react";
+import {
+  CaretDown,
+  Compass,
+  FingerprintSimple,
+  SignOut,
+  Ticket,
+  User,
+} from "@phosphor-icons/react";
 import { Button } from "../atoms/button";
 import {
   Collapsible,
@@ -15,6 +22,15 @@ import {
   CollapsibleTrigger,
 } from "../atoms/collabsible";
 import { usePathname } from "next/navigation";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../atoms/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "../atoms/avatar";
 
 interface Props {
   minimal?: boolean;
@@ -24,6 +40,8 @@ export default function Header({ minimal = false }: Props) {
   const pathname = usePathname();
 
   const [isMobileNavOpened, setIsMobileNavOpened] = useState<boolean>(false);
+
+  const isAuthenticated = true;
 
   function toggleMobileNav(isOpened: boolean) {
     setIsMobileNavOpened(isOpened);
@@ -57,7 +75,7 @@ export default function Header({ minimal = false }: Props) {
           </Link>
 
           {!minimal && (
-            <>
+            <div className="flex flex-row gap-x-6">
               <nav className="hidden md:block">
                 <ul className="flex flex-row gap-x-6">
                   {config.headerNavigations.map((navigation, key) => (
@@ -75,28 +93,96 @@ export default function Header({ minimal = false }: Props) {
                     </li>
                   ))}
 
-                  <li className="ml-4">
-                    <Button asChild>
-                      <Link href="/login">
-                        <FingerprintSimple
-                          weight="duotone"
-                          className="inline text-[1.5em]"
-                        />
-                        &nbsp;Login
-                      </Link>
-                    </Button>
-                  </li>
+                  {!isAuthenticated && (
+                    <li className="ml-4">
+                      <Button asChild>
+                        <Link href="/login">
+                          <FingerprintSimple
+                            weight="duotone"
+                            className="inline text-[1.5em]"
+                          />
+                          &nbsp;Login
+                        </Link>
+                      </Button>
+                    </li>
+                  )}
                 </ul>
               </nav>
-              <MenuButton
-                onClick={toggleMobileNav}
-                opened={isMobileNavOpened}
-                className="md:hidden"
-              />
-            </>
+
+              <div className="flex items-center gap-x-4">
+                {isAuthenticated && (
+                  <>
+                    <Button asChild size="sm" variant="ghost">
+                      <Link href="/u/home">
+                        <Compass
+                          weight="duotone"
+                          className="inline text-[1.3em]"
+                        />
+                        &nbsp;Dashboard
+                      </Link>
+                    </Button>
+
+                    <DropdownMenu>
+                      <DropdownMenuTrigger className="outline-none">
+                        <Avatar>
+                          <AvatarImage
+                            src="https://github.com/shadcn.png"
+                            alt="@shadcn"
+                          />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="min-w-56">
+                        <DropdownMenuLabel>
+                          <p>Kevin Anggara</p>
+                          <p className="text-xs font-normal text-slate-100/40">
+                            ID: P8201212
+                          </p>
+                        </DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem asChild>
+                          <Link href="/u/home">
+                            <Compass className="mr-2 h-4 w-4" />
+                            <span>Dashboard</span>
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href="/u/profile">
+                            <User className="mr-2 h-4 w-4" />
+                            <span>Profile</span>
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href="/u/events">
+                            <Ticket className="mr-2 h-4 w-4" />
+                            <span>Daftar Events</span>
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          asChild
+                          className="w-full text-red-500 focus:bg-red-500/10 focus:text-red-500"
+                        >
+                          <button>
+                            <SignOut className="mr-2 h-4 w-4" />
+                            <span>Logout</span>
+                          </button>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </>
+                )}
+
+                <MenuButton
+                  onClick={toggleMobileNav}
+                  opened={isMobileNavOpened}
+                  className="md:hidden"
+                />
+              </div>
+            </div>
           )}
         </div>
       </div>
+
       {/* MOBILE MENU */}
       {isMobileNavOpened && (
         <div
@@ -148,15 +234,17 @@ export default function Header({ minimal = false }: Props) {
               </div>
             ))}
 
-            <Button asChild>
-              <Link onClick={() => toggleMobileNav(false)} href="/login">
-                <FingerprintSimple
-                  weight="duotone"
-                  className="inline text-[1.5em]"
-                />
-                &nbsp;Login
-              </Link>
-            </Button>
+            {!isAuthenticated && (
+              <Button asChild>
+                <Link onClick={() => toggleMobileNav(false)} href="/login">
+                  <FingerprintSimple
+                    weight="duotone"
+                    className="inline text-[1.5em]"
+                  />
+                  &nbsp;Login
+                </Link>
+              </Button>
+            )}
           </div>
         </div>
       )}

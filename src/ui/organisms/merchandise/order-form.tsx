@@ -11,6 +11,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/ui/atoms/form";
+import { FormButton } from "@/ui/atoms/form-button";
 import { Input } from "@/ui/atoms/input";
 import { Separator } from "@/ui/atoms/separator";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -140,9 +141,9 @@ export default function MerchandiseOrderForm() {
               )}
             />
 
-            <Button type="submit" className="mt-4 w-full md:w-auto">
+            <FormButton type="submit" className="mt-4 w-full md:w-auto">
               Pesan
-            </Button>
+            </FormButton>
           </form>
         </Form>
       </Card>
