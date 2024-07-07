@@ -17,7 +17,7 @@ export default function EventCompetitionHeader() {
         </div>
       </Reveal>
 
-      <Reveal noDelay>
+      <Reveal noDelay width="100%">
         <h1
           className={cn(
             goodTimes.className,
@@ -28,20 +28,20 @@ export default function EventCompetitionHeader() {
         </h1>
       </Reveal>
 
-      <Reveal noDelay>
+      <Reveal noDelay width="100%">
         <p className={cn(goodTimes.className, "mt-1 text-xs md:text-base")}>
           Technology Festival 2024
         </p>
       </Reveal>
 
-      <Reveal noDelay>
+      <Reveal noDelay width="100%">
         <p className="mt-4 max-w-xl font-light text-slate-400 md:text-xl">
           Kompetisi UI/UX adalah kompetisi desain yang fokus pada pembangunan
           antarmuka yang ramah pengguna dan nyaman untuk sistem/produk.
         </p>
       </Reveal>
 
-      <Reveal noDelay>
+      <Reveal noDelay width="100%">
         <div className="mt-10 flex w-full flex-col justify-center gap-y-2 md:flex-row md:gap-x-4 md:gap-y-0">
           <Button variant="gradient" size="lg">
             <Link href="#about" className="flex flex-row items-center gap-x-2">

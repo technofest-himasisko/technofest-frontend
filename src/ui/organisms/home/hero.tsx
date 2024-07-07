@@ -22,12 +22,12 @@ export default function HomeHero() {
   return (
     <div className="bg-gradient-to-t from-primary/10 to-transparent to-25%">
       <header className="relative flex h-[calc(100dvh-4rem)] flex-col items-center overflow-hidden pt-[20vh] md:pt-[18vh]">
-        <Reveal noDelay>
+        <Reveal noDelay width="100%">
           <p className="-mr-[1.6em] text-center font-mono text-sm font-medium uppercase tracking-[1.1em] md:text-xl md:tracking-[1.6em]">
             {messenger}
           </p>
         </Reveal>
-        <Reveal noDelay>
+        <Reveal noDelay width="100%">
           <h1
             className={cn(
               goodTimes.className,
@@ -37,7 +37,7 @@ export default function HomeHero() {
             Technology Festival 2024
           </h1>
         </Reveal>
-        <Reveal noDelay>
+        <Reveal noDelay width="100%">
           <p
             className={cn(
               goodTimes.className,
@@ -47,7 +47,7 @@ export default function HomeHero() {
             Internet of Things (IoT): Connecting Our World
           </p>
         </Reveal>
-        <Reveal noDelay>
+        <Reveal noDelay width="100%">
           <div className="container mt-10 flex w-full flex-col justify-center gap-y-2 md:flex-row md:gap-x-4 md:gap-y-0">
             <Button variant="gradient" size="lg">
               <Link
