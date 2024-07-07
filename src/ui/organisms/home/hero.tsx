@@ -37,7 +37,7 @@ export default function HomeHero() {
             Technology Festival 2024
           </h1>
         </Reveal>
-        <Reveal noDelay width="100%">
+        <Reveal noDelay>
           <p
             className={cn(
               goodTimes.className,
