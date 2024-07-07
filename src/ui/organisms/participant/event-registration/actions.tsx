@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/ui/atoms/dropdown-menu";
 import { FormButton } from "@/ui/atoms/form-button";
+import { DotsThreeOutline } from "@phosphor-icons/react";
 
 import { Copy, List, TrashSimple } from "@phosphor-icons/react/dist/ssr";
 import { useRouter } from "next/navigation";
@@ -62,7 +63,10 @@ export default function ParticipantEventRegistrationActions() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild className="outline-none md:hidden">
           <button>
-            <List weight="bold" className="size-8" />
+            <DotsThreeOutline
+              weight="duotone"
+              className="size-8 text-primary"
+            />
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

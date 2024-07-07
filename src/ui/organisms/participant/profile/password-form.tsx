@@ -1,10 +1,9 @@
 "use client";
 
-import { Button } from "@/ui/atoms/button";
+import { Alert, AlertDescription } from "@/ui/atoms/alert";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -13,8 +12,12 @@ import {
 import { FormButton } from "@/ui/atoms/form-button";
 import { Input } from "@/ui/atoms/input";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
+
+const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 const formSchema = z.object({
   oldPassword: z.string(),
@@ -22,6 +25,8 @@ const formSchema = z.object({
   confirmNewPassword: z.string(),
 });
 export default function ParticipantProfilePasswordForm() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -35,6 +40,11 @@ export default function ParticipantProfilePasswordForm() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    setIsLoading(true);
+    wait().then(() => {
+      setIsLoading(false);
+      toast.success("Berhasil Memperbarui password");
+    });
   }
 
   return (
@@ -50,7 +60,12 @@ export default function ParticipantProfilePasswordForm() {
             <FormItem>
               <FormLabel>Password Lama</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="Pasword lama" {...field} />
+                <Input
+                  type="password"
+                  placeholder="Pasword lama"
+                  disabled={isLoading}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -64,7 +79,12 @@ export default function ParticipantProfilePasswordForm() {
             <FormItem>
               <FormLabel>Password Baru</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="Password baru" {...field} />
+                <Input
+                  type="password"
+                  placeholder="Password baru"
+                  disabled={isLoading}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -81,6 +101,7 @@ export default function ParticipantProfilePasswordForm() {
                 <Input
                   type="password"
                   placeholder="Konfirmasi password baru"
+                  disabled={isLoading}
                   {...field}
                 />
               </FormControl>
@@ -89,8 +110,16 @@ export default function ParticipantProfilePasswordForm() {
           )}
         />
 
+        <Alert variant="danger">
+          <AlertDescription>Terjadi kesalahan.</AlertDescription>
+        </Alert>
+
         <div>
-          <FormButton type="submit" className="mt-4 w-full md:w-auto">
+          <FormButton
+            loading={isLoading}
+            type="submit"
+            className="mt-4 w-full md:w-auto"
+          >
             Perbarui
           </FormButton>
         </div>

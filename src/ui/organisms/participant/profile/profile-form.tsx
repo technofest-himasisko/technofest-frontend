@@ -1,5 +1,6 @@
 "use client";
 
+import { Alert, AlertDescription } from "@/ui/atoms/alert";
 import { Button } from "@/ui/atoms/button";
 import {
   Form,
@@ -20,8 +21,12 @@ import {
   SelectValue,
 } from "@/ui/atoms/select";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
+
+const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 const formSchema = z.object({
   name: z.string(),
@@ -31,11 +36,13 @@ const formSchema = z.object({
   whatsapp: z.string(),
 });
 export default function ParticipantProfileProfileForm() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      email: "",
+      name: "H. Thoriq",
+      email: "slow9ie@gmail.com",
       institution: "",
       gender: "",
       whatsapp: "",
@@ -46,6 +53,11 @@ export default function ParticipantProfileProfileForm() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    setIsLoading(true);
+    wait().then(() => {
+      setIsLoading(false);
+      toast.success("Berhasil Memperbarui profile");
+    });
   }
 
   return (
@@ -61,7 +73,12 @@ export default function ParticipantProfileProfileForm() {
             <FormItem>
               <FormLabel>Nama</FormLabel>
               <FormControl>
-                <Input type="name" placeholder="Nama" {...field} />
+                <Input
+                  type="name"
+                  placeholder="Nama"
+                  disabled={isLoading}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -75,7 +92,7 @@ export default function ParticipantProfileProfileForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="Email" disabled />
+                <Input type="email" placeholder="Email" disabled {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -92,6 +109,7 @@ export default function ParticipantProfileProfileForm() {
                 <Input
                   type="institution"
                   placeholder="Universitas Sriwijaya"
+                  disabled={isLoading}
                   {...field}
                 />
               </FormControl>
@@ -107,7 +125,11 @@ export default function ParticipantProfileProfileForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Jenis Kelamin</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+                disabled={isLoading}
+              >
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder="Pilih jenis kelamin" />
@@ -130,7 +152,12 @@ export default function ParticipantProfileProfileForm() {
             <FormItem>
               <FormLabel>Nomor WhatsApp</FormLabel>
               <FormControl>
-                <Input type="whatsapp" placeholder="0821xxxxxxxx" {...field} />
+                <Input
+                  type="whatsapp"
+                  placeholder="0821xxxxxxxx"
+                  disabled={isLoading}
+                  {...field}
+                />
               </FormControl>
               <FormDescription>Contoh: 0821xxxxxxxx</FormDescription>
               <FormMessage />
@@ -138,8 +165,16 @@ export default function ParticipantProfileProfileForm() {
           )}
         />
 
+        <Alert variant="danger">
+          <AlertDescription>Terjadi kesalahan.</AlertDescription>
+        </Alert>
+
         <div>
-          <FormButton type="submit" className="mt-4 w-full md:w-auto">
+          <FormButton
+            loading={isLoading}
+            type="submit"
+            className="mt-4 w-full md:w-auto"
+          >
             Perbarui
           </FormButton>
         </div>

@@ -267,7 +267,7 @@ export default function ParticipantEventRegistrationRegistrant() {
                         )}
                       />
                     </div>
-                    <Alert variant="error">
+                    <Alert variant="danger">
                       <AlertDescription>
                         Peserta tidak ditemukan.
                       </AlertDescription>

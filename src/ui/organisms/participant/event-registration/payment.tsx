@@ -57,6 +57,27 @@ export default function ParticipantEventRegistrationPayment() {
             </AlertDescription>
           </Alert>
 
+          <Alert variant="info">
+            <AlertTitle>Info!</AlertTitle>
+            <AlertDescription>
+              Menunggu konfirmasi pembayaran dari panitia.
+            </AlertDescription>
+          </Alert>
+
+          <Alert variant="danger">
+            <AlertTitle>Kesalahan!</AlertTitle>
+            <AlertDescription>
+              Pembayaran ditolak oleh panitia.
+            </AlertDescription>
+          </Alert>
+
+          <Alert variant="success">
+            <AlertTitle>Berhasil!</AlertTitle>
+            <AlertDescription>
+              Pembayaran diterima oleh panitia.
+            </AlertDescription>
+          </Alert>
+
           <div>
             <p>
               Pembayaran sebesar{" "}
@@ -110,6 +131,12 @@ export default function ParticipantEventRegistrationPayment() {
                   )}
                 />
               </div>
+
+              <Alert variant="danger">
+                <AlertDescription>
+                  Pengunggahan gagal dilakukan.
+                </AlertDescription>
+              </Alert>
 
               <div>
                 <FormButton

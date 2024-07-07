@@ -76,6 +76,12 @@ export default function ParticipantEventRegistrationSubmission() {
                 />
               </div>
 
+              <Alert variant="danger">
+                <AlertDescription>
+                  Pengunggahan gagal dilakukan.
+                </AlertDescription>
+              </Alert>
+
               <div>
                 <FormButton
                   type="submit"
