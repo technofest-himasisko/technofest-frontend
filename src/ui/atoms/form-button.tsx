@@ -50,13 +50,15 @@ const FormButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {loading && (
-          <CircleNotch
-            weight="bold"
-            className="absolute inset-x-0 mx-auto animate-spin text-[1.5em] text-primary"
-          />
-        )}
-        {children}
+        <>
+          {loading && (
+            <CircleNotch
+              weight="bold"
+              className="absolute inset-x-0 mx-auto animate-spin text-[1.5em] text-primary"
+            />
+          )}
+          {children}
+        </>
       </Comp>
     );
   },
