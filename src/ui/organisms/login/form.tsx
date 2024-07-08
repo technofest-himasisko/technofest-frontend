@@ -8,6 +8,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/ui/atoms/form";
+import { FormButton } from "@/ui/atoms/form-button";
 import { Input } from "@/ui/atoms/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -64,9 +65,9 @@ export default function LoginForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" hover="vertical" className="mt-4 w-full">
+        <FormButton type="submit" className="mt-4 w-full">
           <Link href="/u/home">Login</Link>
-        </Button>
+        </FormButton>
       </form>
     </Form>
   );

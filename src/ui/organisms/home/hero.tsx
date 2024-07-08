@@ -27,7 +27,7 @@ export default function HomeHero() {
             {messenger}
           </p>
         </Reveal>
-        <Reveal noDelay width="100%">
+        <Reveal noDelay>
           <h1
             className={cn(
               goodTimes.className,
