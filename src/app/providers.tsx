@@ -2,6 +2,7 @@
 
 import { Toaster } from "@/ui/atoms/toaster";
 import { TooltipProvider } from "@/ui/atoms/tooltip";
+import { RecoilRoot } from "recoil";
 
 interface Props {
   children: React.ReactNode;
@@ -9,9 +10,11 @@ interface Props {
 
 export default function Providers({ children }: Readonly<Props>) {
   return (
-    <TooltipProvider>
-      {children}
-      <Toaster />
-    </TooltipProvider>
+    <RecoilRoot>
+      <TooltipProvider>
+        {children}
+        <Toaster />
+      </TooltipProvider>
+    </RecoilRoot>
   );
 }

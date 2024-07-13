@@ -8,18 +8,10 @@ import { Suspense } from "react";
 export default function Page() {
   return (
     <CommonPageContainer>
-      <Suspense fallback={<p className="text-xl text-white">Loading...</p>}>
-        <ParticipantHomeHeader />
-      </Suspense>
-      <Suspense fallback={<p className="text-xl text-white">Loading...</p>}>
-        <ParticipantHomeAlerts />
-      </Suspense>
-      <Suspense fallback={<p className="text-xl text-white">Loading...</p>}>
-        <ParticipantHomeMenu />
-      </Suspense>
-      <Suspense fallback={<p className="text-xl text-white">Loading...</p>}>
-        <ParticipantHomeEvents />
-      </Suspense>
+      <ParticipantHomeHeader />
+      <ParticipantHomeAlerts />
+      <ParticipantHomeMenu />
+      <ParticipantHomeEvents />
     </CommonPageContainer>
   );
 }
