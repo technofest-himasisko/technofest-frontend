@@ -5,7 +5,13 @@ import RegisterForm from "@/ui/organisms/register/form";
 import RegisterOauth from "@/ui/organisms/register/oauth";
 import Link from "next/link";
 
-export default function Page() {
+interface Props {
+  searchParams: {
+    error: string;
+  };
+}
+
+export default function Page({ searchParams }: Props) {
   return (
     <>
       <SectionHeader title="Register" />
@@ -19,7 +25,7 @@ export default function Page() {
           </span>
           <div className="flex-grow border-t border-slate-100/20"></div>
         </div>
-        <RegisterOauth />
+        <RegisterOauth error={searchParams.error} />
         <p className="mt-6 text-center text-slate-100/50">
           Sudah memiliki akun?{" "}
           <Link href="/login" className="text-primary hover:underline">

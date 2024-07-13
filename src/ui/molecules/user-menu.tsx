@@ -19,7 +19,7 @@ export default async function UserMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none">
         <Avatar className="size-7 md:size-10">
-          <AvatarImage src={session.user?.image!} alt={"Profile avatar"} />
+          <AvatarImage src={session.user?.avatar} alt={"Profile avatar"} />
           <AvatarFallback>
             {getAvatarCallbackLetter(session.user?.name || "")}
           </AvatarFallback>
@@ -31,7 +31,9 @@ export default async function UserMenu() {
       >
         <DropdownMenuLabel>
           <p>{session.user?.name}</p>
-          <p className="text-xs font-normal text-slate-100/40">ID: P8201212</p>
+          <p className="text-xs font-normal text-slate-100/40">
+            ID: P{session.user?.uid}
+          </p>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>

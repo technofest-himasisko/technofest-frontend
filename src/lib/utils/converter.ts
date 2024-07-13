@@ -1,4 +1,5 @@
 import {
+  ErrorCode,
   ParticipationMethod,
   PaymentStatus,
   SeminarCastRole,
@@ -71,4 +72,33 @@ export function participationMethodToString(
   }
 
   return undefined;
+}
+
+export function errorCodeToErrorMessage(
+  errorCode: ErrorCode,
+): string | undefined {
+  switch (errorCode) {
+    case ErrorCode.NOT_FOUND:
+      return "Data yang Anda cari tidak ditemukan.";
+    case ErrorCode.VALIDATION_ERROR:
+      return "Terdapat kesalahan dalam input Anda.";
+    case ErrorCode.NOT_AUTHENTICATED:
+      return "Anda harus login terlebih dahulu.";
+    case ErrorCode.INVALID_CREDENTIALS:
+      return "Email atau kata sandi Anda salah.";
+    case ErrorCode.EMAIL_ALREADY_EXISTS:
+      return "Email yang Anda masukkan sudah terdaftar.";
+    case ErrorCode.INVALID_ACCESS_TOKEN:
+      return "Terdapat kesalahan token akses.";
+    case ErrorCode.WRONG_PASSWORD:
+      return "Kata sandi yang Anda masukkan salah.";
+    case ErrorCode.ALREADY_REGISTERED:
+      return "Anda sudah terdaftar sebagai pembicara.";
+    case ErrorCode.ALREADY_ATTACHED:
+      return "Anda sudah terdaftar sebagai pembicara.";
+    case ErrorCode.REACHES_THE_LIMIT:
+      return "Anda sudah terdaftar sebagai pembicara.";
+    case ErrorCode.ACCOUNT_NOT_LINKED:
+      return "Sepertinya Anda mencoba metode masuk yang salah.";
+  }
 }

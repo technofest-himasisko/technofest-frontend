@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth/auth";
 import CommonPageContainer from "@/ui/molecules/common-page-container";
 import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import Footer from "@/ui/organisms/footer";

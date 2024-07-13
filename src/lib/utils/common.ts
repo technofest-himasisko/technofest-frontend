@@ -1,7 +1,7 @@
-import { auth } from "@/auth";
 import { clsx, type ClassValue } from "clsx";
 import { Session } from "next-auth";
 import { twMerge } from "tailwind-merge";
+import { auth } from "@/lib/auth/auth";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -23,4 +23,9 @@ export function getAvatarCallbackLetter(str: string): string {
 
 export async function getSession(): Promise<Session> {
   return (await auth()) as Session;
+}
+
+export async function getServerSanctumToken(): Promise<string | undefined> {
+  const { cookies } = await import("next/headers");
+  return cookies().get("sanctum-token")?.value;
 }

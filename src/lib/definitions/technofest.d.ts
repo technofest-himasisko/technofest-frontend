@@ -26,8 +26,6 @@ export interface User {
   event_registrant?: EventRegistrant;
 
   event_registrations_count?: number;
-
-  access_token?: string;
 }
 
 export interface Avatar {

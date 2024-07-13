@@ -5,7 +5,7 @@ import { loginGithub } from "@/lib/actions/login-github";
 
 export default function LoginOauthForm() {
   return (
-    <section className="flex gap-x-2">
+    <div className="flex gap-x-2">
       <form action={loginGoogle} className="w-full">
         <FormButton
           variant="outline"
@@ -26,6 +26,6 @@ export default function LoginOauthForm() {
           <span>GitHub</span>
         </FormButton>
       </form>
-    </section>
+    </div>
   );
 }

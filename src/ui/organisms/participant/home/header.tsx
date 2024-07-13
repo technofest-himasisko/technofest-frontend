@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth/auth";
 import { cn, getAvatarCallbackLetter } from "@/lib/utils/common";
 import { Avatar, AvatarFallback, AvatarImage } from "@/ui/atoms/avatar";
 import { goodTimes } from "@/ui/fonts";
@@ -15,7 +15,7 @@ export default async function ParticipantHomeHeader() {
       <section className="container mt-4 md:mt-10">
         <div className="relative h-36 border border-primary/20 bg-gradient-to-br from-primary/20 to-secondary/20 md:h-40">
           <Avatar className="absolute inset-x-0 -bottom-8 mx-auto size-16">
-            <AvatarImage src={session.user?.image!} alt="User avatar" />
+            <AvatarImage src={session.user?.avatar} alt="User avatar" />
             <AvatarFallback>
               {getAvatarCallbackLetter(session.user?.name || "")}
             </AvatarFallback>
@@ -53,7 +53,7 @@ export default async function ParticipantHomeHeader() {
             {session.user?.email}
           </p>
 
-          <IdDisplay ID={"P11921832"} />
+          <IdDisplay ID={session.user?.uid!} />
         </div>
       </section>
     </Suspense>

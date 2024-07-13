@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth/auth";
 import Footer from "@/ui/organisms/footer";
 import Header from "@/ui/organisms/header";
 import { redirect } from "next/navigation";
