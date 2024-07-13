@@ -1,8 +1,11 @@
+"use client";
+
 import { cn, tw } from "@/lib/utils";
 import { CircleNotch } from "@phosphor-icons/react/dist/ssr";
 import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
+import { useFormStatus } from "react-dom";
 
 const formButtonVariants = cva(
   tw`relative z-[1] flex w-full select-none items-center justify-center whitespace-nowrap font-semibold transition-all duration-200 ease-out disabled:pointer-events-none disabled:opacity-50`,
@@ -32,6 +35,7 @@ export interface Props
     VariantProps<typeof formButtonVariants> {
   asChild?: boolean;
   loading?: boolean;
+  noLoading?: boolean;
 }
 
 const FormButton = React.forwardRef<HTMLButtonElement, Props>(
@@ -42,23 +46,26 @@ const FormButton = React.forwardRef<HTMLButtonElement, Props>(
       size,
       asChild = false,
       loading = false,
+      noLoading = false,
       children,
       ...props
     },
     ref,
   ) => {
     const Comp = asChild ? Slot : "button";
+    const { pending } = useFormStatus();
+
     return (
       <Comp
-        disabled={loading}
+        disabled={pending}
         className={cn(
           formButtonVariants({ variant, size, className }),
-          loading && "text-transparent",
+          !noLoading && pending && "text-transparent",
         )}
         ref={ref}
         {...props}
       >
-        {loading && (
+        {!noLoading && pending && (
           <CircleNotch
             weight="bold"
             className="absolute inset-x-0 mx-auto animate-spin text-[1.5em] text-primary"

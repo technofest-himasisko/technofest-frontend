@@ -1,107 +1,30 @@
 "use client";
 
-import { Alert, AlertDescription } from "@/ui/atoms/alert";
 import { Avatar, AvatarFallback, AvatarImage } from "@/ui/atoms/avatar";
 import { Badge } from "@/ui/atoms/badge";
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/ui/atoms/form";
 import { FormButton } from "@/ui/atoms/form-button";
-import { Input } from "@/ui/atoms/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Check, CheckCircle } from "@phosphor-icons/react";
+import AddParticipantForm from "@/ui/forms/add-participant-form";
+import EditTeamNameFormForm from "@/ui/forms/edit-team-name-form";
+import { CheckCircle } from "@phosphor-icons/react";
 import {
   PencilSimple,
   Plus,
   TrashSimple,
-  X,
 } from "@phosphor-icons/react/dist/ssr";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
-const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
-
-const teamFormSchema = z.object({
-  teamName: z.string(),
-});
-
-const participantFormSchema = z.object({
-  participantId: z.string(),
-});
 
 export default function ParticipantEventRegistrationRegistrant() {
   const [isEditingTeamName, setIsEditingTeamName] = useState<boolean>(false);
   const [isAddingParticipant, setIsAddingParticipant] =
     useState<boolean>(false);
 
-  const [isEditingTeamNameLoading, setIsEditingTeamNameLoading] =
-    useState<boolean>(false);
-
-  const [isAddingParticipantLoading, setIsAddingParticipantLoading] =
-    useState<boolean>(false);
-
-  const teamForm = useForm<z.infer<typeof teamFormSchema>>({
-    resolver: zodResolver(teamFormSchema),
-    defaultValues: {
-      teamName: "",
-    },
-  });
-
-  const participantForm = useForm<z.infer<typeof participantFormSchema>>({
-    resolver: zodResolver(participantFormSchema),
-    defaultValues: {
-      participantId: "",
-    },
-  });
-
-  function onTeamFormSubmit(values: z.infer<typeof teamFormSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-    setIsEditingTeamNameLoading(true);
-    wait().then(() => {
-      setIsEditingTeamName(false);
-      setIsEditingTeamNameLoading(false);
-    });
-  }
-
-  function onParticipantFormSubmit(
-    values: z.infer<typeof participantFormSchema>,
-  ) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-    setIsAddingParticipantLoading(true);
-    wait().then(() => {
-      participantForm.reset();
-      setIsAddingParticipant(false);
-      setIsAddingParticipantLoading(false);
-    });
-  }
-
   function handleEditTeamNameClick() {
     setIsEditingTeamName(true);
   }
 
-  function handleCancelEditTeamNameClick() {
-    setIsEditingTeamName(false);
-    teamForm.reset();
-  }
-
   function handleAddParticipantClick() {
     setIsAddingParticipant(true);
-  }
-
-  function handleCancelAddParticipantClick() {
-    setIsAddingParticipant(false);
-    participantForm.reset();
   }
 
   return (
@@ -130,52 +53,7 @@ export default function ParticipantEventRegistrationRegistrant() {
           )}
 
           {isEditingTeamName && (
-            <Form {...teamForm}>
-              <form
-                onSubmit={teamForm.handleSubmit(onTeamFormSubmit)}
-                className="mt-2 flex"
-              >
-                <div className="grow">
-                  <FormField
-                    control={teamForm.control}
-                    name="teamName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            type="text"
-                            placeholder="Nama tim"
-                            disabled={isEditingTeamNameLoading}
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
-                <div className="flex">
-                  <FormButton
-                    loading={isEditingTeamNameLoading}
-                    size="icon"
-                    type="submit"
-                    className="h-full px-2.5 md:px-4"
-                  >
-                    <Check weight="bold" className="text-[1.5em]" />
-                  </FormButton>
-                  <FormButton
-                    onClick={handleCancelEditTeamNameClick}
-                    disabled={isEditingTeamNameLoading}
-                    size="icon"
-                    variant="outline"
-                    className="h-full px-2.5 md:px-4"
-                  >
-                    <X weight="bold" className="text-[1.5em]" />
-                  </FormButton>
-                </div>
-              </form>
-            </Form>
+            <EditTeamNameFormForm onFormOpen={setIsEditingTeamName} />
           )}
         </div>
 
@@ -238,61 +116,7 @@ export default function ParticipantEventRegistrationRegistrant() {
 
             {isAddingParticipant && (
               <div className="flex items-center gap-x-4 border border-primary/50 bg-primary/10 p-4">
-                <Form {...participantForm}>
-                  <form
-                    onSubmit={participantForm.handleSubmit(
-                      onParticipantFormSubmit,
-                    )}
-                    className="mt-2 flex w-full flex-col gap-y-4"
-                  >
-                    <div className="grow">
-                      <FormField
-                        control={participantForm.control}
-                        name="participantId"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Masukkan ID peserta</FormLabel>
-                            <div className="flex">
-                              <FormControl>
-                                <Input
-                                  type="text"
-                                  placeholder="xxxxxxxx"
-                                  leftSection="P"
-                                  {...field}
-                                />
-                              </FormControl>
-                            </div>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <Alert variant="danger">
-                      <AlertDescription>
-                        Peserta tidak ditemukan.
-                      </AlertDescription>
-                    </Alert>
-                    <div className="flex justify-end">
-                      <div className="flex">
-                        <FormButton
-                          type="submit"
-                          className="px-2.5 py-1.5 md:px-4"
-                          loading={isAddingParticipantLoading}
-                        >
-                          <Check weight="bold" className="text-[1.5em]" />
-                        </FormButton>
-                        <FormButton
-                          variant="outline"
-                          onClick={handleCancelAddParticipantClick}
-                          disabled={isAddingParticipantLoading}
-                          className="border border-primary/20 px-2.5 py-1.5 md:px-4"
-                        >
-                          <X weight="bold" className="text-[1.5em]" />
-                        </FormButton>
-                      </div>
-                    </div>
-                  </form>
-                </Form>
+                <AddParticipantForm onFormOpen={setIsAddingParticipant} />
               </div>
             )}
           </div>

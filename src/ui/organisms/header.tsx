@@ -32,17 +32,18 @@ import {
 } from "../atoms/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../atoms/avatar";
 import { FormButton } from "../atoms/form-button";
+import { logout } from "@/lib/actions/logout";
+import { Session } from "next-auth";
 
 interface Props {
   minimal?: boolean;
+  session?: Session;
 }
 
-export default function Header({ minimal = false }: Props) {
+export default function Header({ minimal = false, session }: Props) {
   const pathname = usePathname();
 
   const [isMobileNavOpened, setIsMobileNavOpened] = useState<boolean>(false);
-
-  const isAuthenticated = true;
 
   function toggleMobileNav(isOpened: boolean) {
     setIsMobileNavOpened(isOpened);
@@ -94,7 +95,7 @@ export default function Header({ minimal = false }: Props) {
                     </li>
                   ))}
 
-                  {!isAuthenticated && (
+                  {!session && (
                     <li className="ml-4">
                       <Button asChild>
                         <Link href="/login">
@@ -111,7 +112,7 @@ export default function Header({ minimal = false }: Props) {
               </nav>
 
               <div className="flex items-center gap-x-4">
-                {isAuthenticated && (
+                {session && (
                   <>
                     <FormButton
                       asChild
@@ -167,15 +168,17 @@ export default function Header({ minimal = false }: Props) {
                             <span>Daftar Events</span>
                           </Link>
                         </DropdownMenuItem>
-                        <DropdownMenuItem
-                          asChild
-                          className="w-full text-red-500 focus:bg-red-500/10 focus:text-red-500"
-                        >
-                          <button>
-                            <SignOut className="mr-2 h-4 w-4" />
-                            <span>Logout</span>
-                          </button>
-                        </DropdownMenuItem>
+                        <form action={logout}>
+                          <DropdownMenuItem
+                            asChild
+                            className="w-full text-red-500 focus:bg-red-500/10 focus:text-red-500"
+                          >
+                            <button type="submit">
+                              <SignOut className="mr-2 h-4 w-4" />
+                              <span>Logout</span>
+                            </button>
+                          </DropdownMenuItem>
+                        </form>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </>
@@ -243,7 +246,7 @@ export default function Header({ minimal = false }: Props) {
               </div>
             ))}
 
-            {!isAuthenticated && (
+            {!session && (
               <Button asChild>
                 <Link onClick={() => toggleMobileNav(false)} href="/login">
                   <FingerprintSimple

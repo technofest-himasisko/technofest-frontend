@@ -1,13 +1,21 @@
+import { auth } from "@/auth";
 import CommonPageContainer from "@/ui/molecules/common-page-container";
 import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import Footer from "@/ui/organisms/footer";
 import Header from "@/ui/organisms/header";
+import { redirect } from "next/navigation";
 
 interface Props {
   children: React.ReactNode;
 }
 
-export default function Layout({ children }: Readonly<Props>) {
+export default async function Layout({ children }: Readonly<Props>) {
+  const session = await auth();
+
+  if (session) {
+    return redirect("/u/home");
+  }
+
   return (
     <>
       <Header minimal />

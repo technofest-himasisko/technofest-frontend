@@ -17,7 +17,7 @@ export default function EventCompetitionHeader() {
         </div>
       </Reveal>
 
-      <Reveal noDelay width="100%">
+      <Reveal noDelay>
         <h1
           className={cn(
             goodTimes.className,
@@ -34,7 +34,7 @@ export default function EventCompetitionHeader() {
         </p>
       </Reveal>
 
-      <Reveal noDelay width="100%">
+      <Reveal noDelay>
         <p className="mt-4 max-w-xl font-light text-slate-400 md:text-xl">
           Kompetisi UI/UX adalah kompetisi desain yang fokus pada pembangunan
           antarmuka yang ramah pengguna dan nyaman untuk sistem/produk.
