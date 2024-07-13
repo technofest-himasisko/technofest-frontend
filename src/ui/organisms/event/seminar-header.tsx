@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/common";
 import { Button } from "@/ui/atoms/button";
 import Reveal from "@/ui/atoms/reveal";
 import { goodTimes } from "@/ui/fonts";

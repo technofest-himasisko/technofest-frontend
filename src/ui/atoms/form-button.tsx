@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, tw } from "@/lib/utils";
+import { cn, tw } from "@/lib/utils/common";
 import { CircleNotch } from "@phosphor-icons/react/dist/ssr";
 import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cva, VariantProps } from "class-variance-authority";

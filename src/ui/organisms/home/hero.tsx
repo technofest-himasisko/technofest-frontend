@@ -1,7 +1,7 @@
 "use client";
 
-import { Messenger } from "@/lib/text-transformer";
-import { cn } from "@/lib/utils";
+import { Messenger } from "@/lib/utils/text-transformer";
+import { cn } from "@/lib/utils/common";
 import { Button } from "@/ui/atoms/button";
 import { goodTimes } from "@/ui/fonts";
 import { Lightning } from "@phosphor-icons/react";

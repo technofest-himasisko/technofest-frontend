@@ -6,9 +6,8 @@ import { Alert, AlertDescription } from "../atoms/alert";
 import { FormButton } from "../atoms/form-button";
 import { Check, X } from "@phosphor-icons/react";
 import { Label } from "../atoms/label";
-import { useActionState } from "react";
 import { useFormState } from "react-dom";
-import { FormState } from "@/lib/definitions";
+import { FormState } from "@/lib/definitions/web";
 
 interface Props {
   onFormOpen?: (isOpened: boolean) => void;

@@ -2,7 +2,7 @@
 
 import config from "@/config";
 import { mobileNavigationState } from "@/lib/recoil/mobileNavigationAtom";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/common";
 import { useRecoilState } from "recoil";
 import {
   Collapsible,

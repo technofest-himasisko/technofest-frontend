@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/common";
 import { Circle } from "@phosphor-icons/react/dist/ssr";
 import { goodTimes } from "../fonts";
 

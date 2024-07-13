@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { FormState } from "@/lib/definitions";
+import { FormState } from "@/lib/definitions/web";
 
 const schema = z.object({
   participantId: z.string().min(1, "ID peserta wajib diisi"),

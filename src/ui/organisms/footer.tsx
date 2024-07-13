@@ -1,4 +1,4 @@
-import { cn, isComingSoon } from "@/lib/utils";
+import { cn, isComingSoon } from "@/lib/utils/common";
 import Image from "next/image";
 import { goodTimes } from "../fonts";
 import Link from "next/link";

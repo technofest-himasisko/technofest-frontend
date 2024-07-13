@@ -1,5 +1,5 @@
 import config from "@/config";
-import { isComingSoon } from "@/lib/utils";
+import { isComingSoon } from "@/lib/utils/common";
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { WHATSAPP_REGEX } from "@/lib/constants";
+import { PHONE_REGEX } from "@/lib/definitions/constants";
 
 const schema = z.object({
   name: z.string().min(1, "Nama wajib diisi"),
@@ -9,7 +9,7 @@ const schema = z.object({
   whatsapp: z
     .string()
     .min(1, "Nomor whatsApp wajib diisi")
-    .regex(WHATSAPP_REGEX, "Format Nomor WhatsApp tidak sesuai"),
+    .regex(PHONE_REGEX, "Format Nomor WhatsApp tidak sesuai"),
   paymentProof: z.string(),
 });
 

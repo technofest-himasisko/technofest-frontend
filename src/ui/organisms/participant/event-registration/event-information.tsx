@@ -1,4 +1,4 @@
-import { cn, tw } from "@/lib/utils";
+import { cn, tw } from "@/lib/utils/common";
 import { Badge } from "@/ui/atoms/badge";
 import { cva, type VariantProps } from "class-variance-authority";
 

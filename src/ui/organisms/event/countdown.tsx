@@ -1,7 +1,7 @@
 "use client";
 
 import useCountdown from "@/lib/hooks/use-countdown";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/common";
 import Reveal from "@/ui/atoms/reveal";
 
 export default function EventCountdown() {

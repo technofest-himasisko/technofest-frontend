@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { cn, getAvatarCallbackLetter } from "@/lib/utils";
+import { cn, getAvatarCallbackLetter } from "@/lib/utils/common";
 import { Avatar, AvatarFallback, AvatarImage } from "@/ui/atoms/avatar";
 import { goodTimes } from "@/ui/fonts";
 import IdDisplay from "@/ui/molecules/id-display";

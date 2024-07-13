@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { isComingSoon } from "./lib/utils";
+import { isComingSoon } from "./lib/utils/common";
 import { auth as middleware } from "@/auth";
 
 export default middleware(async (request: NextRequest) => {

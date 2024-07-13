@@ -1,7 +1,7 @@
 "use client";
 
 import config from "@/config";
-import { cn, tw } from "@/lib/utils";
+import { cn, tw } from "@/lib/utils/common";
 import { Session } from "next-auth";
 import Link from "next/link";
 import { Button } from "../atoms/button";

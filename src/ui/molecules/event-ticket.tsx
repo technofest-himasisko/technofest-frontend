@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../atoms/avatar";
 import { Button } from "../atoms/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../atoms/tooltip";
 import { Badge } from "../atoms/badge";
-import { cn, tw } from "@/lib/utils";
+import { cn, tw } from "@/lib/utils/common";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const eventTicketVariant = cva(

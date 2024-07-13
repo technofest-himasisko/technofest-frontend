@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Badge } from "../atoms/badge";
-import { cn, tw } from "@/lib/utils";
+import { cn, tw } from "@/lib/utils/common";
 import { cva, type VariantProps } from "class-variance-authority";
 import {
   Dialog,

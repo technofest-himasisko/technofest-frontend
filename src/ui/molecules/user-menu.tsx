@@ -10,7 +10,7 @@ import {
 } from "../atoms/dropdown-menu";
 import { Compass, SignOut, Ticket, User } from "@phosphor-icons/react/dist/ssr";
 import { logout } from "@/lib/actions/logout";
-import { getAvatarCallbackLetter, getSession } from "@/lib/utils";
+import { getAvatarCallbackLetter, getSession } from "@/lib/utils/common";
 
 export default async function UserMenu() {
   const session = await getSession();

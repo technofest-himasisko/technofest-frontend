@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/common";
 import { extatica, goodTimes } from "@/ui/fonts";
 import useCountdown from "@/lib/hooks/use-countdown";
 

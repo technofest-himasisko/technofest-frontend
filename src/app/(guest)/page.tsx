@@ -1,4 +1,4 @@
-import { isComingSoon } from "@/lib/utils";
+import { isComingSoon } from "@/lib/utils/common";
 import CommonPageContainer from "@/ui/molecules/common-page-container";
 import ComingSoon from "@/ui/organisms/coming-soon";
 import HomeAbout from "@/ui/organisms/home/about";
