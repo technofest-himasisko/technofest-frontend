@@ -18,7 +18,8 @@ export function getAvatarCallbackLetter(str: string): string {
   return str
     .split(" ")
     .map((word, index) => (index >= 2 ? "" : word.charAt(0)))
-    .join("");
+    .join("")
+    .toUpperCase();
 }
 
 export async function getSession(): Promise<Session> {
@@ -28,4 +29,12 @@ export async function getSession(): Promise<Session> {
 export async function getServerSanctumToken(): Promise<string | undefined> {
   const { cookies } = await import("next/headers");
   return cookies().get("sanctum-token")?.value;
+}
+
+export function toParticipantId(str: string): string {
+  return `U-${str}`;
+}
+
+export function toRegistrationId(str: string): string {
+  return `E-${str}`;
 }

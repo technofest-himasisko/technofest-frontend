@@ -8,9 +8,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../atoms/dropdown-menu";
-import { Compass, SignOut, Ticket, User } from "@phosphor-icons/react/dist/ssr";
+import {
+  Compass,
+  SignOut,
+  Ticket,
+  GearSix,
+} from "@phosphor-icons/react/dist/ssr";
 import { logout } from "@/lib/actions/logout";
-import { getAvatarCallbackLetter, getSession } from "@/lib/utils/common";
+import {
+  getAvatarCallbackLetter,
+  getSession,
+  toParticipantId,
+} from "@/lib/utils/common";
 
 export default async function UserMenu() {
   const session = await getSession();
@@ -18,8 +27,11 @@ export default async function UserMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none">
-        <Avatar className="size-7 md:size-10">
-          <AvatarImage src={session.user?.avatar} alt={"Profile avatar"} />
+        <Avatar size="sm">
+          <AvatarImage
+            src={session.user?.avatar || ""}
+            alt={"Profile avatar"}
+          />
           <AvatarFallback>
             {getAvatarCallbackLetter(session.user?.name || "")}
           </AvatarFallback>
@@ -32,7 +44,7 @@ export default async function UserMenu() {
         <DropdownMenuLabel>
           <p>{session.user?.name}</p>
           <p className="text-xs font-normal text-slate-100/40">
-            ID: P{session.user?.uid}
+            ID: {toParticipantId(session.user?.uid || "")}
           </p>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
@@ -43,15 +55,15 @@ export default async function UserMenu() {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/u/profile">
-            <User className="mr-2 h-4 w-4" />
-            <span>Profile</span>
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
           <Link href="/u/events">
             <Ticket className="mr-2 h-4 w-4" />
             <span>Daftar Events</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/u/setting">
+            <GearSix className="mr-2 h-4 w-4" />
+            <span>Setting</span>
           </Link>
         </DropdownMenuItem>
         <form action={logout}>

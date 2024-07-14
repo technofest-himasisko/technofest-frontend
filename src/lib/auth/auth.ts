@@ -3,7 +3,7 @@ import NextAuth, { User } from "next-auth";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
-import { login, userGetCurrent } from "@/lib/fetch/v2";
+import { attempt, login, userGetCurrent } from "@/lib/fetch/v2";
 import { ErrorCode } from "@/lib/definitions/constants";
 import { ResponseData } from "@/lib/definitions/technofest";
 import { getServerSanctumToken } from "@/lib/utils/common";
@@ -13,29 +13,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Google,
     GitHub,
     Credentials({
-      // You can specify which fields should be submitted, by adding keys to the `credentials` object.
-      // e.g. domain, username, password, 2FA token, etc.
+      name: "Credentials",
       credentials: {
-        email: {},
-        password: {},
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
       },
+
       authorize: async (credentials) => {
-        let user = null;
+        const response = await attempt(
+          String(credentials?.email),
+          String(credentials?.password),
+          true,
+        );
 
-        // logic to salt and hash password
-        // const pwHash = saltAndHashPassword(credentials.password);
-
-        // // logic to verify if user exists
-        // user = await getUserFromDb(credentials.email, pwHash);
-
-        if (!user) {
-          // No user found, so this is their first attempt to login
-          // meaning this is also the place you could do registration
-          throw new Error("User not found.");
+        if (response.status !== 200) {
+          return null;
         }
 
-        // return user object with the their profile data
-        return user;
+        return {
+          id: String(response.data?.user.id),
+          name: response.data?.user.name,
+          email: response.data?.user.email,
+          image: response.data?.user.avatar,
+          access_token: response.data?.access_token,
+        };
       },
     }),
   ],
@@ -84,9 +85,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async jwt({ token, trigger }) {
       if (trigger === "signIn") {
-        const response: ResponseData<User> = await userGetCurrent(
-          (await getServerSanctumToken()) as string,
-        );
+        const response: ResponseData<User> = await userGetCurrent();
 
         token.user = response.data;
       }

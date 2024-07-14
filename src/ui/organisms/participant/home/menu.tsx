@@ -1,6 +1,6 @@
 import { Button } from "@/ui/atoms/button";
 import { Card } from "@/ui/atoms/card";
-import { IdentificationCard, Ticket } from "@phosphor-icons/react/dist/ssr";
+import { GearSix, Ticket } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -18,9 +18,9 @@ export default function ParticipantHomeMenu() {
               </Link>
             </Button>
             <Button asChild variant="outline" className="space-x-1">
-              <Link href="/u/profile">
-                <IdentificationCard weight="duotone" className="text-[1.5em]" />
-                <span>Ubah Profile</span>
+              <Link href="/u/setting">
+                <GearSix weight="duotone" className="text-[1.5em]" />
+                <span>Pengaturan</span>
               </Link>
             </Button>
           </div>

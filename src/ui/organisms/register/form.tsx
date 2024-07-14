@@ -1,5 +1,5 @@
-import RegisterFormComp from "@/ui/forms/register-form";
+import RegisterCredentialsForm from "@/ui/forms/register-credentials-form";
 
 export default function RegisterForm() {
-  return <RegisterFormComp />;
+  return <RegisterCredentialsForm />;
 }

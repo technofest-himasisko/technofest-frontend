@@ -1,3 +1,5 @@
+import { ProviderType } from "./constants";
+
 export interface ResponseData<T> {
   status: number;
   message: string;
@@ -14,10 +16,11 @@ export interface User {
   role: number;
   selected_festival?: string;
   avatar?: string;
+  provider: ProviderType;
   created_at: string;
   updated_at: string;
 
-  providers?: Provider[];
+  // providers?: Provider[];
   user_profile?: UserProfile;
   festivals?: Festival[];
   faqs?: Faq[];
@@ -35,15 +38,15 @@ export interface Avatar {
   updated_at: string;
 }
 
-export interface Provider {
-  id: string;
-  provider_id: string;
-  provider: string;
-  created_at: string;
-  updated_at: string;
+// export interface Provider {
+//   id: string;
+//   provider_id: string;
+//   provider: string;
+//   created_at: string;
+//   updated_at: string;
 
-  user: User;
-}
+//   user: User;
+// }
 
 export interface UserProfile {
   id: string;

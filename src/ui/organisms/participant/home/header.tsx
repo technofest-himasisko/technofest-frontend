@@ -14,7 +14,7 @@ export default async function ParticipantHomeHeader() {
     <Suspense fallback={<p className="text-xl text-white">Loading...</p>}>
       <section className="container mt-4 md:mt-10">
         <div className="relative h-36 border border-primary/20 bg-gradient-to-br from-primary/20 to-secondary/20 md:h-40">
-          <Avatar className="absolute inset-x-0 -bottom-8 mx-auto size-16">
+          <Avatar size="lg" className="absolute inset-x-0 -bottom-8 mx-auto">
             <AvatarImage src={session.user?.avatar} alt="User avatar" />
             <AvatarFallback>
               {getAvatarCallbackLetter(session.user?.name || "")}

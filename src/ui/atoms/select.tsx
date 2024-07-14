@@ -5,14 +5,22 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 
 import { cn } from "@/lib/utils/common";
 import { CaretDown, CaretUp, Check } from "@phosphor-icons/react";
+import { useFormStatus } from "react-dom";
 
-const Select = SelectPrimitive.Root;
+const Select = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
+>(({ ...props }) => {
+  const { pending } = useFormStatus();
+
+  return <SelectPrimitive.Root disabled={pending} {...props} />;
+});
+
+Select.displayName = SelectPrimitive.Root.displayName;
 
 const SelectGroup = SelectPrimitive.Group;
 
 const SelectValue = SelectPrimitive.Value;
-
-//           "flex h-10 w-full border border-primary/20 bg-primary/10 px-3 py-2 text-sm font-medium ring-offset-primary/20 file:border-0 file:bg-transparent file:text-sm placeholder:text-slate-100/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50",
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,

@@ -81,10 +81,10 @@ export type RegistrationDate = {
   closing: Date;
 };
 
-export type FormState = {
+interface FormState {
+  errors?: Record<string, string[]>;
   message?: {
     text: string;
-    type: "success" | "error";
+    type: "success" | "info" | "warning" | "danger";
   };
-  errors?: Record<string, string[]>;
-};
+}

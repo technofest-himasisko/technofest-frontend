@@ -1,23 +1,35 @@
 "use server";
 
 import { z } from "zod";
-import { attempt } from "../fetch/v2";
-import { signIn } from "../auth/auth";
+import { register } from "../fetch/v2";
 import { ErrorCode } from "../definitions/constants";
+import { signIn } from "../auth/auth";
 import { FormState } from "../definitions/web";
 
-const schema = z.object({
-  email: z.string().email("Email tidak valid"),
-  password: z.string(),
-});
+const schema = z
+  .object({
+    name: z.string().min(1, "Nama tidak boleh kosong"),
+    email: z
+      .string()
+      .min(1, "Email tidak boleh kosong")
+      .email("Email tidak valid"),
+    password: z.string().min(8, "Minimal 8 karakter"),
+    confirmPassword: z.string().min(8, "Minimal 8 karakter"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Konfirmasi password tidak sama",
+    path: ["confirmPassword"],
+  });
 
-export async function loginCredentials(
+export async function registerCredentials(
   prevState: any,
   formData: FormData,
 ): Promise<FormState | undefined> {
   const validatedFields = schema.safeParse({
+    name: formData.get("name"),
     email: formData.get("email"),
     password: formData.get("password"),
+    confirmPassword: formData.get("confirmPassword"),
   });
 
   if (!validatedFields.success) {
@@ -26,22 +38,19 @@ export async function loginCredentials(
     };
   }
 
-  const response = await attempt(
+  const response = await register(
+    validatedFields.data.name,
     validatedFields.data.email,
     validatedFields.data.password,
   );
 
-  // console.log(response);
-
-  // return;
-
   if (
-    response.status === 401 &&
-    response.error_code === ErrorCode.INVALID_CREDENTIALS
+    response.status === 409 &&
+    response.error_code === ErrorCode.EMAIL_ALREADY_EXISTS
   ) {
     return {
       message: {
-        text: "Email atau password salah",
+        text: "Email telah digunakan pada akun lain",
         type: "danger",
       },
     };

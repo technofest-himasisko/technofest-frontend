@@ -1,3 +1,4 @@
+import { Faq } from "@/lib/definitions/technofest";
 import {
   Accordion,
   AccordionContent,
@@ -5,30 +6,20 @@ import {
   AccordionTrigger,
 } from "@/ui/atoms/accordion";
 
-export default function FaqsFaqList() {
+interface Props {
+  faqs: Faq[];
+}
+
+export default function FaqsFaqList({ faqs }: Props) {
   return (
     <section className="container">
       <Accordion type="single" collapsible className="mt-8 w-full">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger>Is it styled?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It comes with default styles that matches the other
-            components&apos; aesthetic.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-3">
-          <AccordionTrigger>Is it animated?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It&apos;s animated by default, but you can disable it if you
-            prefer.
-          </AccordionContent>
-        </AccordionItem>
+        {faqs.map((faq) => (
+          <AccordionItem key={faq.id} value={faq.id}>
+            <AccordionTrigger>{faq.question}</AccordionTrigger>
+            <AccordionContent>{faq.answer}</AccordionContent>
+          </AccordionItem>
+        ))}
       </Accordion>
     </section>
   );

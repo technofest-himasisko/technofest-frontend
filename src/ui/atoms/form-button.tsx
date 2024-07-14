@@ -14,6 +14,7 @@ const formButtonVariants = cva(
       variant: {
         default: tw`bg-primary/20 text-primary hover:bg-primary/25`,
         green: tw`bg-green-500/20 text-green-500 hover:bg-green-500/25`,
+        danger: tw`bg-red-500/20 text-red-500 hover:bg-red-500/25`,
         ghost: tw`text-primary hover:bg-primary/25`,
         outline: tw`border border-primary/30 text-primary hover:bg-primary/25`,
       },
@@ -60,7 +61,7 @@ const FormButton = React.forwardRef<HTMLButtonElement, Props>(
         disabled={pending}
         className={cn(
           formButtonVariants({ variant, size, className }),
-          !noLoading && pending && "text-transparent",
+          !noLoading && pending && "text-transparent [&>svg]:text-slate-100/50",
         )}
         ref={ref}
         {...props}
@@ -68,7 +69,7 @@ const FormButton = React.forwardRef<HTMLButtonElement, Props>(
         {!noLoading && pending && (
           <CircleNotch
             weight="bold"
-            className="absolute inset-x-0 mx-auto animate-spin text-[1.5em] text-primary"
+            className="absolute inset-x-0 mx-auto animate-spin text-[1.5em]"
           />
         )}
         <Slottable>{children}</Slottable>

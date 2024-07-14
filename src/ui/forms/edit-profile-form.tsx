@@ -1,185 +1,184 @@
 "use client";
 
-import { Alert, AlertDescription } from "@/ui/atoms/alert";
-import { Button } from "@/ui/atoms/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/ui/atoms/form";
 import { FormButton } from "@/ui/atoms/form-button";
 import { Input } from "@/ui/atoms/input";
+import { Label } from "../atoms/label";
+import FormItem from "../atoms/form-item";
+import FormMessage from "../atoms/form-message";
+import { useFormState } from "react-dom";
+import { Alert, AlertDescription } from "../atoms/alert";
+import { updateProfile } from "@/lib/actions/update-profile";
+import { User } from "@/lib/definitions/technofest";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/ui/atoms/select";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
+} from "../atoms/select";
+import Link from "next/link";
+import { ArrowSquareOut } from "@phosphor-icons/react";
+import FormDescription from "../atoms/form-description";
+import { useRef } from "react";
 
-const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
+interface Props {
+  user?: User;
+}
 
-const formSchema = z.object({
-  name: z.string(),
-  email: z.string().email(),
-  institution: z.string(),
-  gender: z.string(),
-  whatsapp: z.string(),
-});
+export default function EditProfileForm({ user }: Props) {
+  const ref = useRef<HTMLFormElement>(null);
+  const [state, formAction] = useFormState(updateProfile, null);
 
-export default function EditProfileForm() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "H. Thoriq",
-      email: "slow9ie@gmail.com",
-      institution: "",
-      gender: "",
-      whatsapp: "",
-    },
-  });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-    setIsLoading(true);
-    wait().then(() => {
-      setIsLoading(false);
-      toast.success("Berhasil Memperbarui profile");
-    });
+  if (state?.message) {
+    ref.current?.reset();
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex max-w-xl flex-col gap-y-6"
-      >
-        <FormField
-          control={form.control}
+    <form ref={ref} action={formAction} className="flex flex-col gap-y-6">
+      <FormItem>
+        <Label htmlFor="name">Nama Lengkap</Label>
+        <Input
+          id="name"
           name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nama</FormLabel>
-              <FormControl>
-                <Input
-                  type="name"
-                  placeholder="Nama"
-                  disabled={isLoading}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          type="text"
+          defaultValue={user?.name}
+          placeholder="Nama Lengkap"
         />
+        <FormMessage messages={state?.errors?.name} />
+      </FormItem>
 
-        <FormField
-          control={form.control}
+      <FormItem>
+        <Label htmlFor="email">Email</Label>
+        <Input
+          id="email"
           name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input type="email" placeholder="Email" disabled {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          type="email"
+          defaultValue={user?.email}
+          disabled
         />
+      </FormItem>
 
-        <FormField
-          control={form.control}
+      <FormItem>
+        <Label htmlFor="institution">Asal Institusi</Label>
+        <FormDescription>Contoh: Universitas Sriwijaya</FormDescription>
+        <Input
+          id="institution"
           name="institution"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Asal Institusi</FormLabel>
-              <FormControl>
-                <Input
-                  type="institution"
-                  placeholder="Universitas Sriwijaya"
-                  disabled={isLoading}
-                  {...field}
-                />
-              </FormControl>
-              <FormDescription>Contoh: Universitas Sriwijaya</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
+          type="text"
+          defaultValue={user?.user_profile?.institution}
+          placeholder="Asal Institusi"
         />
+        <FormMessage messages={state?.errors?.institution} />
+      </FormItem>
 
-        <FormField
-          control={form.control}
-          name="gender"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Jenis Kelamin</FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                disabled={isLoading}
-              >
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Pilih jenis kelamin" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="male">Laki-laki</SelectItem>
-                  <SelectItem value="female">Perempuan</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
+      <FormItem>
+        <Label htmlFor="educationLevel">Status</Label>
+        <Select
+          name="educationLevel"
+          defaultValue={String(user?.user_profile?.education_level || "")}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Pilih Status" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="0">Siswa</SelectItem>
+            <SelectItem value="1">Mahasiswa</SelectItem>
+          </SelectContent>
+        </Select>
+        <FormMessage messages={state?.errors?.educationLevel} />
+      </FormItem>
+
+      <FormItem>
+        <Label htmlFor="name">NISM/NIM</Label>
+        <Input
+          id="idNumber"
+          name="idNumber"
+          type="text"
+          defaultValue={user?.user_profile?.id_number}
+          placeholder="NISM/NIM"
         />
+        <FormMessage messages={state?.errors?.idNumber} />
+      </FormItem>
 
-        <FormField
-          control={form.control}
-          name="whatsapp"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nomor WhatsApp</FormLabel>
-              <FormControl>
-                <Input
-                  type="whatsapp"
-                  placeholder="0821xxxxxxxx"
-                  disabled={isLoading}
-                  {...field}
-                />
-              </FormControl>
-              <FormDescription>Contoh: 0821xxxxxxxx</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
+      <FormItem>
+        <Label htmlFor="name">Kartu Tanda Siswa/Mahasiswa</Label>
+        <FormDescription>
+          Ekstensi yang diterima: jpg, jpeg, dan png
+        </FormDescription>
+        <Input
+          id="idCardImage"
+          name="idCardImage"
+          type="file"
+          accept="image/*"
         />
-
-        <Alert variant="danger">
-          <AlertDescription>Terjadi kesalahan.</AlertDescription>
-        </Alert>
-
-        <div>
-          <FormButton
-            loading={isLoading}
-            type="submit"
-            className="mt-4 w-full md:w-auto"
+        <input
+          type="hidden"
+          name="idCardImageUrl"
+          defaultValue={user?.user_profile?.id_card_image}
+        />
+        <FormMessage messages={state?.errors?.idCardImage} />
+        {user?.user_profile?.id_card_image && (
+          <Link
+            href={user?.user_profile?.id_card_image}
+            target="_blank"
+            className="flex items-center gap-x-1 text-sm text-primary hover:underline"
           >
-            Perbarui
-          </FormButton>
-        </div>
-      </form>
-    </Form>
+            <span>Lihat unggahan</span> <ArrowSquareOut />
+          </Link>
+        )}
+      </FormItem>
+
+      <FormItem>
+        <Label htmlFor="gender">Jenis Kelamin</Label>
+        <Select
+          name="gender"
+          defaultValue={String(user?.user_profile?.gender || "")}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Pilih Jenis Kelamin" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="0">Laki-laki</SelectItem>
+            <SelectItem value="1">Perempuan</SelectItem>
+          </SelectContent>
+        </Select>
+        <FormMessage messages={state?.errors?.gender} />
+      </FormItem>
+
+      <FormItem>
+        <Label htmlFor="whatsapp">WhatsApp</Label>
+        <FormDescription>Contoh: 6282144225511</FormDescription>
+        <Input
+          id="whatsapp"
+          name="whatsapp"
+          type="text"
+          defaultValue={user?.user_profile?.whatsapp}
+          placeholder="WhatsApp"
+        />
+        <FormMessage messages={state?.errors?.whatsapp} />
+      </FormItem>
+
+      <FormItem>
+        <Label htmlFor="instagram">Instagram (opsional)</Label>
+        <Input
+          id="instagram"
+          name="instagram"
+          type="text"
+          defaultValue={user?.user_profile?.instagram}
+          placeholder="Instagram"
+        />
+        <FormMessage messages={state?.errors?.instagram} />
+      </FormItem>
+
+      {state?.message && (
+        <Alert variant={state?.message?.type || "info"}>
+          <AlertDescription>{state?.message?.text}</AlertDescription>
+        </Alert>
+      )}
+
+      <FormButton type="submit" className="mt-4 w-full md:w-fit">
+        Perbarui
+      </FormButton>
+    </form>
   );
 }
