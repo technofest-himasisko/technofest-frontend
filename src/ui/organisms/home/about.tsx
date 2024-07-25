@@ -2,20 +2,24 @@ import Reveal from "@/ui/atoms/reveal";
 import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import SectionHeader from "@/ui/molecules/section-header";
 import { Compass } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
 
 export default function HomeAbout() {
   return (
     <CommonPageSection
       id="about"
-      className="container flex flex-col items-center justify-between gap-y-10 md:flex-row md:gap-x-10 md:gap-y-0"
+      className="container flex flex-col items-center justify-between gap-y-10 md:flex-row md:gap-x-20 md:gap-y-0"
     >
       <div>
-        <Compass
-          weight="duotone"
-          className="size-[10rem] text-primary md:size-[16rem]"
+        <Image
+          src="/images/mascot.png"
+          alt="Mascot"
+          width={1000}
+          height={1000}
+          className="width-[20rem] md:width-[28rem]"
         />
       </div>
-      <div>
+      <div className="md:max-w-2xl">
         <Reveal direction="right">
           <SectionHeader
             title="About"

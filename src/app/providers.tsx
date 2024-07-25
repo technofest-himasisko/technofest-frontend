@@ -10,11 +10,13 @@ interface Props {
 
 export default function Providers({ children }: Readonly<Props>) {
   return (
-    <RecoilRoot>
-      <TooltipProvider>
-        {children}
-        <Toaster />
-      </TooltipProvider>
-    </RecoilRoot>
+    <>
+      <RecoilRoot>
+        <TooltipProvider>
+          {children}
+          <Toaster />
+        </TooltipProvider>
+      </RecoilRoot>
+    </>
   );
 }

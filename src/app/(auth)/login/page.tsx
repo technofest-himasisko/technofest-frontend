@@ -1,6 +1,5 @@
 import { Card } from "@/ui/atoms/card";
 import SectionHeader from "@/ui/molecules/section-header";
-import Footer from "@/ui/organisms/footer";
 import LoginForm from "@/ui/organisms/login/form";
 import LoginOauth from "@/ui/organisms/login/oauth";
 import Link from "next/link";
@@ -10,6 +9,8 @@ interface Props {
     error: string;
   };
 }
+
+export async function generateMetadata() {}
 
 export default function Page({ searchParams }: Props) {
   return (

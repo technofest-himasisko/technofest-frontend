@@ -1,16 +1,23 @@
 import { isComingSoon } from "@/lib/utils/common";
 import CommonPageContainer from "@/ui/molecules/common-page-container";
 import ComingSoon from "@/ui/organisms/coming-soon";
-import HomeAbout from "@/ui/organisms/home/about";
-import HomeAgenda from "@/ui/organisms/home/agenda";
-import HomeCompetition from "@/ui/organisms/home/competitions";
-import HomeCountDown from "@/ui/organisms/home/countdown";
-import HomeFaqs from "@/ui/organisms/home/faqs";
-import HomeHero from "@/ui/organisms/home/hero";
-import HomeMediaPartners from "@/ui/organisms/home/media-partners";
-import HomeSeminar from "@/ui/organisms/home/seminar";
-import HomeSponsors from "@/ui/organisms/home/sponsors";
+
+import dynamic from "next/dynamic";
 import Image from "next/image";
+
+const HomeAbout = dynamic(() => import("@/ui/organisms/home/about"));
+const HomeAgenda = dynamic(() => import("@/ui/organisms/home/agenda"));
+const HomeCompetition = dynamic(
+  () => import("@/ui/organisms/home/competitions"),
+);
+const HomeCountDown = dynamic(() => import("@/ui/organisms/home/countdown"));
+const HomeFaqs = dynamic(() => import("@/ui/organisms/home/faqs"));
+const HomeHero = dynamic(() => import("@/ui/organisms/home/hero"));
+const HomeMediaPartners = dynamic(
+  () => import("@/ui/organisms/home/media-partners"),
+);
+const HomeSeminar = dynamic(() => import("@/ui/organisms/home/seminar"));
+const HomeSponsors = dynamic(() => import("@/ui/organisms/home/sponsors"));
 
 export default function Page() {
   if (isComingSoon()) {

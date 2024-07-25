@@ -1,4 +1,3 @@
-// import { cookies } from "next/headers";
 import NextAuth, { User } from "next-auth";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
@@ -6,7 +5,6 @@ import Credentials from "next-auth/providers/credentials";
 import { attempt, login, userGetCurrent } from "@/lib/fetch/v2";
 import { ErrorCode } from "@/lib/definitions/constants";
 import { ResponseData } from "@/lib/definitions/technofest";
-import { getServerSanctumToken } from "@/lib/utils/common";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [

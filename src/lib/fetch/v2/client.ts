@@ -17,8 +17,6 @@ export async function fetchAPI(
   const queryString = QueryString.stringify(params);
   const requestUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v2${path}${queryString ? `?${queryString}` : ""}`;
 
-  console.log(requestUrl);
-
   const response = await fetch(requestUrl, mergedOptions);
   const data = await response.json();
   return data;
