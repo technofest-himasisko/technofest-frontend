@@ -12,7 +12,6 @@ import {
 } from "../atoms/dialog";
 import React from "react";
 import { FormButton } from "../atoms/form-button";
-import { z } from "zod";
 import RegisterEventForm from "../forms/register-event-form";
 
 const eventTicketVariant = cva(tw``, {
@@ -33,7 +32,7 @@ interface Props extends VariantProps<typeof eventTicketVariant> {
   event: {
     name: string;
     codename: string;
-    price: number;
+    price: number | undefined;
     type: string;
     isRegistered: boolean;
   };
@@ -58,9 +57,14 @@ export default function EventItem({ event, color }: Props) {
               {event.isRegistered && <Badge variant="blue">Diikuti</Badge>}
             </div>
             <div className="flex flex-col md:flex-row md:gap-x-6">
-              <p className="text-sm text-slate-100/50">Jenis: {event.type}</p>
               <p className="text-sm text-slate-100/50">
-                Biaya: Rp{event.price}
+                Kategori: {event.type}
+              </p>
+              <p className="text-sm text-slate-100/50">
+                Biaya:{" "}
+                {!event.price || event.price === 0
+                  ? "Gratis"
+                  : `Rp${event.price}`}
               </p>
             </div>
           </div>

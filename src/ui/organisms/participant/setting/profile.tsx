@@ -6,10 +6,8 @@ import { Suspense } from "react";
 export default async function ParticipantSettingProfileForm() {
   const response = await userGetCurrent(["userProfile"]);
 
-  console.log(response);
-
   return (
-    <section className="container">
+    <section id="profile" className="container">
       <Suspense fallback={<p className="text-xl text-white">Loading...</p>}>
         <Card>
           <div className="max-w-xl">

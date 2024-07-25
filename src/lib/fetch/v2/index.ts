@@ -12,10 +12,18 @@ import {
   User,
 } from "@/lib/definitions/technofest";
 import { getServerSanctumToken } from "@/lib/utils/common";
-import { fetchAPI } from "./client";
+import axiosClient, { fetchAPI } from "./client";
+import axios from "axios";
 
-export const csrf = () =>
-  fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/sanctum/csrf-cookie`);
+export const csrf = () => {
+  axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/sanctum/csrf-cookie`, {
+    withCredentials: true,
+    withXSRFToken: true,
+    headers: {
+      "X-Requested-With": "XMLHttpRequest",
+    },
+  });
+};
 
 export const attempt = async (
   email: string,
@@ -24,19 +32,16 @@ export const attempt = async (
 ): Promise<ResponseData<{ access_token: string; user: User }>> => {
   await csrf();
 
-  const response = await fetchAPI(
+  const response = await axiosClient.post(
     "/auth/credentials/attempt",
     {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+      email,
+      password,
     },
-    { token: withToken },
+    { params: { token: withToken } },
   );
 
-  return response;
+  return response.data;
 };
 
 export const register = async (
@@ -47,20 +52,17 @@ export const register = async (
 ): Promise<ResponseData<User>> => {
   await csrf();
 
-  const response = await fetchAPI(
+  const response = await axiosClient.post(
     "/auth/credentials/register",
     {
-      method: "POST",
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-      }),
+      name,
+      email,
+      password,
     },
-    { token: withToken },
+    { params: { token: withToken } },
   );
 
-  return response;
+  return response.data;
 };
 
 export const login = async (
@@ -72,18 +74,15 @@ export const login = async (
 ): Promise<ResponseData<{ access_token: string }>> => {
   await csrf();
 
-  const response = await fetchAPI("/auth/login", {
-    method: "POST",
-    body: JSON.stringify({
-      name,
-      email,
-      avatar,
-      provider,
-      access_token,
-    }),
+  const response = await axiosClient.post("/auth/login", {
+    name,
+    email,
+    avatar,
+    provider,
+    access_token,
   });
 
-  return response;
+  return response.data;
 };
 
 export const userGetCurrent = async (
@@ -108,17 +107,17 @@ export const userUpdateProfile = async (
 ): Promise<ResponseData<User>> => {
   await csrf();
 
-  const response = await fetchAPI("/user", {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
+  const response = await axiosClient.put(
+    "/user",
+    { ...user },
+    {
+      headers: {
+        Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
+      },
     },
-    body: JSON.stringify({
-      ...user,
-    }),
-  });
+  );
 
-  return response;
+  return response.data;
 };
 
 export const userUpdatePassword = async (
@@ -127,18 +126,17 @@ export const userUpdatePassword = async (
 ): Promise<ResponseData<null>> => {
   await csrf();
 
-  const response = await fetchAPI("/user/password", {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
+  const response = await axiosClient.put(
+    "/user/password",
+    { old_password, new_password },
+    {
+      headers: {
+        Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
+      },
     },
-    body: JSON.stringify({
-      old_password,
-      new_password,
-    }),
-  });
+  );
 
-  return response;
+  return response.data;
 };
 
 export const userLogout = async () => {
@@ -195,18 +193,17 @@ export const userCreateRegistrationByEventCodename = async (
 ): Promise<ResponseData<EventRegistration>> => {
   await csrf();
 
-  const response = await fetchAPI(`/user/events/${codename}/registration`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
+  const response = await axiosClient.post(
+    `/user/events/${codename}/registration`,
+    { name: body?.teamName, participation_method: body?.participationMethod },
+    {
+      headers: {
+        Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
+      },
     },
-    body: JSON.stringify({
-      name: body?.teamName,
-      participation_method: body?.participationMethod,
-    }),
-  });
+  );
 
-  return response;
+  return response.data;
 };
 
 export const userGetAllRegistrations = async (): Promise<
@@ -228,17 +225,19 @@ export const userUpdateRegistrationByUid = async (
 ): Promise<ResponseData<EventRegistration>> => {
   await csrf();
 
-  const response = await fetchAPI(`/user/registrations/${registrationUid}`, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
-    },
-    body: JSON.stringify({
+  const response = await axiosClient.put(
+    `/user/registrations/${registrationUid}`,
+    {
       ...registration,
-    }),
-  });
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
+      },
+    },
+  );
 
-  return response;
+  return response.data;
 };
 
 export const userDeleteRegistrationByUid = async (registrationUid: string) => {
@@ -337,17 +336,19 @@ export const userUpdatePaymentById = async (
 ): Promise<ResponseData<EventRegistrationPayment>> => {
   await csrf();
 
-  const response = await fetchAPI(`/user/payments/${paymentId}`, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
-    },
-    body: JSON.stringify({
+  const response = await axiosClient.put(
+    `/user/payments/${paymentId}`,
+    {
       ...payment,
-    }),
-  });
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
+      },
+    },
+  );
 
-  return response;
+  return response.data;
 };
 
 export const festivalGetCurrent = async (): Promise<ResponseData<Festival>> => {

@@ -40,7 +40,6 @@ export default function EditTeamNameFormForm({ onFormOpen }: Props) {
   function onTeamFormSubmit(values: z.infer<typeof teamFormSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
     setIsEditingTeamNameLoading(true);
     wait().then(() => {
       onFormOpen && onFormOpen(false);

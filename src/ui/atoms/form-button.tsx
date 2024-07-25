@@ -61,7 +61,7 @@ const FormButton = React.forwardRef<HTMLButtonElement, Props>(
         disabled={pending}
         className={cn(
           formButtonVariants({ variant, size, className }),
-          !noLoading && pending && "text-transparent [&>svg]:text-slate-100/50",
+          !noLoading && pending && "text-transparent",
         )}
         ref={ref}
         {...props}
@@ -69,7 +69,7 @@ const FormButton = React.forwardRef<HTMLButtonElement, Props>(
         {!noLoading && pending && (
           <CircleNotch
             weight="bold"
-            className="absolute inset-x-0 mx-auto animate-spin text-[1.5em]"
+            className="absolute inset-x-0 mx-auto animate-spin text-[1.5em] text-slate-100/50"
           />
         )}
         <Slottable>{children}</Slottable>

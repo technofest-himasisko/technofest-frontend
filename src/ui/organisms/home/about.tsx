@@ -1,7 +1,6 @@
 import Reveal from "@/ui/atoms/reveal";
 import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import SectionHeader from "@/ui/molecules/section-header";
-import { Compass } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 
 export default function HomeAbout() {

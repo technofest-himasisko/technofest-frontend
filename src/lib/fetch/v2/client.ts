@@ -1,14 +1,16 @@
 import QueryString from "qs";
+import Axios from "axios";
 
 export async function fetchAPI(
   path: string,
   options: RequestInit = {},
   params = {},
 ) {
-  const mergedOptions = {
+  const mergedOptions: RequestInit = {
     next: { revalidate: 60 },
     headers: {
       "Content-Type": "application/json",
+      Accept: "application/json",
       "X-Requested-With": "XMLHttpRequest",
     },
     ...options,
@@ -18,6 +20,20 @@ export async function fetchAPI(
   const requestUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v2${path}${queryString ? `?${queryString}` : ""}`;
 
   const response = await fetch(requestUrl, mergedOptions);
+
   const data = await response.json();
   return data;
 }
+
+const axiosClient = Axios.create({
+  baseURL: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v2`,
+  withCredentials: true,
+  validateStatus: () => {
+    return true;
+  },
+  headers: {
+    "X-Requested-With": "XMLHttpRequest",
+  },
+});
+
+export default axiosClient;

@@ -51,19 +51,11 @@ export async function updateProfile(
     instagram: formData.get("instagram"),
   });
 
-  console.log(
-    new File([], "somenthing.png", {
-      type: "image/png",
-    }),
-  );
-
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
     };
   }
-
-  console.log(validatedFields);
 
   const idCardImageFile = validatedFields.data.idCardImage;
   const idCardImageFileName = `ID_CARD_IMAGES/${session.user?.uid}_${idCardImageFile.name}`;
@@ -76,10 +68,10 @@ export async function updateProfile(
     name: validatedFields.data.name,
     user_profile: {
       institution: validatedFields.data.institution,
-      education_level: validatedFields.data.educationLevel,
+      education_level: Number(validatedFields.data.educationLevel),
       id_number: validatedFields.data.idNumber,
       id_card_image: idCardImageFileUrl,
-      gender: validatedFields.data.gender,
+      gender: Number(validatedFields.data.gender),
       whatsapp: validatedFields.data.whatsapp,
       instagram: validatedFields.data.instagram,
     },

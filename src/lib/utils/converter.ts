@@ -1,5 +1,6 @@
 import {
   ErrorCode,
+  EventType,
   ParticipationMethod,
   PaymentStatus,
   SeminarCastRole,
@@ -101,4 +102,23 @@ export function errorCodeToErrorMessage(
     case ErrorCode.ACCOUNT_NOT_LINKED:
       return "Sepertinya Anda mencoba metode masuk yang salah.";
   }
+}
+
+export function eventTypeToColor(type: EventType): "teal" | "purple" {
+  switch (type) {
+    case EventType.COMPETITION:
+      return "teal";
+    case EventType.SEMINAR:
+      return "purple";
+  }
+}
+
+export function participantCategoryToString(
+  num_participants: number | undefined,
+): string {
+  if (!num_participants || num_participants === 1) {
+    return "Individual";
+  }
+
+  return `Tim (Maks. ${num_participants} peserta)`;
 }

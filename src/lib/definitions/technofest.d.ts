@@ -1,4 +1,4 @@
-import { ProviderType } from "./constants";
+import { EventType, ProviderType } from "./constants";
 
 export interface ResponseData<T> {
   status: number;
@@ -87,7 +87,7 @@ export interface Festival {
   faqs_count?: number;
 }
 
-export interface Event<EventType> {
+export interface Event<Type> {
   id: string;
   name: string;
   codename: string;
@@ -100,12 +100,12 @@ export interface Event<EventType> {
   festival_id: string;
   group_link?: string;
   eventable_id: string;
-  eventable_type: "seminar" | "competition";
+  eventable_type: EventType;
   created_at: string;
   updated_at: string;
 
   festival?: Festival;
-  eventable?: EventType;
+  eventable?: Type;
   event_registrations?: EventRegistration[];
   milestones?: Milestone<Event<Seminar | Competition>>[];
   contact_persons?: ContactPerson<Event<Seminar | Competition>>[];

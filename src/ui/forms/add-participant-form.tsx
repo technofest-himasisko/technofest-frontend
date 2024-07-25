@@ -34,7 +34,6 @@ export default function AddParticipantForm({ onFormOpen }: Props) {
   // ) {
   //   // Do something with the form values.
   //   // ✅ This will be type-safe and validated.
-  //   console.log(values);
   //   setIsAddingParticipantLoading(true);
   //   wait().then(() => {
   //     participantForm.reset();
@@ -49,8 +48,6 @@ export default function AddParticipantForm({ onFormOpen }: Props) {
   }
 
   const [state, formAction] = useFormState(addParticipant, initialState);
-
-  console.log(state);
 
   return (
     // <Form {...participantForm}>

@@ -83,7 +83,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async jwt({ token, trigger }) {
       if (trigger === "signIn") {
-        const response: ResponseData<User> = await userGetCurrent();
+        const response: ResponseData<User> = await userGetCurrent([
+          "userProfile",
+        ]);
 
         token.user = response.data;
       }

@@ -31,10 +31,6 @@ export async function loginCredentials(
     validatedFields.data.password,
   );
 
-  // console.log(response);
-
-  // return;
-
   if (
     response.status === 401 &&
     response.error_code === ErrorCode.INVALID_CREDENTIALS
