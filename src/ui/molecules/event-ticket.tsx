@@ -5,6 +5,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../atoms/tooltip";
 import { Badge } from "../atoms/badge";
 import { cn, tw } from "@/lib/utils/common";
 import { cva, type VariantProps } from "class-variance-authority";
+import { AvatarMedia } from "@/lib/definitions/web";
 
 const eventTicketVariant = cva(
   tw`flex items-center justify-between bg-gradient-to-r from-50% to-primary/5 px-4 py-2`,
@@ -28,16 +29,11 @@ interface Props extends VariantProps<typeof eventTicketVariant> {
     name: string;
     codename: string;
     uid: string;
-    type: string;
     status: {
       label: string;
       color: "green" | "blue" | "yellow" | "red";
     };
-    userImages: {
-      src: string;
-      alt: string;
-      fallback: string;
-    }[];
+    userImages: AvatarMedia[];
   };
 }
 
@@ -62,9 +58,6 @@ export default function EventTicket({ eventRegistration, color }: Props) {
         </div>
         <div className="p-3">
           <div className="flex gap-x-6">
-            <p className="hidden text-sm text-slate-100/50 md:block">
-              Jenis: {eventRegistration.type}
-            </p>
             <div className="space-x-1 text-sm text-slate-100/50">
               <span className="hidden md:inline">Status:</span>
               <Badge variant={eventRegistration.status.color}>

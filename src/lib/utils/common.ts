@@ -38,3 +38,11 @@ export function toParticipantId(str: string): string {
 export function toRegistrationId(str: string): string {
   return `E-${str}`;
 }
+
+export function formatToRupiah(amount: number): string {
+  if (isNaN(amount)) {
+    throw new Error("Invalid number");
+  }
+
+  return `Rp${amount.toLocaleString("id-ID")}`;
+}

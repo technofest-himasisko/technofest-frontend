@@ -241,80 +241,78 @@ export const userUpdateRegistrationByUid = async (
 };
 
 export const userDeleteRegistrationByUid = async (registrationUid: string) => {
-  const response = await fetchAPI(`/user/registrations/${registrationUid}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
+  const response = await axiosClient.delete(
+    `/user/registrations/${registrationUid}`,
+    {
+      headers: {
+        Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
+      },
     },
-  });
+  );
 
-  return response;
+  return response.data;
 };
 
 export const userAttachToRegistrationByUid = async (
   registrationUid: string,
 ): Promise<ResponseData<undefined>> => {
-  const response = await fetchAPI(
+  const response = await axiosClient.post(
     `/user/registrations/${registrationUid}/attach`,
     {
-      method: "POST",
       headers: {
         Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
       },
     },
   );
 
-  return response;
+  return response.data;
 };
 
 export const userDetachFromRegistrationByUid = async (
   registrationUid: string,
 ): Promise<ResponseData<undefined>> => {
-  const response = await fetchAPI(
+  const response = await axiosClient.delete(
     `/user/registrations/${registrationUid}/detach`,
     {
-      method: "DELETE",
       headers: {
         Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
       },
     },
   );
 
-  return response;
+  return response.data;
 };
 
 export const userAttachOtherUserToRegistrationByUid = async (
   registrationUid: string,
   userUid: string,
 ): Promise<ResponseData<undefined>> => {
-  const response = await fetchAPI(
+  const response = await axiosClient.post(
     `/user/registrations/${registrationUid}/users/${userUid}/attach`,
     {
-      method: "POST",
       headers: {
         Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
       },
     },
   );
 
-  return response;
+  return response.data;
 };
 
 export const userDetachOtherUserFromRegistrationByUid = async (
   registrationUid: string,
   userUid: string,
 ): Promise<ResponseData<undefined>> => {
-  const response = await fetchAPI(
+  const response = await axiosClient.delete(
     `/user/registrations/${registrationUid}/users/${userUid}/detach`,
     {
-      method: "DELETE",
       headers: {
         Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
       },
     },
   );
 
-  return response;
+  return response.data;
 };
 
 export const userGetPaymentById = async (

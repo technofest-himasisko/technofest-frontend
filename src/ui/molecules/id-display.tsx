@@ -16,7 +16,7 @@ export default function IdDisplay({ ID }: Props) {
   }
 
   return (
-    <div className="mt-4 flex flex-row border border-primary/20 bg-primary/10">
+    <div className="flex flex-row border border-primary/20 bg-primary/10">
       <p className="px-4 py-2 font-medium">ID: {toParticipantId(ID)}</p>
       <button
         onClick={handleCopyClick}

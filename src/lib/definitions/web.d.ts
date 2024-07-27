@@ -3,6 +3,12 @@ export type ImageMedia = {
   alt: string;
 };
 
+export type AvatarMedia = {
+  src: string;
+  alt: string;
+  fallback: string;
+};
+
 export type About = string;
 
 export type Competition = {

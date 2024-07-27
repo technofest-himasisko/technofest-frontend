@@ -40,7 +40,8 @@ export default async function ParticipantEventEventList() {
               name: seminar.name,
               codename: seminar.codename,
               price: seminar.price || 0,
-              type: "Individual",
+              maxParticipant: 1,
+              type: EventType.SEMINAR,
               isRegistered:
                 seminar.event_registrations !== undefined &&
                 seminar.event_registrations?.length > 0,
@@ -56,9 +57,8 @@ export default async function ParticipantEventEventList() {
               name: competition.name,
               codename: competition.codename,
               price: competition.price || 0,
-              type: participantCategoryToString(
-                competition.eventable?.max_participants,
-              ),
+              maxParticipant: competition.eventable?.max_participants || 1,
+              type: EventType.COMPETITION,
               isRegistered:
                 competition.event_registrations !== undefined &&
                 competition.event_registrations?.length > 0,

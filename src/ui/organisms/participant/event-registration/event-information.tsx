@@ -1,5 +1,5 @@
-import { cn, tw } from "@/lib/utils/common";
-import { Badge } from "@/ui/atoms/badge";
+import { cn, formatToRupiah, tw } from "@/lib/utils/common";
+import { participantCategoryToString } from "@/lib/utils/converter";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const eventTicketVariant = cva(tw``, {
@@ -20,7 +20,7 @@ interface Props extends VariantProps<typeof eventTicketVariant> {
   event: {
     name: string;
     price: number;
-    type: string;
+    maxParticipant: number;
   };
 }
 
@@ -45,9 +45,12 @@ export default function ParticipantEventRegistrationEventInformation({
               <h3 className="text-lg font-bold md:text-2xl">{event.name}</h3>
             </div>
             <div className="flex flex-col md:flex-row md:gap-x-6">
-              <p className="text-sm text-slate-100/50">Jenis: {event.type}</p>
               <p className="text-sm text-slate-100/50">
-                Biaya: Rp{event.price}
+                {" "}
+                Kategori: {participantCategoryToString(event.maxParticipant)}
+              </p>
+              <p className="text-sm text-slate-100/50">
+                Biaya: {formatToRupiah(event.price)}
               </p>
             </div>
           </div>

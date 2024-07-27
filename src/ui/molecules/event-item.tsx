@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Badge } from "../atoms/badge";
-import { cn, tw } from "@/lib/utils/common";
+import { cn, formatToRupiah, tw } from "@/lib/utils/common";
 import { cva, type VariantProps } from "class-variance-authority";
 import {
   Dialog,
@@ -12,7 +12,11 @@ import {
 } from "../atoms/dialog";
 import React from "react";
 import { FormButton } from "../atoms/form-button";
-import RegisterEventForm from "../forms/register-event-form";
+import { EventType } from "@/lib/definitions/constants";
+import { participantCategoryToString } from "@/lib/utils/converter";
+import RegisterCompetitionTeamEventForm from "../forms/register-competition-team-event-form";
+import RegisterCompetitionIndividualEventForm from "../forms/register-competition-individual-event-form";
+import RegisterSeminarEventForm from "../forms/register-seminar-event-form";
 
 const eventTicketVariant = cva(tw``, {
   variants: {
@@ -33,7 +37,8 @@ interface Props extends VariantProps<typeof eventTicketVariant> {
     name: string;
     codename: string;
     price: number | undefined;
-    type: string;
+    maxParticipant: number;
+    type: EventType;
     isRegistered: boolean;
   };
 }
@@ -58,13 +63,13 @@ export default function EventItem({ event, color }: Props) {
             </div>
             <div className="flex flex-col md:flex-row md:gap-x-6">
               <p className="text-sm text-slate-100/50">
-                Kategori: {event.type}
+                Kategori: {participantCategoryToString(event.maxParticipant)}
               </p>
               <p className="text-sm text-slate-100/50">
                 Biaya:{" "}
                 {!event.price || event.price === 0
                   ? "Gratis"
-                  : `Rp${event.price}`}
+                  : formatToRupiah(event.price)}
               </p>
             </div>
           </div>
@@ -96,7 +101,31 @@ export default function EventItem({ event, color }: Props) {
             <DialogTitle>Daftar Event</DialogTitle>
           </DialogHeader>
 
-          <RegisterEventForm onFormOpen={setIsRegisterDialogOpen} />
+          {/* SEMINAR */}
+          {event.type === EventType.SEMINAR && (
+            <RegisterSeminarEventForm
+              onFormOpen={setIsRegisterDialogOpen}
+              codename={event.codename}
+            />
+          )}
+
+          {/* COMPETITION INDIVIDUAL */}
+          {event.type === EventType.COMPETITION &&
+            event.maxParticipant === 1 && (
+              <RegisterCompetitionIndividualEventForm
+                onFormOpen={setIsRegisterDialogOpen}
+                eventName={event.name}
+                codename={event.codename}
+              />
+            )}
+
+          {/* COMPETITION TEAM */}
+          {event.type === EventType.COMPETITION && event.maxParticipant > 1 && (
+            <RegisterCompetitionTeamEventForm
+              onFormOpen={setIsRegisterDialogOpen}
+              codename={event.codename}
+            />
+          )}
         </DialogContent>
       </Dialog>
     </>
