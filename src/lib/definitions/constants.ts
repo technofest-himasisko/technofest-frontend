@@ -60,3 +60,20 @@ export enum ErrorCode {
   REACHES_THE_LIMIT = "0010",
   ACCOUNT_NOT_LINKED = "0011",
 }
+
+export enum RegistrationStatus {
+  // event_registrations.confirmed == false
+  PREPARING_TEAM,
+
+  // event_registrations.confirmed == true && event_registration.event_registration_payment.status == PaymentStatus.NOT_CONFIRMED
+  PENDING_PAYMENT,
+
+  // event_registration.event_registration_payment.status == PaymentStatus.REJECTED
+  PAYMENT_REJECTED,
+
+  // event_registration.event_registration_payment.status == PaymentStatus.ACCEPTED
+  PENDING_SUBMISSION,
+
+  // event_registration.submission == true
+  FINISHED,
+}

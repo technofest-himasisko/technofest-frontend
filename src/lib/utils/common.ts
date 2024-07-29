@@ -2,6 +2,17 @@ import { clsx, type ClassValue } from "clsx";
 import { Session } from "next-auth";
 import { twMerge } from "tailwind-merge";
 import { auth } from "@/lib/auth/auth";
+import {
+  Competition,
+  Event,
+  EventRegistration,
+  Seminar,
+} from "../definitions/technofest";
+import {
+  EventType,
+  PaymentStatus,
+  RegistrationStatus,
+} from "../definitions/constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -45,4 +56,40 @@ export function formatToRupiah(amount: number): string {
   }
 
   return `Rp${amount.toLocaleString("id-ID")}`;
+}
+
+export function generateEventRegistrationStatus(
+  registration: EventRegistration,
+): RegistrationStatus {
+  if (!registration.confirmed) {
+    return RegistrationStatus.PREPARING_TEAM;
+  }
+
+  if (
+    registration.confirmed &&
+    registration.event_registration_payment?.status ===
+      PaymentStatus.NOT_CONFIRMED
+  ) {
+    return RegistrationStatus.PENDING_PAYMENT;
+  }
+
+  if (
+    registration.event_registration_payment?.status === PaymentStatus.REJECTED
+  ) {
+    return RegistrationStatus.PAYMENT_REJECTED;
+  }
+
+  if (!registration.submission) {
+    return RegistrationStatus.PENDING_SUBMISSION;
+  }
+
+  return RegistrationStatus.FINISHED;
+}
+
+export function isCompetition(obj: Event<any>): obj is Event<Competition> {
+  return obj.eventable_type === EventType.COMPETITION;
+}
+
+export function isSeminar(obj: Event<any>): obj is Event<Seminar> {
+  return obj.eventable_type === EventType.SEMINAR;
 }

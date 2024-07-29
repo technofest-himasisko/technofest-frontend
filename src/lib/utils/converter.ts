@@ -3,6 +3,7 @@ import {
   EventType,
   ParticipationMethod,
   PaymentStatus,
+  RegistrationStatus,
   SeminarCastRole,
 } from "@/lib/definitions/constants";
 
@@ -44,6 +45,44 @@ export function paymentStatusToColor(
       return "green";
     case PaymentStatus.REJECTED:
       return "red";
+  }
+
+  return undefined;
+}
+
+export function registrationStatusToLabel(
+  number: number | string,
+): string | undefined {
+  switch (Number(number)) {
+    case RegistrationStatus.PREPARING_TEAM:
+      return "Persiapan tim";
+    case RegistrationStatus.PENDING_PAYMENT:
+      return "Menunggu pembayaran";
+    case RegistrationStatus.PAYMENT_REJECTED:
+      return "Pembayaran ditolak";
+    case RegistrationStatus.PENDING_SUBMISSION:
+      return "Menunggu submission";
+    case RegistrationStatus.FINISHED:
+      return "Selesai";
+  }
+
+  return undefined;
+}
+
+export function registrationStatusToColor(
+  number: number | string,
+): "green" | "blue" | "red" | undefined {
+  switch (Number(number)) {
+    case RegistrationStatus.PREPARING_TEAM:
+      return "blue";
+    case RegistrationStatus.PENDING_PAYMENT:
+      return "blue";
+    case RegistrationStatus.PAYMENT_REJECTED:
+      return "red";
+    case RegistrationStatus.PENDING_SUBMISSION:
+      return "blue";
+    case RegistrationStatus.FINISHED:
+      return "green";
   }
 
   return undefined;

@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth/auth";
 import { ErrorCode, EventType } from "@/lib/definitions/constants";
 import { Competition, Event, Seminar } from "@/lib/definitions/technofest";
 import { userGetRegistrationByEventCodename } from "@/lib/fetch/v2";
+import { isCompetition, isSeminar } from "@/lib/utils/common";
 import { eventTypeToColor } from "@/lib/utils/converter";
 import CommonPageContainer from "@/ui/molecules/common-page-container";
 import ParticipantEventRegistrationActions from "@/ui/organisms/participant/event-registration/actions";
@@ -38,15 +39,9 @@ export default async function Page({ params }: Props) {
     (user) => user.id === session?.user?.id,
   );
 
-  const competition =
-    registration.data?.event?.eventable_type === EventType.COMPETITION
-      ? (registration.data?.event as Event<Competition>)
-      : undefined;
-
-  const seminar =
-    registration.data?.event?.eventable_type === EventType.SEMINAR
-      ? (registration.data?.event as Event<Seminar>)
-      : undefined;
+  const maxParticipant = isCompetition(registration.data?.event!)
+    ? registration.data?.event?.eventable?.max_participants!
+    : 1;
 
   return (
     <CommonPageContainer>
@@ -60,12 +55,18 @@ export default async function Page({ params }: Props) {
         event={{
           name: registration.data?.event?.name!,
           price: registration.data?.event?.price!,
-          maxParticipant: competition
-            ? competition.eventable?.max_participants!
-            : 1,
+          maxParticipant: maxParticipant,
         }}
       />
-      <ParticipantEventRegistrationRegistrant />
+
+      <ParticipantEventRegistrationRegistrant
+        registrationName={registration.data?.name!}
+        registrationUid={registration.data?.uid!}
+        registrants={registration.data?.users!}
+        maxParticipant={maxParticipant}
+        confirmed={registration.data?.confirmed!}
+        codename={params.codename}
+      />
       <ParticipantEventRegistrationPayment />
       <ParticipantEventRegistrationWhatsapp />
       <ParticipantEventRegistrationSubmission />

@@ -1,13 +1,13 @@
 import { EventType, ProviderType } from "./constants";
 
-export interface ResponseData<T> {
+export type ResponseData<T> = {
   status: number;
   message: string;
   error_code?: string;
   data?: T;
-}
+};
 
-export interface User {
+export type User = {
   id: string;
   uid: string;
   name: string;
@@ -29,16 +29,16 @@ export interface User {
   event_registrant?: EventRegistrant;
 
   event_registrations_count?: number;
-}
+};
 
-export interface Avatar {
+export type Avatar = {
   id: string;
   name: string;
   created_at: string;
   updated_at: string;
-}
+};
 
-// export interface Provider {
+// export type Provider {
 //   id: string;
 //   provider_id: string;
 //   provider: string;
@@ -48,7 +48,7 @@ export interface Avatar {
 //   user: User;
 // }
 
-export interface UserProfile {
+export type UserProfile = {
   id: string;
   id_number?: string;
   id_card_image?: string;
@@ -62,9 +62,9 @@ export interface UserProfile {
   updated_at: string;
 
   user: User;
-}
+};
 
-export interface Festival {
+export type Festival = {
   id: string;
   period: string;
   name: string;
@@ -85,9 +85,9 @@ export interface Festival {
 
   events_count?: number;
   faqs_count?: number;
-}
+};
 
-export interface Event<Type> {
+export type Event<Type> = {
   id: string;
   name: string;
   codename: string;
@@ -111,14 +111,15 @@ export interface Event<Type> {
   contact_persons?: ContactPerson<Event<Seminar | Competition>>[];
 
   event_registrations_count: number;
-}
+};
 
-export interface EventRegistration {
+export type EventRegistration = {
   id: string;
   uid: string;
   name?: string;
   confirmed: number;
   participation_method?: number;
+  submission?: string;
   event_id: string;
   created_at: string;
   updated_at: string;
@@ -129,9 +130,9 @@ export interface EventRegistration {
   event_registrant?: EventRegistrant;
 
   users_count: number;
-}
+};
 
-export interface EventRegistrationPayment {
+export type EventRegistrationPayment = {
   id: string;
   status: number;
   proof?: string;
@@ -143,9 +144,9 @@ export interface EventRegistrationPayment {
 
   user: User;
   event_registration: EventRegistration;
-}
+};
 
-export interface Seminar {
+export type Seminar = {
   id: string;
   theme?: string;
   offline_price?: number;
@@ -155,9 +156,9 @@ export interface Seminar {
 
   event: Event<Seminar>;
   seminar_casts: SeminarCast[];
-}
+};
 
-export interface SeminarCast {
+export type SeminarCast = {
   id: string;
   name: string;
   title?: string;
@@ -169,9 +170,9 @@ export interface SeminarCast {
   updated_at: string;
 
   seminar: Seminar;
-}
+};
 
-export interface Competition {
+export type Competition = {
   id: string;
   max_participants: number;
   submission: string;
@@ -179,9 +180,9 @@ export interface Competition {
   updated_at: string;
 
   event: Event<Competition>;
-}
+};
 
-export interface Faq {
+export type Faq = {
   id: string;
   question: string;
   answer: string;
@@ -192,9 +193,9 @@ export interface Faq {
 
   user?: User;
   festival?: Festival;
-}
+};
 
-export interface Milestone<T> {
+export type Milestone<T> = {
   id: string;
   name: string;
   date: string;
@@ -205,9 +206,9 @@ export interface Milestone<T> {
   updated_at: string;
 
   milestoneable: T;
-}
+};
 
-export interface ContactPerson<T> {
+export type ContactPerson<T> = {
   id: string;
   name: string;
   whatsapp?: string;
@@ -219,12 +220,12 @@ export interface ContactPerson<T> {
   updated_at: string;
 
   contact_personable: T;
-}
+};
 
-export interface EventRegistrant {
+export type EventRegistrant = {
   event_registration_id: string;
   user_id: string;
   role: number;
   created_at: string;
   updated_at: string;
-}
+};
