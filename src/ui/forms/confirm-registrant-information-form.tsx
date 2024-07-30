@@ -10,25 +10,32 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "../atoms/alert-dialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CheckCircle } from "@phosphor-icons/react";
 import { confirmRegistrantInformation } from "@/lib/actions/confirm-registrant-information";
+import { useFormState } from "react-dom";
 
 interface Props {
-  codename: string;
+  uid: string;
 }
 
-export default function ConfirmRegistrantInformationForm({ codename }: Props) {
+export default function ConfirmRegistrantInformationForm({ uid }: Props) {
   const [isDialogOpened, setIsDialogOpened] = useState<boolean>(false);
 
-  const confirmRegistrantInformationWithCodename =
-    confirmRegistrantInformation.bind(null, codename);
+  const [state, formAction] = useFormState(confirmRegistrantInformation, null);
+
+  useEffect(() => {
+    if (state?.message?.type === "success") {
+      setIsDialogOpened(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
 
   return (
     <>
       <FormButton
         onClick={() => setIsDialogOpened(true)}
-        className="w-full space-x-1 md:w-auto"
+        className="w-full space-x-1 md:w-fit"
       >
         <CheckCircle weight="duotone" className="text-[1.5em]" />
         <span>Konfirmasi</span>
@@ -47,7 +54,9 @@ export default function ConfirmRegistrantInformationForm({ codename }: Props) {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Tidak</AlertDialogCancel>
-            <form action={confirmRegistrantInformationWithCodename}>
+            <form action={formAction}>
+              <input id="uid" name="uid" value={uid} hidden />
+
               <FormButton type="submit">Lanjut</FormButton>
             </form>
           </AlertDialogFooter>

@@ -17,6 +17,7 @@ const formButtonVariants = cva(
         danger: tw`bg-red-500/20 text-red-500 hover:bg-red-500/25`,
         ghost: tw`text-primary hover:bg-primary/25`,
         outline: tw`border border-primary/30 text-primary hover:bg-primary/25`,
+        unstyled: tw``,
       },
       size: {
         sm: tw`h-7 px-3 text-sm`,

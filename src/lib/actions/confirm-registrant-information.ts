@@ -1,13 +1,26 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { userDeleteRegistrationByUid } from "../fetch/v2";
-import { redirect } from "next/navigation";
+import { userUpdateRegistrationByUid } from "../fetch/v2";
+import { FormState } from "../definitions/web";
 
-export async function confirmRegistrantInformation(uid: string) {
-  await userDeleteRegistrationByUid(uid);
+export async function confirmRegistrantInformation(
+  prevState: any,
+  formData: FormData,
+): Promise<FormState | undefined> {
+  const uid: string = formData.get("uid") as string;
 
-  revalidatePath("/u/home");
-  revalidatePath("/u/events");
-  return redirect(`/u/home`);
+  await userUpdateRegistrationByUid(uid, {
+    confirmed: 1,
+  });
+
+  revalidatePath("/(participant)/u/home", "page");
+  revalidatePath("/(participant)/u/events/[codename]/registration", "page");
+
+  return {
+    message: {
+      text: "Informasi tim berhasil dikonfirmasi",
+      type: "success",
+    },
+  };
 }

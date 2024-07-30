@@ -1,103 +1,74 @@
 "use client";
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/ui/atoms/form";
+import { updateTeamName } from "@/lib/actions/update-team-name";
 import { FormButton } from "@/ui/atoms/form-button";
 import { Input } from "@/ui/atoms/input";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Check } from "@phosphor-icons/react";
 import { X } from "@phosphor-icons/react/dist/ssr";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
-const teamFormSchema = z.object({
-  teamName: z.string(),
-});
-
-const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
+import { useEffect, useRef } from "react";
+import { useFormState } from "react-dom";
+import FormMessage from "../atoms/form-message";
+import FormItem from "../atoms/form-item";
 
 interface Props {
   onFormOpen?: (isOpened: boolean) => void;
+  registrationName: string;
+  registrationUid: string;
 }
 
-export default function EditTeamNameFormForm({ onFormOpen }: Props) {
-  const [isEditingTeamNameLoading, setIsEditingTeamNameLoading] =
-    useState<boolean>(false);
+export default function EditTeamNameFormForm({
+  onFormOpen,
+  registrationName,
+  registrationUid,
+}: Props) {
+  const ref = useRef<HTMLFormElement>(null);
+  const [state, formAction] = useFormState(updateTeamName, null);
 
-  const teamForm = useForm<z.infer<typeof teamFormSchema>>({
-    resolver: zodResolver(teamFormSchema),
-    defaultValues: {
-      teamName: "",
-    },
-  });
-
-  function onTeamFormSubmit(values: z.infer<typeof teamFormSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    setIsEditingTeamNameLoading(true);
-    wait().then(() => {
-      onFormOpen && onFormOpen(false);
-      setIsEditingTeamNameLoading(false);
-    });
+  if (state?.message) {
+    ref.current?.reset();
   }
 
   function handleCancelEditTeamNameClick() {
     onFormOpen && onFormOpen(false);
-    teamForm.reset();
   }
 
-  return (
-    <Form {...teamForm}>
-      <form
-        onSubmit={teamForm.handleSubmit(onTeamFormSubmit)}
-        className="mt-2 flex"
-      >
-        <div className="grow">
-          <FormField
-            control={teamForm.control}
-            name="teamName"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="Nama tim"
-                    disabled={isEditingTeamNameLoading}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+  useEffect(() => {
+    if (state?.message?.type === "success") {
+      onFormOpen && onFormOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
 
+  return (
+    <form ref={ref} action={formAction} className="mt-2 flex flex-col gap-y-4">
+      <input id="uid" name="uid" value={registrationUid} hidden />
+
+      <FormItem className="grow">
+        <Input
+          type="text"
+          id="registrationName"
+          name="registrationName"
+          placeholder="Nama tim"
+          defaultValue={registrationName}
+        />
+        <FormMessage messages={state?.errors?.registrationName} />
+      </FormItem>
+
+      <div className="flex justify-end">
         <div className="flex">
-          <FormButton
-            loading={isEditingTeamNameLoading}
-            size="icon"
-            type="submit"
-            className="h-full px-2.5 md:px-4"
-          >
+          <FormButton type="submit" className="px-2.5 py-1.5 md:px-4">
             <Check weight="bold" className="text-[1.5em]" />
           </FormButton>
           <FormButton
-            onClick={handleCancelEditTeamNameClick}
-            disabled={isEditingTeamNameLoading}
-            size="icon"
             variant="outline"
-            className="h-full px-2.5 md:px-4"
+            onClick={handleCancelEditTeamNameClick}
+            noLoading
+            className="border border-primary/20 px-2.5 py-1.5 md:px-4"
           >
             <X weight="bold" className="text-[1.5em]" />
           </FormButton>
         </div>
-      </form>
-    </Form>
+      </div>
+    </form>
   );
 }

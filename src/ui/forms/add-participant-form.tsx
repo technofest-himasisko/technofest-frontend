@@ -8,8 +8,12 @@ import { Check, X } from "@phosphor-icons/react";
 import { Label } from "../atoms/label";
 import { useFormState } from "react-dom";
 import { FormState } from "@/lib/definitions/web";
+import FormItem from "../atoms/form-item";
+import FormMessage from "../atoms/form-message";
+import { useEffect, useRef } from "react";
 
 interface Props {
+  registrationUid: string;
   onFormOpen?: (isOpened: boolean) => void;
 }
 
@@ -18,109 +22,54 @@ const initialState: FormState = {
   errors: undefined,
 };
 
-export default function AddParticipantForm({ onFormOpen }: Props) {
-  // const [isAddingParticipantLoading, setIsAddingParticipantLoading] =
-  //   useState<boolean>(false);
-
-  // const participantForm = useForm<z.infer<typeof participantFormSchema>>({
-  //   resolver: zodResolver(participantFormSchema),
-  //   defaultValues: {
-  //     participantId: "",
-  //   },
-  // });
-
-  // function onParticipantFormSubmit(
-  //   values: z.infer<typeof participantFormSchema>,
-  // ) {
-  //   // Do something with the form values.
-  //   // ✅ This will be type-safe and validated.
-  //   setIsAddingParticipantLoading(true);
-  //   wait().then(() => {
-  //     participantForm.reset();
-  //     onFormOpen && onFormOpen(false);
-  //     setIsAddingParticipantLoading(false);
-  //   });
-  // }
+export default function AddParticipantForm({
+  onFormOpen,
+  registrationUid,
+}: Props) {
+  const ref = useRef<HTMLFormElement>(null);
 
   function handleCancelAddParticipantClick() {
     onFormOpen && onFormOpen(false);
-    // participantForm.reset();
   }
 
   const [state, formAction] = useFormState(addParticipant, initialState);
 
+  if (state?.message) {
+    ref.current?.reset();
+  }
+
+  useEffect(() => {
+    if (state?.message?.type === "success") {
+      onFormOpen && onFormOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
+
   return (
-    // <Form {...participantForm}>
-    //   <form
-    //     onSubmit={participantForm.handleSubmit(onParticipantFormSubmit)}
-    //     className="mt-2 flex w-full flex-col gap-y-4"
-    //   >
-    //     <div className="grow">
-    //       <FormField
-    //         control={participantForm.control}
-    //         name="participantId"
-    //         render={({ field }) => (
-    //           <FormItem>
-    //             <FormLabel>Masukkan ID peserta</FormLabel>
-    //             <div className="flex">
-    //               <FormControl>
-    //                 <Input
-    //                   type="text"
-    //                   placeholder="xxxxxxxx"
-    //                   leftSection="P"
-    //                   {...field}
-    //                 />
-    //               </FormControl>
-    //             </div>
-    //             <FormMessage />
-    //           </FormItem>
-    //         )}
-    //       />
-    //     </div>
-    //     <Alert variant="danger">
-    //       <AlertDescription>Peserta tidak ditemukan.</AlertDescription>
-    //     </Alert>
-    //     <div className="flex justify-end">
-    //       <div className="flex">
-    //         <FormButton
-    //           type="submit"
-    //           className="px-2.5 py-1.5 md:px-4"
-    //           loading={isAddingParticipantLoading}
-    //         >
-    //           <Check weight="bold" className="text-[1.5em]" />
-    //         </FormButton>
-    //         <FormButton
-    //           variant="outline"
-    //           onClick={handleCancelAddParticipantClick}
-    //           disabled={isAddingParticipantLoading}
-    //           className="border border-primary/20 px-2.5 py-1.5 md:px-4"
-    //         >
-    //           <X weight="bold" className="text-[1.5em]" />
-    //         </FormButton>
-    //       </div>
-    //     </div>
-    //   </form>
-    // </Form>
+    <form
+      ref={ref}
+      action={formAction}
+      className="mt-2 flex w-full flex-col gap-y-4"
+    >
+      <input id="uid" name="uid" value={registrationUid} hidden />
 
-    <form action={formAction} className="mt-2 flex w-full flex-col gap-y-4">
-      {/* <FormLabel>Masukkan ID peserta</FormLabel> */}
-      <Label htmlFor="participantId">Masukkan ID peserta</Label>
-      <Input
-        type="text"
-        placeholder="xxxxxxxx"
-        leftSection="P"
-        id="participantId"
-        name="participantId"
-      />
-      {state.errors?.participantId && (
-        <p className="-mt-2 text-sm font-medium text-red-400">
-          {state.errors?.participantId}
-        </p>
+      <FormItem>
+        <Label htmlFor="participantUid">Masukkan ID peserta</Label>
+        <Input
+          type="text"
+          placeholder="xxxxxxxx"
+          leftSection="U"
+          id="participantUid"
+          name="participantUid"
+        />
+        <FormMessage messages={state?.errors?.participantUid} />
+      </FormItem>
+
+      {state?.message && (
+        <Alert variant={state?.message?.type || "info"}>
+          <AlertDescription>{state?.message?.text}</AlertDescription>
+        </Alert>
       )}
-
-      <Alert variant="danger">
-        <AlertDescription>Peserta tidak ditemukan.</AlertDescription>
-      </Alert>
 
       <div className="flex justify-end">
         <div className="flex">
@@ -130,7 +79,6 @@ export default function AddParticipantForm({ onFormOpen }: Props) {
           <FormButton
             variant="outline"
             onClick={handleCancelAddParticipantClick}
-            // disabled={isAddingParticipantLoading}
             noLoading
             className="border border-primary/20 px-2.5 py-1.5 md:px-4"
           >

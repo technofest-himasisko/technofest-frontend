@@ -9,5 +9,6 @@ export async function leaveRegistration(uid: string) {
 
   revalidatePath("/u/home");
   revalidatePath("/u/events");
+
   return redirect(`/u/home`);
 }

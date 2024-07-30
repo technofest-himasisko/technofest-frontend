@@ -31,7 +31,14 @@ interface Props extends VariantProps<typeof eventTicketVariant> {
     uid: string;
     status: {
       label: string;
-      color: "green" | "blue" | "yellow" | "red";
+      color:
+        | "green"
+        | "blue"
+        | "yellow"
+        | "red"
+        | "fuchsia"
+        | "cyan"
+        | "indigo";
     };
     userImages: AvatarMedia[];
   };

@@ -71,16 +71,16 @@ export function registrationStatusToLabel(
 
 export function registrationStatusToColor(
   number: number | string,
-): "green" | "blue" | "red" | undefined {
+): "green" | "cyan" | "indigo" | "fuchsia" | "red" | undefined {
   switch (Number(number)) {
     case RegistrationStatus.PREPARING_TEAM:
-      return "blue";
+      return "indigo";
     case RegistrationStatus.PENDING_PAYMENT:
-      return "blue";
+      return "cyan";
     case RegistrationStatus.PAYMENT_REJECTED:
       return "red";
     case RegistrationStatus.PENDING_SUBMISSION:
-      return "blue";
+      return "fuchsia";
     case RegistrationStatus.FINISHED:
       return "green";
   }

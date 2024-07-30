@@ -19,7 +19,8 @@ import {
 import Link from "next/link";
 import { ArrowSquareOut } from "@phosphor-icons/react";
 import FormDescription from "../atoms/form-description";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useSession } from "next-auth/react";
 
 interface Props {
   user?: User;
@@ -28,10 +29,18 @@ interface Props {
 export default function EditProfileForm({ user }: Props) {
   const ref = useRef<HTMLFormElement>(null);
   const [state, formAction] = useFormState(updateProfile, null);
+  const { update } = useSession();
 
   if (state?.message) {
     ref.current?.reset();
   }
+
+  useEffect(() => {
+    if (state?.message?.type === "success") {
+      update({});
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
 
   return (
     <form ref={ref} action={formAction} className="flex flex-col gap-y-6">

@@ -82,10 +82,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return true;
     },
     async jwt({ token, trigger }) {
-      if (trigger === "signIn") {
+      if (trigger === "signIn" || trigger === "update") {
         const response: ResponseData<User> = await userGetCurrent([
           "userProfile",
         ]);
+
+        console.log(response.data);
 
         token.user = response.data;
       }

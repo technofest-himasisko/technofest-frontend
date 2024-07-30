@@ -77,3 +77,8 @@ export enum RegistrationStatus {
   // event_registration.submission == true
   FINISHED,
 }
+
+export enum TeamStatus {
+  UNCONFIRMED,
+  CONFIRMED,
+}

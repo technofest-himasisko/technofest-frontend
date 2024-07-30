@@ -40,7 +40,7 @@ export default function LeaveRegistrationForm({ uid }: Props) {
         className="hidden w-full items-center justify-center space-x-1 bg-red-500/20 px-2.5 py-2 text-center font-semibold text-red-500 hover:bg-red-500/30 md:flex md:w-auto md:px-4"
       >
         <TrashSimple weight="duotone" className="text-[1.5em]" />
-        <span>Hapus Pendaftaran</span>
+        <span>Keluar dari Pendaftaran</span>
       </button>
 
       <DropdownMenu>
@@ -59,7 +59,7 @@ export default function LeaveRegistrationForm({ uid }: Props) {
           >
             <button onClick={() => setIsDialogOpened(true)}>
               <TrashSimple weight="duotone" className="text-[1.5em]" />
-              <span>Hapus Pendaftaran</span>
+              <span>Keluar dari Pendaftaran</span>
             </button>
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -68,19 +68,15 @@ export default function LeaveRegistrationForm({ uid }: Props) {
       <AlertDialog open={isDialogOpened} onOpenChange={setIsDialogOpened}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Yakin ingin menghapus?</AlertDialogTitle>
+            <AlertDialogTitle>Yakin ingin keluar?</AlertDialogTitle>
             <AlertDialogDescription>
-              <p>Ingin keluar dari tim</p>
+              <p>Ingin keluar dari pendaftaran</p>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Tidak</AlertDialogCancel>
             <form action={leaveRegistrationWithUid}>
-              <FormButton
-                variant="danger"
-                disabled={inputValue !== uid}
-                type="submit"
-              >
+              <FormButton variant="danger" type="submit">
                 Keluar
               </FormButton>
             </form>

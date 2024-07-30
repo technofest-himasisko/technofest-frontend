@@ -11,5 +11,6 @@ export async function registerCompetitionIndividualEvent(formData: FormData) {
 
   revalidatePath("/u/home");
   revalidatePath("/u/events");
+
   return redirect(`/u/events/${codename}/registration`);
 }

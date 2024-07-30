@@ -10,7 +10,7 @@ import { useFormStatus } from "react-dom";
 const Select = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
->(({ ...props }) => {
+>(({ ...props }, ref) => {
   const { pending } = useFormStatus();
 
   return <SelectPrimitive.Root disabled={pending} {...props} />;

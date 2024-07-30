@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "../atoms/avatar";
 import {
@@ -20,20 +22,22 @@ import {
   getSession,
   toParticipantId,
 } from "@/lib/utils/common";
+import { useSession } from "next-auth/react";
 
-export default async function UserMenu() {
-  const session = await getSession();
+export default function UserMenu() {
+  // const session = await getSession();
+  const { data: session } = useSession();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none">
         <Avatar size="sm">
           <AvatarImage
-            src={session.user?.avatar || ""}
+            src={session?.user?.avatar || ""}
             alt={"Profile avatar"}
           />
           <AvatarFallback>
-            {getAvatarCallbackLetter(session.user?.name || "")}
+            {getAvatarCallbackLetter(session?.user?.name || "")}
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
@@ -42,9 +46,9 @@ export default async function UserMenu() {
         className="min-w-56"
       >
         <DropdownMenuLabel>
-          <p>{session.user?.name}</p>
+          <p>{session?.user?.name}</p>
           <p className="text-xs font-normal text-slate-100/40">
-            ID: {toParticipantId(session.user?.uid || "")}
+            ID: {toParticipantId(session?.user?.uid || "")}
           </p>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />

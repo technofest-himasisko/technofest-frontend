@@ -95,6 +95,8 @@ export const userGetCurrent = async (
       headers: {
         Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
       },
+      next: { revalidate: 0 },
+      cache: "no-store",
     },
     { rel: relations },
   );
@@ -258,6 +260,7 @@ export const userAttachToRegistrationByUid = async (
 ): Promise<ResponseData<undefined>> => {
   const response = await axiosClient.post(
     `/user/registrations/${registrationUid}/attach`,
+    {},
     {
       headers: {
         Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
@@ -289,6 +292,7 @@ export const userAttachOtherUserToRegistrationByUid = async (
 ): Promise<ResponseData<undefined>> => {
   const response = await axiosClient.post(
     `/user/registrations/${registrationUid}/users/${userUid}/attach`,
+    {},
     {
       headers: {
         Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
