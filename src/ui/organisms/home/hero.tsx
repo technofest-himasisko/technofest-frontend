@@ -41,10 +41,11 @@ export default function HomeHero() {
           <p
             className={cn(
               goodTimes.className,
-              "mt-4 max-w-[22rem] bg-gradient-to-br from-slate-200 to-slate-400 bg-clip-text text-center text-sm text-transparent md:max-w-full md:text-xl",
+              "mt-4 max-w-[22rem] bg-gradient-to-br from-slate-200 to-slate-400 bg-clip-text text-center text-sm text-transparent md:max-w-2xl md:text-xl",
             )}
           >
-            Internet of Things (IoT): Connecting Our World
+            Art-Tech Fusion: Redefining Boundaries in the Age of Digital
+            Creativity
           </p>
         </Reveal>
         <Reveal noDelay width="100%">
