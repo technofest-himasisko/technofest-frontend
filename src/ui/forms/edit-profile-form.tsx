@@ -156,7 +156,9 @@ export default function EditProfileForm({ user }: Props) {
 
       <FormItem>
         <Label htmlFor="whatsapp">WhatsApp</Label>
-        <FormDescription>Contoh: 6282144225511</FormDescription>
+        <FormDescription>
+          Dimulai dari 628, Contoh: 628217726336
+        </FormDescription>
         <Input
           id="whatsapp"
           name="whatsapp"
