@@ -1,4 +1,4 @@
-import { EventRegistrationRole, TeamStatus } from "@/lib/definitions/constants";
+import { TeamStatus } from "@/lib/definitions/constants";
 import { User } from "@/lib/definitions/technofest";
 import ConfirmRegistrantInformationForm from "@/ui/forms/confirm-registrant-information-form";
 import RegistrantRegistrants from "@/ui/molecules/registrant-registrants";

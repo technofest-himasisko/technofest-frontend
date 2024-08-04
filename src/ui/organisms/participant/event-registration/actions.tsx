@@ -15,7 +15,7 @@ export default async function ParticipantEventRegistrationActions({
 }: Props) {
   return (
     <section className="container flex flex-row items-center justify-between gap-y-4">
-      <IdDisplay ID={toRegistrationId(uid)} />
+      <IdDisplay ID={toRegistrationId(uid)} type="registration" />
 
       {participantRole === EventRegistrationRole.MEMBER ? (
         <LeaveRegistrationForm uid={uid} />

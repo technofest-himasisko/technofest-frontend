@@ -4,7 +4,6 @@ import { Card } from "@/ui/atoms/card";
 import { GearSix, Path, Ticket } from "@phosphor-icons/react/dist/ssr";
 import { Session } from "next-auth";
 import Link from "next/link";
-import { Suspense } from "react";
 
 export default async function ParticipantHomeMenu() {
   const session = (await auth()) as Session;

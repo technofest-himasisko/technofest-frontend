@@ -9,7 +9,6 @@ import { goodTimes } from "@/ui/fonts";
 import IdDisplay from "@/ui/molecules/id-display";
 import { Session } from "next-auth";
 import Image from "next/image";
-import { Suspense } from "react";
 
 export default async function ParticipantHomeHeader() {
   const session = (await auth()) as Session;
@@ -56,7 +55,10 @@ export default async function ParticipantHomeHeader() {
           {session.user?.email}
         </p>
 
-        <IdDisplay ID={toParticipantId(session.user?.uid!)} />
+        <IdDisplay
+          ID={toParticipantId(session.user?.uid!)}
+          type="participant"
+        />
       </div>
     </section>
   );

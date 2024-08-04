@@ -2,7 +2,6 @@ import { ProviderType } from "@/lib/definitions/constants";
 import { getSession } from "@/lib/utils/common";
 import { Card } from "@/ui/atoms/card";
 import EditPasswordForm from "@/ui/forms/edit-password-form";
-import { Suspense } from "react";
 
 export default async function ParticipantSettingPassword() {
   const session = await getSession();

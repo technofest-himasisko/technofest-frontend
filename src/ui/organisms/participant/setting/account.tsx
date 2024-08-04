@@ -1,7 +1,6 @@
 import { getSession } from "@/lib/utils/common";
 import { Card } from "@/ui/atoms/card";
 import DeleteAccountForm from "@/ui/forms/delete-account-form";
-import { Suspense } from "react";
 
 export default async function ParticipantSettingAccount() {
   const session = await getSession();

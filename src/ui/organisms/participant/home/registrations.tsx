@@ -13,7 +13,6 @@ import {
 import { Card } from "@/ui/atoms/card";
 import EventTicket from "@/ui/molecules/event-ticket";
 import { CardsThree, Pi } from "@phosphor-icons/react/dist/ssr";
-import { Suspense } from "react";
 
 export default async function ParticipantHomeRegistrations() {
   const registrations = await userGetAllRegistrations();
