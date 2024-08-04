@@ -92,17 +92,13 @@ export default async function Page({ params }: Props) {
           />
         )}
 
-      {isCurrentUserNotMember && (
-        <ParticipantEventRegistrationWhatsapp
-          isPaymentAccepted={
-            registration.data?.event_registration_payment?.status ===
-            PaymentStatus.ACCEPTED
-          }
-          groupLink={
-            registration.data?.event?.group_link || "https://google.com"
-          }
-        />
-      )}
+      <ParticipantEventRegistrationWhatsapp
+        isPaymentAccepted={
+          registration.data?.event_registration_payment?.status ===
+          PaymentStatus.ACCEPTED
+        }
+        groupLink={registration.data?.event?.group_link || "https://google.com"}
+      />
 
       {isCurrentUserNotMember && (
         <ParticipantEventRegistrationSubmission
