@@ -1,11 +1,11 @@
-import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from "../atoms/avatar";
-import { Button } from "../atoms/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../atoms/tooltip";
-import { Badge } from "../atoms/badge";
-import { cn, tw } from "@/lib/utils/common";
-import { cva, type VariantProps } from "class-variance-authority";
 import { AvatarMedia } from "@/lib/definitions/web";
+import { cn, tw } from "@/lib/utils/common";
+import { Avatar, AvatarFallback, AvatarImage } from "@/ui/atoms/avatar";
+import { Badge } from "@/ui/atoms/badge";
+import { Button } from "@/ui/atoms/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/ui/atoms/tooltip";
+import { cva, type VariantProps } from "class-variance-authority";
+import Link from "next/link";
 
 const eventTicketVariant = cva(
   tw`flex items-center justify-between bg-gradient-to-r from-50% to-primary/5 px-4 py-2`,

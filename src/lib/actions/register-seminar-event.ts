@@ -1,11 +1,11 @@
 "use server";
 
-import { z } from "zod";
-import { FormState } from "../definitions/web";
-import { userCreateRegistrationByEventCodename } from "../fetch/v2";
+import { ParticipationMethod } from "@/lib/definitions/constants";
+import { FormState } from "@/lib/definitions/web";
+import { userCreateRegistrationByEventCodename } from "@/lib/fetch/v2";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { ParticipationMethod } from "../definitions/constants";
+import { z } from "zod";
 
 const schema = z.object({
   participantMethod: z.enum(

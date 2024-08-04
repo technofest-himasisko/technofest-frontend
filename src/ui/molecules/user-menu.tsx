@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from "../atoms/avatar";
+import { logout } from "@/lib/actions/logout";
+import { getAvatarCallbackLetter, toParticipantId } from "@/lib/utils/common";
+import { Avatar, AvatarFallback, AvatarImage } from "@/ui/atoms/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,20 +10,15 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../atoms/dropdown-menu";
+} from "@/ui/atoms/dropdown-menu";
 import {
   Compass,
+  GearSix,
   SignOut,
   Ticket,
-  GearSix,
 } from "@phosphor-icons/react/dist/ssr";
-import { logout } from "@/lib/actions/logout";
-import {
-  getAvatarCallbackLetter,
-  getSession,
-  toParticipantId,
-} from "@/lib/utils/common";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 export default function UserMenu() {
   // const session = await getSession();

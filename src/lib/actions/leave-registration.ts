@@ -1,7 +1,7 @@
 "use server";
 
+import { userDetachFromRegistrationByUid } from "@/lib/fetch/v2";
 import { revalidatePath } from "next/cache";
-import { userDetachFromRegistrationByUid } from "../fetch/v2";
 import { redirect } from "next/navigation";
 
 export async function leaveRegistration(uid: string) {

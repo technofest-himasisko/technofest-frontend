@@ -1,10 +1,9 @@
 "use client";
 
-import * as React from "react";
-import * as DialogPrimitive from "@radix-ui/react-dialog";
-
 import { cn } from "@/lib/utils/common";
 import { X } from "@phosphor-icons/react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import * as React from "react";
 
 const Dialog = DialogPrimitive.Root;
 
@@ -109,14 +108,6 @@ const DialogDescription = React.forwardRef<
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 
 export {
-  Dialog,
-  DialogPortal,
-  DialogOverlay,
-  DialogClose,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
-  DialogDescription,
+  Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger
 };
+

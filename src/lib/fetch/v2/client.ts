@@ -1,5 +1,5 @@
-import QueryString from "qs";
 import Axios from "axios";
+import QueryString from "qs";
 
 export async function fetchAPI(
   path: string,

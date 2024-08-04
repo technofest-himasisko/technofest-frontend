@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { FormButton } from "../atoms/form-button";
-import { PencilSimple } from "@phosphor-icons/react";
-import EditTeamNameFormForm from "../forms/edit-team-name-form";
 import { TeamStatus } from "@/lib/definitions/constants";
+import { FormButton } from "@/ui/atoms/form-button";
+import EditTeamNameFormForm from "@/ui/forms/edit-team-name-form";
+import { PencilSimple } from "@phosphor-icons/react";
+import { useState } from "react";
 
 interface Props {
   registrationName: string;

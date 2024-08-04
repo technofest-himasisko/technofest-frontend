@@ -1,6 +1,5 @@
 import { Card } from "@/ui/atoms/card";
 import SectionHeader from "@/ui/molecules/section-header";
-import Footer from "@/ui/organisms/footer";
 import RegisterForm from "@/ui/organisms/register/form";
 import RegisterOauth from "@/ui/organisms/register/oauth";
 import Link from "next/link";

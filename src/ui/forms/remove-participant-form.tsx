@@ -1,8 +1,8 @@
 "use client";
 
-import { FormButton } from "../atoms/form-button";
-import { TrashSimple } from "@phosphor-icons/react";
 import { removeParticipant } from "@/lib/actions/remove-participant";
+import { FormButton } from "@/ui/atoms/form-button";
+import { TrashSimple } from "@phosphor-icons/react";
 
 interface Props {
   registrationUid: string;

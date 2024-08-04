@@ -1,14 +1,14 @@
 "use client";
 
 import { loginCredentials } from "@/lib/actions/login-credentials";
+import { Alert, AlertDescription } from "@/ui/atoms/alert";
 import { FormButton } from "@/ui/atoms/form-button";
+import FormItem from "@/ui/atoms/form-item";
+import FormMessage from "@/ui/atoms/form-message";
 import { Input } from "@/ui/atoms/input";
-import { useFormState } from "react-dom";
-import { Label } from "../atoms/label";
-import { Alert, AlertDescription } from "../atoms/alert";
-import FormItem from "../atoms/form-item";
-import FormMessage from "../atoms/form-message";
+import { Label } from "@/ui/atoms/label";
 import { useRef } from "react";
+import { useFormState } from "react-dom";
 
 export default function LoginCredentialsForm() {
   const ref = useRef<HTMLFormElement>(null);

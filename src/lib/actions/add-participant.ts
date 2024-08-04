@@ -1,10 +1,10 @@
 "use server";
 
-import { z } from "zod";
+import { ErrorCode } from "@/lib/definitions/constants";
 import { FormState } from "@/lib/definitions/web";
-import { userAttachOtherUserToRegistrationByUid } from "../fetch/v2";
-import { ErrorCode } from "../definitions/constants";
+import { userAttachOtherUserToRegistrationByUid } from "@/lib/fetch/v2";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 
 const schema = z.object({
   participantUid: z.string().min(1, "ID peserta wajib diisi"),

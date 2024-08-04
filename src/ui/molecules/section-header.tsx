@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils/common";
+import { goodTimes } from "@/ui/fonts";
 import { Circle } from "@phosphor-icons/react/dist/ssr";
-import { goodTimes } from "../fonts";
 
 interface Props {
   title: string;

@@ -1,15 +1,15 @@
 "use client";
 
+import { uploadPaymentProof } from "@/lib/actions/upload-payment-proof";
+import { Alert, AlertDescription } from "@/ui/atoms/alert";
 import { FormButton } from "@/ui/atoms/form-button";
+import FormItem from "@/ui/atoms/form-item";
+import FormMessage from "@/ui/atoms/form-message";
 import { Input } from "@/ui/atoms/input";
+import { Label } from "@/ui/atoms/label";
 import { UploadSimple } from "@phosphor-icons/react";
-import { Alert, AlertDescription } from "../atoms/alert";
-import { Label } from "../atoms/label";
-import FormMessage from "../atoms/form-message";
-import FormItem from "../atoms/form-item";
 import { useRef } from "react";
 import { useFormState } from "react-dom";
-import { uploadPaymentProof } from "@/lib/actions/upload-payment-proof";
 
 interface Props {
   paymentId: string;

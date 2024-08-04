@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { FormButton } from "../atoms/form-button";
 import { registerCompetitionIndividualEvent } from "@/lib/actions/register-competition-individual-event";
+import { FormButton } from "@/ui/atoms/form-button";
 
 interface Props {
   onFormOpen?: (isOpened: boolean) => void;

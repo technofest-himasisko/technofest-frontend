@@ -1,10 +1,10 @@
 "use server";
 
+import { signIn } from "@/lib/auth/auth";
+import { ErrorCode } from "@/lib/definitions/constants";
+import { FormState } from "@/lib/definitions/web";
+import { attempt } from "@/lib/fetch/v2";
 import { z } from "zod";
-import { attempt } from "../fetch/v2";
-import { signIn } from "../auth/auth";
-import { ErrorCode } from "../definitions/constants";
-import { FormState } from "../definitions/web";
 
 const schema = z.object({
   email: z.string().email("Email tidak valid"),

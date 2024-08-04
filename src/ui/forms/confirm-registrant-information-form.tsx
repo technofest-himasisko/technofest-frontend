@@ -1,6 +1,6 @@
 "use client";
 
-import { FormButton } from "../atoms/form-button";
+import { confirmRegistrantInformation } from "@/lib/actions/confirm-registrant-information";
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -9,10 +9,10 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "../atoms/alert-dialog";
-import { useEffect, useState } from "react";
+} from "@/ui/atoms/alert-dialog";
+import { FormButton } from "@/ui/atoms/form-button";
 import { CheckCircle } from "@phosphor-icons/react";
-import { confirmRegistrantInformation } from "@/lib/actions/confirm-registrant-information";
+import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 
 interface Props {

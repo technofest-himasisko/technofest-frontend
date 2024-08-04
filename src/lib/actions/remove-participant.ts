@@ -1,7 +1,7 @@
 "use server";
 
+import { userDetachOtherUserFromRegistrationByUid } from "@/lib/fetch/v2";
 import { revalidatePath } from "next/cache";
-import { userDetachOtherUserFromRegistrationByUid } from "../fetch/v2";
 
 export async function removeParticipant(formData: FormData) {
   const registrationUid: string = formData.get("registrationUid") as string;

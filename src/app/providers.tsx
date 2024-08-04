@@ -3,8 +3,8 @@
 import { Toaster } from "@/ui/atoms/toaster";
 import { TooltipProvider } from "@/ui/atoms/tooltip";
 import { SessionProvider } from "next-auth/react";
-import { RecoilRoot } from "recoil";
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
+import { RecoilRoot } from "recoil";
 
 interface Props {
   children: React.ReactNode;

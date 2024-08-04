@@ -1,14 +1,14 @@
 "use server";
 
-import { z } from "zod";
-import { FormState } from "../definitions/web";
+import { ErrorCode } from "@/lib/definitions/constants";
+import { FormState } from "@/lib/definitions/web";
 import {
   userAttachToRegistrationByUid,
   userCreateRegistrationByEventCodename,
-} from "../fetch/v2";
-import { ErrorCode } from "../definitions/constants";
-import { redirect } from "next/navigation";
+} from "@/lib/fetch/v2";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { z } from "zod";
 
 const registrationType = z.enum(["newRegistration", "joinRegistration"]);
 

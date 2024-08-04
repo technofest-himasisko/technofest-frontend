@@ -1,26 +1,26 @@
 "use client";
 
-import { FormButton } from "@/ui/atoms/form-button";
-import { Input } from "@/ui/atoms/input";
-import { Label } from "../atoms/label";
-import FormItem from "../atoms/form-item";
-import FormMessage from "../atoms/form-message";
-import { useFormState } from "react-dom";
-import { Alert, AlertDescription } from "../atoms/alert";
 import { updateProfile } from "@/lib/actions/update-profile";
 import { User } from "@/lib/definitions/technofest";
+import { Alert, AlertDescription } from "@/ui/atoms/alert";
+import { FormButton } from "@/ui/atoms/form-button";
+import FormDescription from "@/ui/atoms/form-description";
+import FormItem from "@/ui/atoms/form-item";
+import FormMessage from "@/ui/atoms/form-message";
+import { Input } from "@/ui/atoms/input";
+import { Label } from "@/ui/atoms/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../atoms/select";
-import Link from "next/link";
+} from "@/ui/atoms/select";
 import { ArrowSquareOut } from "@phosphor-icons/react";
-import FormDescription from "../atoms/form-description";
-import { useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { useFormState } from "react-dom";
 
 interface Props {
   user?: User;

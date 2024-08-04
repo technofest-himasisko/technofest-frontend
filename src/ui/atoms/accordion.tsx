@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import * as React from "react";
 
 import { cn } from "@/lib/utils/common";
 import { CaretDown } from "@phosphor-icons/react";
@@ -58,4 +58,4 @@ const AccordionContent = React.forwardRef<
 
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger };

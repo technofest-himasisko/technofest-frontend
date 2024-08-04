@@ -2,13 +2,13 @@
 
 import { updateTeamName } from "@/lib/actions/update-team-name";
 import { FormButton } from "@/ui/atoms/form-button";
+import FormItem from "@/ui/atoms/form-item";
+import FormMessage from "@/ui/atoms/form-message";
 import { Input } from "@/ui/atoms/input";
 import { Check } from "@phosphor-icons/react";
 import { X } from "@phosphor-icons/react/dist/ssr";
 import { useEffect, useRef } from "react";
 import { useFormState } from "react-dom";
-import FormMessage from "../atoms/form-message";
-import FormItem from "../atoms/form-item";
 
 interface Props {
   onFormOpen?: (isOpened: boolean) => void;

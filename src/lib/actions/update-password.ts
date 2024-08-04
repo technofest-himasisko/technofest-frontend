@@ -1,10 +1,10 @@
 "use server";
 
-import { z } from "zod";
-import { userUpdatePassword } from "../fetch/v2";
-import { ErrorCode } from "../definitions/constants";
+import { ErrorCode } from "@/lib/definitions/constants";
+import { FormState } from "@/lib/definitions/web";
+import { userUpdatePassword } from "@/lib/fetch/v2";
 import { revalidatePath } from "next/cache";
-import { FormState } from "../definitions/web";
+import { z } from "zod";
 
 const schema = z
   .object({

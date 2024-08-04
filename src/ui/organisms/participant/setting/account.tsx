@@ -8,12 +8,10 @@ export default async function ParticipantSettingAccount() {
 
   return (
     <section className="container">
-      <Suspense fallback={<p className="text-xl text-white">Loading...</p>}>
-        <Card className="mt-4">
-          <p className="mb-8 text-2xl font-semibold">Akun</p>
-          <DeleteAccountForm email={session.user?.email!} />
-        </Card>
-      </Suspense>
+      <Card className="mt-4">
+        <p className="mb-8 text-2xl font-semibold">Akun</p>
+        <DeleteAccountForm email={session.user?.email!} />
+      </Card>
     </section>
   );
 }

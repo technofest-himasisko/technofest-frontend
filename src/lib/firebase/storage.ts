@@ -1,6 +1,5 @@
-import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
-
 import { storage } from "@/lib/firebase/client";
+import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
 
 export async function uploadFile(
   file: Blob | Uint8Array | ArrayBuffer,

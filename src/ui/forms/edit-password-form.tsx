@@ -2,12 +2,12 @@
 
 import { Alert, AlertDescription } from "@/ui/atoms/alert";
 
-import { FormButton } from "@/ui/atoms/form-button";
-import { Input } from "@/ui/atoms/input";
-import FormItem from "../atoms/form-item";
-import { Label } from "../atoms/label";
-import FormMessage from "../atoms/form-message";
 import { updatePassword } from "@/lib/actions/update-password";
+import { FormButton } from "@/ui/atoms/form-button";
+import FormItem from "@/ui/atoms/form-item";
+import FormMessage from "@/ui/atoms/form-message";
+import { Input } from "@/ui/atoms/input";
+import { Label } from "@/ui/atoms/label";
 import { useRef } from "react";
 import { useFormState } from "react-dom";
 

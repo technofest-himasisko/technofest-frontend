@@ -2,10 +2,10 @@
 
 import config from "@/config";
 import { cn, tw } from "@/lib/utils/common";
+import { Button } from "@/ui/atoms/button";
+import { CaretDown, FingerprintSimple } from "@phosphor-icons/react";
 import { Session } from "next-auth";
 import Link from "next/link";
-import { Button } from "../atoms/button";
-import { CaretDown, FingerprintSimple } from "@phosphor-icons/react";
 import { useState } from "react";
 
 const navigationItemClassName = tw`transition-color flex h-10 flex-row items-center font-semibold uppercase duration-200 hover:text-primary`;

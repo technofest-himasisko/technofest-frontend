@@ -1,8 +1,8 @@
 "use server";
 
+import { FormState } from "@/lib/definitions/web";
+import { userUpdateRegistrationByUid } from "@/lib/fetch/v2";
 import { revalidatePath } from "next/cache";
-import { userUpdateRegistrationByUid } from "../fetch/v2";
-import { FormState } from "../definitions/web";
 
 export async function confirmRegistrantInformation(
   prevState: any,

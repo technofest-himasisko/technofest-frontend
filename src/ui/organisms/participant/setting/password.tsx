@@ -13,12 +13,10 @@ export default async function ParticipantSettingPassword() {
 
   return (
     <section className="container">
-      <Suspense fallback={<p className="text-xl text-white">Loading...</p>}>
-        <Card className="mt-4">
-          <p className="mb-8 text-2xl font-semibold">Ubah Password</p>
-          <EditPasswordForm />
-        </Card>
-      </Suspense>
+      <Card className="mt-4">
+        <p className="mb-8 text-2xl font-semibold">Ubah Password</p>
+        <EditPasswordForm />
+      </Card>
     </section>
   );
 }

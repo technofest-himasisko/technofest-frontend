@@ -1,6 +1,6 @@
 "use client";
 
-import { FormButton } from "../atoms/form-button";
+import { leaveRegistration } from "@/lib/actions/leave-registration";
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -9,16 +9,16 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "../atoms/alert-dialog";
-import { useState } from "react";
+} from "@/ui/atoms/alert-dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../atoms/dropdown-menu";
+} from "@/ui/atoms/dropdown-menu";
+import { FormButton } from "@/ui/atoms/form-button";
 import { DotsThreeOutline, TrashSimple } from "@phosphor-icons/react";
-import { leaveRegistration } from "@/lib/actions/leave-registration";
+import { useState } from "react";
 
 interface Props {
   uid: string;

@@ -1,15 +1,15 @@
 "use client";
 
-import { DialogFooter } from "../atoms/dialog";
-import React, { useEffect, useRef, useState } from "react";
-import { FormButton } from "../atoms/form-button";
-import { Input } from "../atoms/input";
-import { CheckSquare, Square } from "@phosphor-icons/react";
-import { useFormState } from "react-dom";
 import { registerCompetitionTeamEvent } from "@/lib/actions/register-competition-team-event";
-import FormMessage from "../atoms/form-message";
-import FormItem from "../atoms/form-item";
-import { Alert, AlertDescription } from "../atoms/alert";
+import { Alert, AlertDescription } from "@/ui/atoms/alert";
+import { DialogFooter } from "@/ui/atoms/dialog";
+import { FormButton } from "@/ui/atoms/form-button";
+import FormItem from "@/ui/atoms/form-item";
+import FormMessage from "@/ui/atoms/form-message";
+import { Input } from "@/ui/atoms/input";
+import { CheckSquare, Square } from "@phosphor-icons/react";
+import { useEffect, useRef, useState } from "react";
+import { useFormState } from "react-dom";
 
 interface Props {
   onFormOpen?: (isOpened: boolean) => void;

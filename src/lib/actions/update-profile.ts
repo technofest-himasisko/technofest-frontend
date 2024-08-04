@@ -1,12 +1,12 @@
 "use server";
 
-import { z } from "zod";
-import { userUpdateProfile } from "../fetch/v2";
-import { ErrorCode, PHONE_REGEX } from "../definitions/constants";
-import { FormState } from "../definitions/web";
-import { getSession } from "../utils/common";
-import { uploadFile } from "../firebase/storage";
+import { ErrorCode, PHONE_REGEX } from "@/lib/definitions/constants";
+import { FormState } from "@/lib/definitions/web";
+import { userUpdateProfile } from "@/lib/fetch/v2";
+import { uploadFile } from "@/lib/firebase/storage";
+import { getSession } from "@/lib/utils/common";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 
 const MAX_UPLOAD_SIZE = 1024 * 1024 * 5; // 5MB
 const ACCEPTED_FILE_TYPES = ["image/jpg", "image/jpeg", "image/png"];

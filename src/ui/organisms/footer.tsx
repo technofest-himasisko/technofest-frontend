@@ -1,9 +1,9 @@
-import { cn, isComingSoon } from "@/lib/utils/common";
-import Image from "next/image";
-import { goodTimes } from "../fonts";
-import Link from "next/link";
 import config from "@/config";
+import { cn, isComingSoon } from "@/lib/utils/common";
 import { ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
+import Link from "next/link";
+import { goodTimes } from "../fonts";
 
 interface Props {
   minimal?: boolean;

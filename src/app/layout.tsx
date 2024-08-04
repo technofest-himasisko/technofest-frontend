@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import "@/ui/globals.css";
-import { extatica } from "@/ui/fonts";
+import Providers from "@/app/providers";
 import config from "@/config";
-import Providers from "./providers";
 import { cn } from "@/lib/utils/common";
+import { extatica } from "@/ui/fonts";
+import "@/ui/globals.css";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.baseUrl),

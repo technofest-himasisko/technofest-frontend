@@ -9,7 +9,7 @@ export default function Layout({ children }: Readonly<Props>) {
   return (
     <CommonPageContainer>
       <CommonPageSection className="container">
-        <article className="prose prose-invert prose-slate">{children}</article>
+        <article className="prose prose-slate prose-invert">{children}</article>
       </CommonPageSection>
     </CommonPageContainer>
   );

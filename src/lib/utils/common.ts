@@ -7,12 +7,12 @@ import {
   Event,
   EventRegistration,
   Seminar,
-} from "../definitions/technofest";
+} from "@/lib/definitions/technofest";
 import {
   EventType,
   PaymentStatus,
   RegistrationStatus,
-} from "../definitions/constants";
+} from "@/lib/definitions/constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

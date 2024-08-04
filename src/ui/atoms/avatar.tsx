@@ -1,10 +1,9 @@
 "use client";
 
-import * as React from "react";
-import * as AvatarPrimitive from "@radix-ui/react-avatar";
-
 import { cn, tw } from "@/lib/utils/common";
+import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { cva, VariantProps } from "class-variance-authority";
+import * as React from "react";
 
 const avatarVariants = cva(
   tw`relative flex shrink-0 overflow-hidden rounded-full font-medium`,
@@ -68,4 +67,4 @@ const AvatarFallback = React.forwardRef<
 ));
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
 
-export { Avatar, AvatarImage, AvatarFallback };
+export { Avatar, AvatarFallback, AvatarImage };

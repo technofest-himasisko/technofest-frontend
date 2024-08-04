@@ -11,8 +11,8 @@ import {
   Seminar,
   User,
 } from "@/lib/definitions/technofest";
+import axiosClient, { fetchAPI } from "@/lib/fetch/v2/client";
 import { getServerSanctumToken } from "@/lib/utils/common";
-import axiosClient, { fetchAPI } from "./client";
 import axios from "axios";
 
 export const csrf = () => {

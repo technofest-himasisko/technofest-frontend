@@ -1,16 +1,16 @@
 "use client";
 
 import { addParticipant } from "@/lib/actions/add-participant";
-import { Input } from "../atoms/input";
-import { Alert, AlertDescription } from "../atoms/alert";
-import { FormButton } from "../atoms/form-button";
-import { Check, X } from "@phosphor-icons/react";
-import { Label } from "../atoms/label";
-import { useFormState } from "react-dom";
 import { FormState } from "@/lib/definitions/web";
-import FormItem from "../atoms/form-item";
-import FormMessage from "../atoms/form-message";
+import { Alert, AlertDescription } from "@/ui/atoms/alert";
+import { FormButton } from "@/ui/atoms/form-button";
+import FormItem from "@/ui/atoms/form-item";
+import FormMessage from "@/ui/atoms/form-message";
+import { Input } from "@/ui/atoms/input";
+import { Label } from "@/ui/atoms/label";
+import { Check, X } from "@phosphor-icons/react";
 import { useEffect, useRef } from "react";
+import { useFormState } from "react-dom";
 
 interface Props {
   registrationUid: string;

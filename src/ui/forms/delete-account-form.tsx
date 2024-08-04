@@ -1,8 +1,6 @@
 "use client";
 
-import { FormButton } from "../atoms/form-button";
 import { deleteAccount } from "@/lib/actions/delete-account";
-import { Label } from "../atoms/label";
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -11,10 +9,12 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "../atoms/alert-dialog";
+} from "@/ui/atoms/alert-dialog";
+import { FormButton } from "@/ui/atoms/form-button";
+import { Input } from "@/ui/atoms/input";
+import { Label } from "@/ui/atoms/label";
 import { TrashSimple } from "@phosphor-icons/react";
 import { useState } from "react";
-import { Input } from "../atoms/input";
 
 interface Props {
   email: string;

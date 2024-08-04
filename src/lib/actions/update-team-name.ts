@@ -1,9 +1,9 @@
 "use server";
 
-import { z } from "zod";
-import { FormState } from "../definitions/web";
-import { userUpdateRegistrationByUid } from "../fetch/v2";
+import { FormState } from "@/lib/definitions/web";
+import { userUpdateRegistrationByUid } from "@/lib/fetch/v2";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 
 const schema = z.object({
   registrationName: z.string().min(1, "Nama tim wajib diisi"),

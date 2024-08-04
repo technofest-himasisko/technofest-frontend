@@ -1,10 +1,9 @@
 "use client";
 
-import * as React from "react";
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-
 import { cn } from "@/lib/utils/common";
-import { Circle, Square } from "@phosphor-icons/react";
+import { Square } from "@phosphor-icons/react";
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import * as React from "react";
 
 const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,

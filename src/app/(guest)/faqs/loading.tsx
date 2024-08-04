@@ -1,6 +1,5 @@
 import { Skeleton } from "@/ui/atoms/skeleton";
 import CommonPageContainer from "@/ui/molecules/common-page-container";
-import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import FaqsHeader from "@/ui/organisms/faqs/header";
 
 export default function Loading() {

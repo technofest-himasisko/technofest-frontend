@@ -3,18 +3,18 @@
 import config from "@/config";
 import { mobileNavigationState } from "@/lib/recoil/mobileNavigationAtom";
 import { cn } from "@/lib/utils/common";
-import { useRecoilState } from "recoil";
+import { Button } from "@/ui/atoms/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "../atoms/collabsible";
+} from "@/ui/atoms/collabsible";
 import { CaretDown, FingerprintSimple } from "@phosphor-icons/react";
-import Link from "next/link";
 import { Session } from "next-auth";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { Button } from "../atoms/button";
+import { useRecoilState } from "recoil";
 
 interface Props {
   session: Session;

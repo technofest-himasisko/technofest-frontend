@@ -8,14 +8,12 @@ export default async function ParticipantSettingProfileForm() {
 
   return (
     <section id="profile" className="container">
-      <Suspense fallback={<p className="text-xl text-white">Loading...</p>}>
-        <Card>
-          <div className="max-w-xl">
-            <p className="mb-8 text-2xl font-semibold">Informasi Peserta</p>
-            <EditProfileForm user={response.data} />
-          </div>
-        </Card>
-      </Suspense>
+      <Card>
+        <div className="max-w-xl">
+          <p className="mb-8 text-2xl font-semibold">Informasi Peserta</p>
+          <EditProfileForm user={response.data} />
+        </div>
+      </Card>
     </section>
   );
 }

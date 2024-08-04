@@ -1,14 +1,14 @@
 "use client";
 
-import { Plus, TrashSimple } from "@phosphor-icons/react";
-import { Avatar, AvatarFallback, AvatarImage } from "../atoms/avatar";
-import { Badge } from "../atoms/badge";
-import { useState } from "react";
-import AddParticipantForm from "../forms/add-participant-form";
+import { EventRegistrationRole, TeamStatus } from "@/lib/definitions/constants";
 import { User } from "@/lib/definitions/technofest";
 import { getAvatarCallbackLetter, toParticipantId } from "@/lib/utils/common";
-import { EventRegistrationRole, TeamStatus } from "@/lib/definitions/constants";
-import RemoveParticipantForm from "../forms/remove-participant-form";
+import { Avatar, AvatarFallback, AvatarImage } from "@/ui/atoms/avatar";
+import { Badge } from "@/ui/atoms/badge";
+import AddParticipantForm from "@/ui/forms/add-participant-form";
+import RemoveParticipantForm from "@/ui/forms/remove-participant-form";
+import { Plus } from "@phosphor-icons/react";
+import { useState } from "react";
 
 interface Props {
   registrants: User[];

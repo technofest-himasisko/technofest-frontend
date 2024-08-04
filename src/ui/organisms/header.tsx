@@ -1,15 +1,13 @@
 import { cn, isComingSoon } from "@/lib/utils/common";
+import { FormButton } from "@/ui/atoms/form-button";
+import { goodTimes } from "@/ui/fonts";
+import MobileNavigation from "@/ui/molecules/mobile-navigation";
+import MobileNavigationButton from "@/ui/molecules/mobile-navigation-button";
+import UserMenu from "@/ui/molecules/user-menu";
+import { Compass } from "@phosphor-icons/react/dist/ssr";
+import { Session } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { goodTimes } from "@/ui/fonts";
-import { FormButton } from "@/ui/atoms/form-button";
-import { Session } from "next-auth";
-import UserMenu from "@/ui/molecules/user-menu";
-import MobileNavigationButton from "@/ui/molecules/mobile-navigation-button";
-import MobileNavigation from "@/ui/molecules/mobile-navigation";
-
-import { Compass } from "@phosphor-icons/react/dist/ssr";
 import DesktopNavigation from "../molecules/desktop-navigation";
 
 interface Props {

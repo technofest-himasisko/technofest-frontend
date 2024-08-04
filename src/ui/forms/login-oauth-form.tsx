@@ -1,7 +1,7 @@
-import { GithubLogo, GoogleLogo } from "@phosphor-icons/react/dist/ssr";
-import { FormButton } from "../atoms/form-button";
-import { loginGoogle } from "@/lib/actions/login-google";
 import { loginGithub } from "@/lib/actions/login-github";
+import { loginGoogle } from "@/lib/actions/login-google";
+import { FormButton } from "@/ui/atoms/form-button";
+import { GithubLogo, GoogleLogo } from "@phosphor-icons/react/dist/ssr";
 
 export default function LoginOauthForm() {
   return (

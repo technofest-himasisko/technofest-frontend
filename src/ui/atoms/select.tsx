@@ -1,10 +1,9 @@
 "use client";
 
-import * as React from "react";
-import * as SelectPrimitive from "@radix-ui/react-select";
-
 import { cn } from "@/lib/utils/common";
 import { CaretDown, CaretUp, Check } from "@phosphor-icons/react";
+import * as SelectPrimitive from "@radix-ui/react-select";
+import * as React from "react";
 import { useFormStatus } from "react-dom";
 
 const Select = React.forwardRef<
@@ -158,13 +157,13 @@ SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 
 export {
   Select,
-  SelectGroup,
-  SelectValue,
-  SelectTrigger,
   SelectContent,
-  SelectLabel,
+  SelectGroup,
   SelectItem,
-  SelectSeparator,
-  SelectScrollUpButton,
+  SelectLabel,
   SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
 };

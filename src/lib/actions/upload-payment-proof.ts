@@ -1,10 +1,10 @@
 "use server";
 
-import { z } from "zod";
-import { uploadFile } from "../firebase/storage";
-import { userUpdatePaymentById } from "../fetch/v2";
-import { FormState } from "../definitions/web";
+import { FormState } from "@/lib/definitions/web";
+import { userUpdatePaymentById } from "@/lib/fetch/v2";
+import { uploadFile } from "@/lib/firebase/storage";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 
 const MAX_UPLOAD_SIZE = 1024 * 1024 * 5; // 5MB
 const ACCEPTED_FILE_TYPES = ["image/jpg", "image/jpeg", "image/png"];

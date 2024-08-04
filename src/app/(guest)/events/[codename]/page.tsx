@@ -1,4 +1,7 @@
+import { EventType } from "@/lib/definitions/constants";
+import { eventsGetByCodename } from "@/lib/fetch/v2";
 import CommonPageContainer from "@/ui/molecules/common-page-container";
+import EventCompetitionAgenda from "@/ui/organisms/event/competition-agenda";
 import EventCompetitionHeader from "@/ui/organisms/event/competition-header";
 import EventContactPersons from "@/ui/organisms/event/contact-persons";
 import EventCountdown from "@/ui/organisms/event/countdown";
@@ -6,12 +9,9 @@ import EventFaqs from "@/ui/organisms/event/faqs";
 import EventRegister from "@/ui/organisms/event/register";
 import EventSeminarDescription from "@/ui/organisms/event/seminar-description";
 import EventSeminarHeader from "@/ui/organisms/event/seminar-header";
-import { notFound } from "next/navigation";
-import EventSeminarSpeakers from "@/ui/organisms/event/seminar-speakers";
 import EventSeminarModerator from "@/ui/organisms/event/seminar-moderator";
-import EventCompetitionAgenda from "@/ui/organisms/event/competition-agenda";
-import { eventsGetByCodename } from "@/lib/fetch/v2";
-import { EventType } from "@/lib/definitions/constants";
+import EventSeminarSpeakers from "@/ui/organisms/event/seminar-speakers";
+import { notFound } from "next/navigation";
 
 export default async function Page({
   params,

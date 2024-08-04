@@ -1,9 +1,9 @@
 "use server";
 
-import { redirect } from "next/navigation";
-import { signOut } from "../auth/auth";
-import { userDelete } from "../fetch/v2";
+import { signOut } from "@/lib/auth/auth";
+import { userDelete } from "@/lib/fetch/v2";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function deleteAccount() {
   await userDelete();
