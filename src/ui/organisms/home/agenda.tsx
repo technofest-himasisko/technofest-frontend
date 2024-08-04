@@ -37,8 +37,9 @@ export default function HomeAgenda() {
               Kompetisi
             </h3>
             <p className="mt-2 font-light text-slate-400 md:mt-4 md:text-xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
-              inventore tempora sit, nam
+              Tantang diri Anda dalam kompetisi yang mencakup desain UI/UX,
+              poster, dan fotografi, di mana setiap karya dinilai berdasarkan
+              kreativitas, teknik, dan estetika.
             </p>
           </Card>
         </Reveal>
