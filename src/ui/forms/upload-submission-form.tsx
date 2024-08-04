@@ -1,71 +1,65 @@
 "use client";
 
-import { Alert, AlertDescription } from "@/ui/atoms/alert";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/ui/atoms/form";
 import { FormButton } from "@/ui/atoms/form-button";
 import { Input } from "@/ui/atoms/input";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { UploadSimple } from "@phosphor-icons/react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { Alert, AlertDescription } from "../atoms/alert";
+import { Label } from "../atoms/label";
+import FormMessage from "../atoms/form-message";
+import FormItem from "../atoms/form-item";
+import { useRef } from "react";
+import { useFormState } from "react-dom";
+import { uploadSubmission } from "@/lib/actions/upload-submission";
 
-const formSchema = z.object({
-  submission: z.string(),
-});
+interface Props {
+  registrationUid: string;
+  eventName: string;
+}
 
-export default function UploadSubmissionForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      submission: "",
-    },
-  });
+export default function UploadSubmissionForm({
+  eventName,
+  registrationUid,
+}: Props) {
+  const ref = useRef<HTMLFormElement>(null);
+  const [state, formAction] = useFormState(uploadSubmission, null);
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+  if (state?.message) {
+    ref.current?.reset();
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="mt-4 flex w-full flex-col gap-y-4"
-      >
-        <div className="grow">
-          <FormField
-            control={form.control}
-            name="submission"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Unggah Submission</FormLabel>
-                <FormControl>
-                  <Input type="file" placeholder="Submission" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+    <form
+      ref={ref}
+      action={formAction}
+      className="mt-4 flex w-full flex-col gap-y-4"
+    >
+      <input type="hidden" id="uid" name="uid" value={registrationUid} />
+      <input type="hidden" id="eventName" name="eventName" value={eventName} />
 
-        <Alert variant="danger">
-          <AlertDescription>Pengunggahan gagal dilakukan.</AlertDescription>
+      <div className="grow">
+        <FormItem>
+          <Label>Unggah bukti pembayaran</Label>
+          <Input type="file" id="submission" name="submission" />
+          <input type="hidden" name="submissionUrl" />
+          <FormMessage messages={state?.errors?.submission} />
+        </FormItem>
+      </div>
+
+      {state?.message && (
+        <Alert variant={state?.message?.type || "info"}>
+          <AlertDescription>{state?.message?.text}</AlertDescription>
         </Alert>
+      )}
 
-        <div>
-          <FormButton type="submit" className="w-full space-x-1 md:w-auto">
-            <UploadSimple weight="duotone" className="text-[1.5em]" />
-            <span>Unggah</span>
-          </FormButton>
-        </div>
-      </form>
-    </Form>
+      <div>
+        <FormButton type="submit" className="w-full space-x-1 md:w-auto">
+          <UploadSimple
+            weight="duotone"
+            className="inline-block text-[1.5em]"
+          />
+          <span>Unggah</span>
+        </FormButton>
+      </div>
+    </form>
   );
 }

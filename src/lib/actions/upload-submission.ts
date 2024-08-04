@@ -3,6 +3,9 @@
 import { z } from "zod";
 import { getSession } from "../utils/common";
 import { uploadFile } from "../firebase/storage";
+import { userUpdateRegistrationByUid } from "../fetch/v2";
+import { revalidatePath } from "next/cache";
+import { FormState } from "../definitions/web";
 
 const MAX_UPLOAD_SIZE = 1024 * 1024 * 5; // 5MB
 const ACCEPTED_FILE_TYPES = ["image/jpg", "image/jpeg", "image/png"];
@@ -18,7 +21,13 @@ const schema = z.object({
     }, "File harus dalam bentuk gambar (.jpg/.jpeg/.png)"),
 });
 
-export async function uploadSubmission(prevState: any, formData: FormData) {
+export async function uploadSubmission(
+  prevState: any,
+  formData: FormData,
+): Promise<FormState | undefined> {
+  const uid: string = formData.get("uid") as string;
+  const eventName: string = formData.get("eventName") as string;
+
   const session = await getSession();
 
   const validatedFields = schema.safeParse({
@@ -34,17 +43,21 @@ export async function uploadSubmission(prevState: any, formData: FormData) {
   }
 
   const submissionFile = validatedFields.data.submission;
-  const submissionFileName = `SUBMISSIONS/${session.user?.uid}_${submissionFile.name}`;
+  const submissionFileName = `SUBMISSIONS/${eventName}_${session.user?.uid}_${submissionFile.name}`;
   const submissionFileUrl = await uploadFile(
     submissionFile,
     submissionFileName,
   );
 
-  // TODO: buat fitur submission
+  await userUpdateRegistrationByUid(uid, {
+    submission: submissionFileUrl,
+  });
+
+  revalidatePath("/(participant)/u/events/[codename]/registration", "page");
 
   return {
     message: {
-      text: "Bukti pembayaran berhasil diunggah",
+      text: "Berhasil mengunggah submission",
       type: "success",
     },
   };

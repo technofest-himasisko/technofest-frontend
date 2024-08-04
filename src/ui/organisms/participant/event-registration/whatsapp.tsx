@@ -1,13 +1,16 @@
 import { Alert, AlertDescription, AlertTitle } from "@/ui/atoms/alert";
 import { FormButton } from "@/ui/atoms/form-button";
 import { WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
 
 interface Props {
   isPaymentAccepted: boolean;
+  groupLink: string;
 }
 
 export default function ParticipantEventRegistrationWhatsapp({
   isPaymentAccepted,
+  groupLink,
 }: Props) {
   return (
     <section className="container mt-6 md:mt-10">
@@ -48,10 +51,13 @@ export default function ParticipantEventRegistrationWhatsapp({
               <div>
                 <FormButton
                   type="submit"
-                  className="w-full space-x-1 md:w-auto"
+                  className="w-full space-x-1 md:w-fit"
+                  asChild
                 >
-                  <WhatsappLogo weight="duotone" className="text-[1.5em]" />
-                  <span>Join Grup</span>
+                  <Link href={groupLink} target="_blank">
+                    <WhatsappLogo weight="duotone" className="text-[1.5em]" />
+                    <span>Join Grup</span>
+                  </Link>
                 </FormButton>
               </div>
             </>

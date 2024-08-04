@@ -101,7 +101,7 @@ export async function updateProfile(
     };
   }
 
-  revalidatePath("/u/profile");
+  revalidatePath("/u/setting");
   revalidatePath("/u/home");
 
   return {

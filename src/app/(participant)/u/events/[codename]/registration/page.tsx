@@ -98,6 +98,9 @@ export default async function Page({ params }: Props) {
             registration.data?.event_registration_payment?.status ===
             PaymentStatus.ACCEPTED
           }
+          groupLink={
+            registration.data?.event?.group_link || "https://google.com"
+          }
         />
       )}
 
@@ -107,6 +110,9 @@ export default async function Page({ params }: Props) {
             registration.data?.event_registration_payment?.status ===
             PaymentStatus.ACCEPTED
           }
+          eventName={registration.data?.event?.codename!}
+          registrationUid={registration.data?.uid!}
+          submission={registration.data?.submission}
         />
       )}
     </CommonPageContainer>
