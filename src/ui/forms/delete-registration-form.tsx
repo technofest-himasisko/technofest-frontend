@@ -1,7 +1,6 @@
 "use client";
 
 import { FormButton } from "../atoms/form-button";
-import { deleteAccount } from "@/lib/actions/delete-account";
 import {
   AlertDialog,
   AlertDialogCancel,

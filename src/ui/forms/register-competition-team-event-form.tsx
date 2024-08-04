@@ -4,7 +4,7 @@ import { DialogFooter } from "../atoms/dialog";
 import React, { useEffect, useRef, useState } from "react";
 import { FormButton } from "../atoms/form-button";
 import { Input } from "../atoms/input";
-import { CheckFat, CheckSquare, Square } from "@phosphor-icons/react";
+import { CheckSquare, Square } from "@phosphor-icons/react";
 import { useFormState } from "react-dom";
 import { registerCompetitionTeamEvent } from "@/lib/actions/register-competition-team-event";
 import FormMessage from "../atoms/form-message";

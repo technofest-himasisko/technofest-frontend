@@ -1,7 +1,6 @@
 "use client";
 
 import { FormButton } from "../atoms/form-button";
-import { deleteAccount } from "@/lib/actions/delete-account";
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -12,7 +11,6 @@ import {
   AlertDialogTitle,
 } from "../atoms/alert-dialog";
 import { useState } from "react";
-import { Input } from "../atoms/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,7 +25,6 @@ interface Props {
 }
 
 export default function LeaveRegistrationForm({ uid }: Props) {
-  const [inputValue, setInputValue] = useState<string>("");
   const [isDialogOpened, setIsDialogOpened] = useState<boolean>(false);
 
   const leaveRegistrationWithUid = leaveRegistration.bind(null, uid);

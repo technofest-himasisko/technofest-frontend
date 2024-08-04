@@ -1,10 +1,10 @@
 "use server";
 
 import { z } from "zod";
-import { getSession } from "../utils/common";
 import { userUpdatePassword } from "../fetch/v2";
 import { ErrorCode } from "../definitions/constants";
 import { revalidatePath } from "next/cache";
+import { FormState } from "../definitions/web";
 
 const schema = z
   .object({
@@ -14,12 +14,13 @@ const schema = z
   })
   .refine((data) => data.newPassword === data.confirmNewPassword, {
     message: "Konfirmasi password tidak sama",
-    path: ["confirmPassword"],
+    path: ["confirmNewPassword"],
   });
 
-export async function updatePassword(prevState: any, formData: FormData) {
-  const session = await getSession();
-
+export async function updatePassword(
+  prevState: any,
+  formData: FormData,
+): Promise<FormState | undefined> {
   const validatedFields = schema.safeParse({
     oldPassword: formData.get("oldPassword"),
     newPassword: formData.get("newPassword"),

@@ -1,129 +1,68 @@
 "use client";
 
 import { Alert, AlertDescription } from "@/ui/atoms/alert";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/ui/atoms/form";
+
 import { FormButton } from "@/ui/atoms/form-button";
 import { Input } from "@/ui/atoms/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
-
-const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
-
-const formSchema = z.object({
-  oldPassword: z.string(),
-  newPassword: z.string(),
-  confirmNewPassword: z.string(),
-});
+import FormItem from "../atoms/form-item";
+import { Label } from "../atoms/label";
+import FormMessage from "../atoms/form-message";
+import { updatePassword } from "@/lib/actions/update-password";
+import { useRef } from "react";
+import { useFormState } from "react-dom";
 
 export default function EditPasswordForm() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const ref = useRef<HTMLFormElement>(null);
+  const [state, formAction] = useFormState(updatePassword, null);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      oldPassword: "",
-      newPassword: "",
-      confirmNewPassword: "",
-    },
-  });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    setIsLoading(true);
-    wait().then(() => {
-      setIsLoading(false);
-      toast.success("Berhasil Memperbarui password");
-    });
+  if (state?.message) {
+    ref.current?.reset();
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex max-w-xl flex-col gap-y-6"
-      >
-        <FormField
-          control={form.control}
+    <form ref={ref} action={formAction} className="flex flex-col gap-y-6">
+      <FormItem>
+        <Label htmlFor="oldPassword">Password Lama</Label>
+        <Input
+          id="oldPassword"
           name="oldPassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password Lama</FormLabel>
-              <FormControl>
-                <Input
-                  type="password"
-                  placeholder="Pasword lama"
-                  disabled={isLoading}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          type="password"
+          placeholder="Password lama"
         />
+        <FormMessage messages={state?.errors?.oldPassword} />
+      </FormItem>
 
-        <FormField
-          control={form.control}
+      <FormItem>
+        <Label htmlFor="newPassword">Password Baru</Label>
+        <Input
+          id="newPassword"
           name="newPassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password Baru</FormLabel>
-              <FormControl>
-                <Input
-                  type="password"
-                  placeholder="Password baru"
-                  disabled={isLoading}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          type="password"
+          placeholder="Pasword Baru"
         />
+        <FormMessage messages={state?.errors?.newPassword} />
+      </FormItem>
 
-        <FormField
-          control={form.control}
+      <FormItem>
+        <Label htmlFor="confirmNewPassword">Konfirmasi Password Baru</Label>
+        <Input
+          id="confirmNewPassword"
           name="confirmNewPassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Konfirmasi Password Baru</FormLabel>
-              <FormControl>
-                <Input
-                  type="password"
-                  placeholder="Konfirmasi password baru"
-                  disabled={isLoading}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          type="password"
+          placeholder="Konfirmasi Pasword Baru"
         />
+        <FormMessage messages={state?.errors?.confirmNewPassword} />
+      </FormItem>
 
-        <Alert variant="danger">
-          <AlertDescription>Terjadi kesalahan.</AlertDescription>
+      {state?.message && (
+        <Alert variant={state?.message?.type || "info"}>
+          <AlertDescription>{state?.message?.text}</AlertDescription>
         </Alert>
+      )}
 
-        <div>
-          <FormButton
-            loading={isLoading}
-            type="submit"
-            className="mt-4 w-full md:w-auto"
-          >
-            Perbarui
-          </FormButton>
-        </div>
-      </form>
-    </Form>
+      <FormButton type="submit" className="mt-4 w-full md:w-fit">
+        Perbarui
+      </FormButton>
+    </form>
   );
 }
