@@ -12,7 +12,7 @@ const config = {
   baseMetadata: {
     title: "Technofest 2024",
     description:
-      "Coming Soon! Selamat datang di Technofest 2024, acara teknologi paling ditunggu-tunggu tahun ini!",
+      "Selamat datang di Technofest 2024, acara teknologi paling ditunggu-tunggu tahun ini! ikuti berbagai kompetisi seperti UI/UX, Poster, dan Fotografi. Jadilah penggemar teknologi dari seluruh dunia!",
     keywords: ["technofest", "tech", "festival", "2024"],
   },
   headerNavigations: [
