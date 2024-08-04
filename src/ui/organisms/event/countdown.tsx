@@ -5,14 +5,14 @@ import { cn } from "@/lib/utils/common";
 import Reveal from "@/ui/atoms/reveal";
 
 export default function EventCountdown() {
-  const { countdownString } = useCountdown(new Date(2024, 7, 5));
+  const { countdownString } = useCountdown(new Date(2024, 8, 7));
 
   return (
     <section id="countdown" className="container">
       <div className="mx-auto flex flex-col items-center text-center">
         <Reveal>
           <p className="uppercase text-primary md:text-xl">
-            Pembukaan Pendaftaran
+            Penutupan Pendaftaran
           </p>
         </Reveal>
         <Reveal>

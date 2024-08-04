@@ -27,13 +27,19 @@ export default function HomeAbout() {
         </Reveal>
         <Reveal direction="right">
           <p className="mt-4 font-light text-slate-400 md:text-xl">
-            Technology Festival atau yang biasa dikenal dengan Technofest adalah
-            forum kompetitif berskala nasional yang mewadahi minat dan bakat
-            kaum muda dalam dunia teknologi. Ajang kompetitif yang disediakan
-            adalah lomba essay, poster, dan UI/UX. Technofest juga memberikan
-            seminar untuk menyalurkan pengetahuan dan informasi yang berkembang
-            pesat kepada generasi muda dengan tujuan untuk memotivasi kaum muda
-            agar dapat berinovasi dan memajukan teknologi di Indonesia.
+            Di era globalisasi, perkembangan teknologi yang pesat mempengaruhi
+            hampir semua aspek kehidupan manusia, termasuk komunikasi,
+            transportasi, dan pendidikan. Meskipun teknologi awalnya diciptakan
+            untuk memenuhi kebutuhan dasar, kini perannya telah berkembang
+            menjadi penentu arah perkembangan sosial dan ekonomi. Generasi muda
+            dituntut untuk memahami dan beradaptasi dengan teknologi agar tidak
+            tertinggal. Untuk mendukung pemahaman ini, Himpunan Mahasiswa Sistem
+            Komputer Fakultas Ilmu Komputer Universitas Sriwijaya akan
+            menyelenggarakan Technology Festival 2024 dengan tema &quot;Art-Tech
+            Fusion: Redefining Boundaries in the Age of Digital
+            Creativity&quot;. Acara ini melibatkan mahasiswa dan siswa SMA/SMK
+            di seluruh Indonesia dengan tujuan memotivasi generasi muda untuk
+            berinovasi dalam teknologi.
           </p>
         </Reveal>
       </div>

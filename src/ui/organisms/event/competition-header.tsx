@@ -1,16 +1,28 @@
 import { cn } from "@/lib/utils/common";
+import { codenameToIcon } from "@/lib/utils/converter";
 import { Button } from "@/ui/atoms/button";
 import Reveal from "@/ui/atoms/reveal";
 import { goodTimes } from "@/ui/fonts";
-import { FigmaLogo } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 
-export default function EventCompetitionHeader() {
+interface Props {
+  codename: string;
+  name: string;
+  description: string;
+}
+
+export default function EventCompetitionHeader({
+  codename,
+  description,
+  name,
+}: Props) {
+  const Icon = codenameToIcon(codename);
+
   return (
     <section className="container flex flex-col items-center pt-2 text-center md:pt-10">
       <Reveal noDelay width="100%">
         <div className="flex w-full items-center justify-center bg-primary/10 p-10 group-hover:bg-primary/20 md:p-14">
-          <FigmaLogo
+          <Icon
             weight="duotone"
             className="size-[4rem] text-primary/80 group-hover:text-primary md:size-[10rem]"
           />
@@ -24,7 +36,7 @@ export default function EventCompetitionHeader() {
             "mt-4 max-w-4xl text-2xl text-primary md:text-6xl",
           )}
         >
-          Fotografi
+          {name}
         </h1>
       </Reveal>
 
@@ -36,15 +48,17 @@ export default function EventCompetitionHeader() {
 
       <Reveal noDelay>
         <p className="mt-4 max-w-xl font-light text-slate-400 md:text-xl">
-          Kompetisi UI/UX adalah kompetisi desain yang fokus pada pembangunan
-          antarmuka yang ramah pengguna dan nyaman untuk sistem/produk.
+          {description}
         </p>
       </Reveal>
 
       <Reveal noDelay width="100%">
         <div className="mt-10 flex w-full flex-col justify-center gap-y-2 md:flex-row md:gap-x-4 md:gap-y-0">
           <Button variant="gradient" size="lg">
-            <Link href="#about" className="flex flex-row items-center gap-x-2">
+            <Link
+              href={`/u/events`}
+              className="flex flex-row items-center gap-x-2"
+            >
               Daftar Sekarang
             </Link>
           </Button>

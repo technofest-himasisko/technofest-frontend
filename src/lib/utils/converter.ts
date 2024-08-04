@@ -6,6 +6,11 @@ import {
   RegistrationStatus,
   SeminarCastRole,
 } from "@/lib/definitions/constants";
+import {
+  Aperture,
+  FigmaLogo,
+  ImageSquare,
+} from "@phosphor-icons/react/dist/ssr";
 
 export function seminarCastRoleToLabel(
   number: number | string,
@@ -160,4 +165,17 @@ export function participantCategoryToString(
   }
 
   return `Tim (Maks. ${num_participants} peserta)`;
+}
+
+export function codenameToIcon(codename: string) {
+  switch (codename) {
+    case "photography":
+      return Aperture;
+    case "uiux":
+      return FigmaLogo;
+    case "poster":
+      return ImageSquare;
+    default:
+      return Aperture;
+  }
 }

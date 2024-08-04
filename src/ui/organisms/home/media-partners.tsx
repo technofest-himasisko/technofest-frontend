@@ -1,3 +1,4 @@
+import config from "@/config";
 import Reveal from "@/ui/atoms/reveal";
 import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import LogoCard from "@/ui/molecules/logo-card";
@@ -10,10 +11,10 @@ export default function HomeMediaPartners() {
         <SectionHeader title="Media Partner" position="center" />
       </Reveal>
       <ul className="mt-10 flex flex-wrap justify-center gap-1.5 md:gap-2">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <li key={i}>
+        {config.mediaPartners.map((mediaPartner, index) => (
+          <li key={index}>
             <Reveal opacityOnly>
-              <LogoCard image={{ src: "/images/logoipsum.svg", alt: "" }} />
+              <LogoCard image={{ src: mediaPartner, alt: "" }} />
             </Reveal>
           </li>
         ))}

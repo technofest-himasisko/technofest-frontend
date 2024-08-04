@@ -2,12 +2,10 @@ import { auth } from "@/lib/auth/auth";
 import {
   ErrorCode,
   EventRegistrationRole,
-  EventType,
   PaymentStatus,
 } from "@/lib/definitions/constants";
-import { Competition, Event, Seminar } from "@/lib/definitions/technofest";
 import { userGetRegistrationByEventCodename } from "@/lib/fetch/v2";
-import { isCompetition, isSeminar } from "@/lib/utils/common";
+import { isCompetition } from "@/lib/utils/common";
 import { eventTypeToColor } from "@/lib/utils/converter";
 import CommonPageContainer from "@/ui/molecules/common-page-container";
 import ParticipantEventRegistrationActions from "@/ui/organisms/participant/event-registration/actions";

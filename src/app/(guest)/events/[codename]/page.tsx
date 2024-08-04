@@ -10,24 +10,36 @@ import { notFound } from "next/navigation";
 import EventSeminarSpeakers from "@/ui/organisms/event/seminar-speakers";
 import EventSeminarModerator from "@/ui/organisms/event/seminar-moderator";
 import EventCompetitionAgenda from "@/ui/organisms/event/competition-agenda";
+import { eventsGetByCodename } from "@/lib/fetch/v2";
+import { EventType } from "@/lib/definitions/constants";
 
-export default function Page({ params }: { params: { codename: string } }) {
-  if (["uiux", "poster", "photography"].includes(params.codename)) {
+export default async function Page({
+  params,
+}: {
+  params: { codename: string };
+}) {
+  const event = await eventsGetByCodename(params.codename);
+
+  if (event.data?.eventable_type === EventType.COMPETITION) {
     return (
       <CommonPageContainer>
-        <EventCompetitionHeader />
+        <EventCompetitionHeader
+          codename={event.data.codename}
+          description={event.data.description!}
+          name={event.data.name!}
+        />
         <div className="mt-20 bg-gradient-to-b from-primary/5 to-secondary/20 pb-20 md:mt-40 md:pb-40">
-          <EventCompetitionAgenda />
+          <EventCompetitionAgenda timelines={event.data.milestones!} />
           <div className="pt-10 md:pt-20">
             <EventCountdown />
           </div>
         </div>
         <EventRegister />
-        <EventContactPersons />
+        <EventContactPersons contactPersons={event.data.contact_persons!} />
         <EventFaqs />
       </CommonPageContainer>
     );
-  } else if (params.codename === "seminar") {
+  } else if (event.data?.eventable_type === EventType.SEMINAR) {
     return (
       <CommonPageContainer>
         <EventSeminarHeader />
@@ -38,7 +50,7 @@ export default function Page({ params }: { params: { codename: string } }) {
           <EventCountdown />
         </div>
         <EventRegister />
-        <EventContactPersons />
+        <EventContactPersons contactPersons={event.data.contact_persons!} />
         <EventFaqs />
       </CommonPageContainer>
     );

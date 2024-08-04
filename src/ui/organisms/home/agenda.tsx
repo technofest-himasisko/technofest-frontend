@@ -13,16 +13,15 @@ export default function HomeAgenda() {
         <Reveal opacityOnly>
           <Card className="max-w-3xl backdrop-blur">
             <p className="text-sm font-semibold text-primary md:text-base">
-              5 Agustus 2024
+              3 Agustus 2024
             </p>
             <h3 className="text-xl font-semibold uppercase md:text-3xl">
               Opening Caremony
             </h3>
             <p className="mt-2 font-light text-slate-400 md:mt-4 md:text-xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
-              inventore tempora sit, nam corrupti porro cumque neque cum,
-              ducimus sed cupiditate iure accusantium nobis! Blanditiis rem
-              obcaecati autem temporibus fugit?
+              Acara ini akan memperkenalkan seluruh rangkaian kegiatan
+              Technofest dan menyambut para peserta serta tamu undangan dengan
+              berbagai sambutan dan penampilan menarik.
             </p>
           </Card>
         </Reveal>
@@ -32,7 +31,7 @@ export default function HomeAgenda() {
         <Reveal opacityOnly>
           <Card className="max-w-3xl backdrop-blur">
             <p className="text-sm font-semibold text-primary md:text-base">
-              5 Agustus 2024
+              5 Agustus - 21 September 2024
             </p>
             <h3 className="text-xl font-semibold uppercase md:text-3xl">
               Kompetisi
@@ -49,14 +48,15 @@ export default function HomeAgenda() {
         <Reveal opacityOnly>
           <Card className="max-w-3xl backdrop-blur">
             <p className="text-sm font-semibold text-primary md:text-base">
-              5 Agustus 2024
+              21 September 2024
             </p>
             <h3 className="text-xl font-semibold uppercase md:text-3xl">
               Seminar
             </h3>
             <p className="mt-2 font-light text-slate-400 md:mt-4 md:text-xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
-              inventore tempora
+              Seminar ini akan menampilkan berbagai pembicara ahli yang akan
+              membahas topik-topik terkini dan inovatif dalam dunia teknologi.
+              Peserta akan mendapatkan wawasan dan ilmu baru dari seminar ini.
             </p>
           </Card>
         </Reveal>

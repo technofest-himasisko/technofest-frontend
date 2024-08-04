@@ -29,7 +29,7 @@ export default function Page() {
       <HomeHero />
       <HomeAbout />
       <HomeCompetition />
-      <HomeSeminar />
+      {/* <HomeSeminar /> */}
       <div className="relative mt-20 overflow-hidden bg-gradient-to-b from-primary/5 to-secondary/20 pb-20 md:mt-40 md:pb-40">
         <HomeAgenda />
         <HomeCountDown />
