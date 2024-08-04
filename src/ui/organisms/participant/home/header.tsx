@@ -1,5 +1,9 @@
 import { auth } from "@/lib/auth/auth";
-import { cn, getAvatarCallbackLetter } from "@/lib/utils/common";
+import {
+  cn,
+  getAvatarCallbackLetter,
+  toParticipantId,
+} from "@/lib/utils/common";
 import { Avatar, AvatarFallback, AvatarImage } from "@/ui/atoms/avatar";
 import { goodTimes } from "@/ui/fonts";
 import IdDisplay from "@/ui/molecules/id-display";
@@ -53,7 +57,7 @@ export default async function ParticipantHomeHeader() {
             {session.user?.email}
           </p>
 
-          <IdDisplay ID={session.user?.uid!} />
+          <IdDisplay ID={toParticipantId(session.user?.uid!)} />
         </div>
       </section>
     </Suspense>
