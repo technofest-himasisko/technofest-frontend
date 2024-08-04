@@ -79,7 +79,7 @@ export default function RegisterSeminarEventForm({
       </label>
 
       <DialogFooter>
-        <FormButton type="submit" className="ml-auto w-fit">
+        <FormButton type="submit" className="w-full md:ml-auto md:w-fit">
           Lanjut
         </FormButton>
       </DialogFooter>

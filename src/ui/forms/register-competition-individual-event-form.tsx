@@ -18,10 +18,10 @@ export default function RegisterCompetitionIndividualEventForm({
     <form action={registerCompetitionIndividualEvent} className="space-y-2">
       <input type="hidden" name="codename" value={codename} />
 
-      <p className="text-sm text-white/40">
+      <p className="font-medium text-slate-500">
         Anda akan mendaftar kompetisi {eventName}?
       </p>
-      <FormButton type="submit" className="ml-auto w-fit">
+      <FormButton type="submit" className="w-full md:ml-auto md:w-fit">
         Lanjut
       </FormButton>
     </form>
