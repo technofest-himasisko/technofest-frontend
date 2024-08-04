@@ -87,8 +87,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           "userProfile",
         ]);
 
-        console.log(response.data);
-
         token.user = response.data;
       }
 

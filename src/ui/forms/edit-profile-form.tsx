@@ -84,7 +84,11 @@ export default function EditProfileForm({ user }: Props) {
         <Label htmlFor="educationLevel">Status</Label>
         <Select
           name="educationLevel"
-          defaultValue={String(user?.user_profile?.education_level || "")}
+          defaultValue={String(
+            user?.user_profile?.education_level !== undefined
+              ? user?.user_profile?.education_level
+              : "",
+          )}
         >
           <SelectTrigger>
             <SelectValue placeholder="Pilih Status" />
@@ -141,7 +145,11 @@ export default function EditProfileForm({ user }: Props) {
         <Label htmlFor="gender">Jenis Kelamin</Label>
         <Select
           name="gender"
-          defaultValue={String(user?.user_profile?.gender || "")}
+          defaultValue={String(
+            user?.user_profile?.gender !== undefined
+              ? user?.user_profile?.gender
+              : "",
+          )}
         >
           <SelectTrigger>
             <SelectValue placeholder="Pilih Jenis Kelamin" />
