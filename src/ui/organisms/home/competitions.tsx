@@ -64,7 +64,7 @@ export default async function HomeCompetition() {
                       variant="outline"
                       className="mt-6 w-full md:w-auto"
                     >
-                      <Link href={`"/events/${competition.codename}"`}>
+                      <Link href={`/events/${competition.codename}`}>
                         More Info
                       </Link>
                     </Button>
