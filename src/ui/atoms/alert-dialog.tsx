@@ -118,7 +118,7 @@ const AlertDialogCancel = React.forwardRef<
     ref={ref}
     className={cn(
       formButtonVariants({ variant: "ghost" }),
-      "mt-2 w-fit sm:mt-0",
+      "mt-2 w-full sm:mt-0 md:w-fit",
       className,
     )}
     {...props}

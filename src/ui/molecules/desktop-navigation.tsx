@@ -95,7 +95,7 @@ function NavigationDropdown({ navigation }: { navigation: any }) {
                     "group flex select-none flex-row items-center gap-x-4 space-y-1 border border-transparent p-3 leading-none no-underline outline-none transition-colors hover:border-primary/20 hover:bg-primary/10 focus:bg-primary/20",
                   )}
                 >
-                  <div className="flex h-16 w-16 items-center justify-center bg-primary/10 group-hover:bg-primary/20">
+                  <div className="flex h-16 w-16 flex-none items-center justify-center bg-primary/10 group-hover:bg-primary/20">
                     <subnavigation.icon
                       weight="duotone"
                       className="text-[2em] text-primary/80 group-hover:text-primary"

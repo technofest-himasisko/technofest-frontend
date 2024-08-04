@@ -4,6 +4,7 @@ import { CommonPageSection } from "@/ui/molecules/common-page-section";
 import Footer from "@/ui/organisms/footer";
 import Header from "@/ui/organisms/header";
 import { redirect } from "next/navigation";
+import LoadingComp from "@/ui/atoms/loading";
 
 interface Props {
   children: React.ReactNode;

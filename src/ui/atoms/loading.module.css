@@ -1,38 +1,72 @@
-.container {
-  --uib-size: 35px;
-  --uib-color: black;
-  --uib-speed: 1.2s;
-  --uib-bg-opacity: 0.1;
-  height: var(--uib-size);
-  width: var(--uib-size);
-  transform-origin: center;
-  will-change: transform;
-  overflow: visible;
+.loader {
+  aspect-ratio: 1.5;
+  --c: no-repeat linear-gradient(#bc477f 0 0);
+  background: var(--c), var(--c), var(--c), var(--c);
+  background-size: 33.4% 50%;
+  animation: l6 2s infinite linear;
 }
-
-.car {
-  fill: none;
-  stroke: var(--uib-color);
-  stroke-dasharray: 25, 75;
-  stroke-dashoffset: 0;
-  animation: travel var(--uib-speed) linear infinite;
-  will-change: stroke-dasharray, stroke-dashoffset;
-  transition: stroke 0.5s ease;
-}
-
-.track {
-  fill: none;
-  stroke: var(--uib-color);
-  opacity: var(--uib-bg-opacity);
-  transition: stroke 0.5s ease;
-}
-
-@keyframes travel {
+@keyframes l6 {
   0% {
-    stroke-dashoffset: 0;
+    background-position:
+      0 0,
+      50% 0,
+      0 100%,
+      50% 100%;
   }
-
+  12.5% {
+    background-position:
+      0 0,
+      100% 0,
+      0 100%,
+      50% 100%;
+  }
+  25% {
+    background-position:
+      0 0,
+      100% 0,
+      0 100%,
+      50% 0;
+  }
+  37.5% {
+    background-position:
+      0 0,
+      100% 0,
+      50% 100%,
+      50% 0;
+  }
+  50% {
+    background-position:
+      0 100%,
+      100% 0,
+      50% 100%,
+      50% 0;
+  }
+  62.5% {
+    background-position:
+      0 100%,
+      100% 0,
+      50% 100%,
+      0 0;
+  }
+  75% {
+    background-position:
+      0 100%,
+      100% 100%,
+      50% 100%,
+      0 0;
+  }
+  87.5% {
+    background-position:
+      0 100%,
+      100% 100%,
+      50% 0,
+      0 0;
+  }
   100% {
-    stroke-dashoffset: -100;
+    background-position:
+      0 100%,
+      50% 100%,
+      50% 0,
+      0 0;
   }
 }
