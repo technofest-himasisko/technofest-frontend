@@ -171,6 +171,7 @@ export const userGetAllEvents = async (): Promise<
     headers: {
       Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
     },
+    next: { revalidate: 0 },
   });
 
   return response;
@@ -184,6 +185,7 @@ export const userGetRegistrationByEventCodename = async (
     headers: {
       Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
     },
+    next: { revalidate: 0 },
   });
 
   return response;
@@ -216,6 +218,7 @@ export const userGetAllRegistrations = async (): Promise<
     headers: {
       Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
     },
+    next: { revalidate: 0 },
   });
 
   return response;
@@ -327,6 +330,7 @@ export const userGetPaymentById = async (
     headers: {
       Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
     },
+    next: { revalidate: 0 },
   });
 
   return response;
