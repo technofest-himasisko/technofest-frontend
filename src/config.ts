@@ -25,19 +25,22 @@ const config = {
       children: [
         {
           label: "Fotografi",
-          description: "lorem ipsum dolor sit amet, consectetur",
+          description:
+            "Kompetisi UI/UX adalah ajang di mana para desainer bersaing untuk menciptakan antarmuka pengguna dan pengalaman pengguna yang inovatif dan fungsional untuk aplikasi atau situs web.",
           href: "/events/photography",
           icon: Aperture,
         },
         {
           label: "UI/UX",
-          description: "lorem ipsum dolor sit amet, consectetur",
+          description:
+            "Kompetisi UI/UX adalah ajang di mana para desainer bersaing untuk menciptakan antarmuka pengguna dan pengalaman pengguna yang inovatif dan fungsional untuk aplikasi atau situs web.",
           href: "/events/uiux",
           icon: FigmaLogo,
         },
         {
           label: "Poster",
-          description: "lorem ipsum dolor sit amet, consectetur",
+          description:
+            "Kompetisi Poster adalah kontes seni visual di mana peserta merancang poster yang menarik dan informatif untuk menyampaikan pesan atau tema tertentu.",
           href: "/events/poster",
           icon: ImageSquare,
         },
