@@ -2,9 +2,9 @@
 
 import { Toaster } from "@/ui/atoms/toaster";
 import { TooltipProvider } from "@/ui/atoms/tooltip";
-import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { RecoilRoot } from "recoil";
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 
 interface Props {
   children: React.ReactNode;
@@ -21,6 +21,13 @@ export default function Providers({ children }: Readonly<Props>) {
           </TooltipProvider>
         </RecoilRoot>
       </SessionProvider>
+
+      <ProgressBar
+        height="1px"
+        color="#BC477F"
+        options={{ showSpinner: false }}
+        shallowRouting
+      />
     </>
   );
 }
