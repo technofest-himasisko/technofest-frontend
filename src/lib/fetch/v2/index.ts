@@ -153,14 +153,14 @@ export const userLogout = async () => {
 };
 
 export const userDelete = async (): Promise<ResponseData<null>> => {
-  const response = await fetchAPI("/user", {
-    method: "DELETE",
+
+  const response = await axiosClient.delete("/user", {
     headers: {
       Authorization: `Bearer ${(await getServerSanctumToken()) as string}`,
     },
   });
 
-  return response;
+  return response.data;
 };
 
 export const userGetAllEvents = async (): Promise<

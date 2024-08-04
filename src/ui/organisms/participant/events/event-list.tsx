@@ -1,9 +1,11 @@
 import { EventType } from "@/lib/definitions/constants";
 import { Competition, Event, Seminar } from "@/lib/definitions/technofest";
 import { userGetAllEvents } from "@/lib/fetch/v2";
+import { generateEventRegistrationStatus } from "@/lib/utils/common";
 import {
   eventTypeToColor,
-  participantCategoryToString,
+  registrationStatusToColor,
+  registrationStatusToLabel,
 } from "@/lib/utils/converter";
 import EventItem from "@/ui/molecules/event-item";
 
