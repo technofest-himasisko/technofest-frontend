@@ -29,7 +29,7 @@ export default function AccountNumber({ color, account, name, type }: Props) {
   const { copyToClipboard } = useCopy();
 
   function handleCopyClick() {
-    copyToClipboard("081367436851");
+    copyToClipboard(account);
   }
 
   return (
