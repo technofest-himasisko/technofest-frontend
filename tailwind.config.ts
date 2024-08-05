@@ -19,6 +19,8 @@ const config: Config = {
         secondary: "#3C0344",
         "brand-dana": "#008FE9",
         "brand-bni": "#D35C2E",
+        "brand-bri": "#00529c",
+        "brand-shoope-pay": "#ee4e2e",
         "brand-line": "#06C755",
         "brand-whatsapp": "#27D045",
       },

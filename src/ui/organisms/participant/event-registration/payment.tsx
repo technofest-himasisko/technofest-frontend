@@ -88,12 +88,30 @@ export default function ParticipantEventRegistrationPayment({
                   </p>
                 </div>
 
-                <div className="flex flex-col items-start gap-y-1">
+                <div className="flex flex-col items-start gap-y-3 md:gap-y-1">
                   <AccountNumber
-                    account="082121222"
-                    name="Marzuki"
+                    account="083178895546"
+                    name="Pani Permatasari"
+                    type="dana"
+                    color="dana"
+                  />
+                  <AccountNumber
+                    account="1130018088165"
+                    name="Pani Permatasari"
                     type="bni"
                     color="bni"
+                  />
+                  <AccountNumber
+                    account="069701025905501"
+                    name="Nensi Fitriyanti"
+                    type="bri"
+                    color="bri"
+                  />
+                  <AccountNumber
+                    account="0895321291139"
+                    name="exv.07"
+                    type="shoope pay"
+                    color="shoope pay"
                   />
                 </div>
 

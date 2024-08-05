@@ -50,7 +50,7 @@ export default function HomeHero() {
         </Reveal>
         <Reveal noDelay width="100%">
           <div className="container mt-10 flex w-full flex-col justify-center gap-y-2 md:flex-row md:gap-x-4 md:gap-y-0">
-            <Button variant="gradient" size="lg">
+            <Button variant="gradient" size="lg" asChild>
               <Link
                 href="#about"
                 className="flex flex-row items-center gap-x-2"
@@ -58,8 +58,13 @@ export default function HomeHero() {
                 <Lightning weight="duotone" /> <span>More Info</span>
               </Link>
             </Button>
-            <Button variant="outline" size="lg">
-              Baca Guidebook
+            <Button variant="outline" size="lg" asChild>
+              <Link
+                href="https://drive.google.com/drive/folders/1fvlevgC7xLy9LiI6ShJeYQW_r4EjtN-g"
+                target="_blank"
+              >
+                Baca Guidebook
+              </Link>
             </Button>
           </div>
         </Reveal>
