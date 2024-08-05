@@ -17,7 +17,7 @@ interface Props {
 
 export default function EventContactPersons({ contactPersons }: Props) {
   return (
-    <CommonPageSection id="faqs" className="container">
+    <CommonPageSection id="contact-persons" className="container">
       <Reveal width="100%">
         <SectionHeader
           title="Narahubung"

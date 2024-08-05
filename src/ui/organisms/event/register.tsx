@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function EventRegister() {
   return (
-    <CommonPageSection id="faqs" className="container">
+    <CommonPageSection id="register" className="container">
       <Card className="relative overflow-hidden md:px-20">
         <Reveal width="100%">
           <SectionHeader
@@ -19,7 +19,7 @@ export default function EventRegister() {
         <Reveal width="100%">
           <div className="mt-8 flex justify-center">
             <Button className="w-full md:w-auto">
-              <Link href="/faqs">Gass!</Link>
+              <Link href="/u/events">Gass!</Link>
             </Button>
           </div>
         </Reveal>
