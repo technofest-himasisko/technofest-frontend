@@ -38,8 +38,9 @@ export default function EventContactPersons({ contactPersons }: Props) {
               </p>
               <div className="mt-2 flex gap-x-4 md:mt-4">
                 <Link
-                  href="#"
+                  href={`https://wa.me/${contactPerson.whatsapp}`}
                   className="flex w-full items-center justify-center space-x-1 text-center text-sm font-semibold hover:text-brand-whatsapp md:w-auto md:text-base"
+                  target="_blank"
                 >
                   <WhatsappLogo
                     weight="fill"
