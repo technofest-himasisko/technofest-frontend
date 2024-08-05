@@ -29,13 +29,17 @@ export default async function Page({
           name={event.data.name!}
         />
         <div className="mt-20 bg-gradient-to-b from-primary/5 to-secondary/20 pb-20 md:mt-40 md:pb-40">
-          <EventCompetitionAgenda timelines={event.data.milestones!} />
+          {event.data.milestones && (
+            <EventCompetitionAgenda timelines={event.data.milestones} />
+          )}
           <div className="pt-10 md:pt-20">
             <EventCountdown />
           </div>
         </div>
         <EventRegister />
-        <EventContactPersons contactPersons={event.data.contact_persons!} />
+        {event.data.contact_persons && (
+          <EventContactPersons contactPersons={event.data.contact_persons} />
+        )}
         <EventFaqs />
       </CommonPageContainer>
     );
