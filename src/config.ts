@@ -139,6 +139,7 @@ const config = {
     "/images/media_partners/17.png",
     "/images/media_partners/18.png",
     "/images/media_partners/19.png",
+    "/images/media_partners/20.png",
   ],
   sponsors: [
     "/images/dicoding.png",
