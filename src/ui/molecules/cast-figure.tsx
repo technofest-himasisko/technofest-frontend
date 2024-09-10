@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function CastFigure() {
   return (
     <figure className="group relative flex aspect-[3/4] h-[26rem] flex-col justify-end overflow-hidden border border-primary/10 bg-gradient-to-b from-primary/25 to-secondary/10 to-60% transition duration-300 hover:border-primary/70">
-      <div className="flex h-full flex-col items-center justify-end pb-20">
+      <div className="flex h-full flex-col items-center justify-end pb-16">
         <Image
           src="/images/kemahyanto.png"
           alt=""
