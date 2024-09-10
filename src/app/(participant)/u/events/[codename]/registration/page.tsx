@@ -80,7 +80,8 @@ export default async function Page({ params }: Props) {
 
       {registration.data?.event_registration_payment &&
         isCurrentUserNotMember &&
-        registration.data.event?.price !== 0 && (
+        registration.data.event?.price !== 0 &&
+        registration.data?.event?.codename !== "seminar" && (
           <ParticipantEventRegistrationPayment
             payment={registration.data?.event_registration_payment!}
             price={registration.data.event?.price as number}
@@ -98,17 +99,18 @@ export default async function Page({ params }: Props) {
         groupLink={registration.data?.event?.group_link || "https://google.com"}
       />
 
-      {isCurrentUserNotMember && (
-        <ParticipantEventRegistrationSubmission
-          isPaymentAccepted={
-            registration.data?.event_registration_payment?.status ===
-            PaymentStatus.ACCEPTED
-          }
-          eventName={registration.data?.event?.codename!}
-          registrationUid={registration.data?.uid!}
-          submission={registration.data?.submission}
-        />
-      )}
+      {isCurrentUserNotMember &&
+        registration.data?.event?.codename !== "seminar" && (
+          <ParticipantEventRegistrationSubmission
+            isPaymentAccepted={
+              registration.data?.event_registration_payment?.status ===
+              PaymentStatus.ACCEPTED
+            }
+            eventName={registration.data?.event?.codename!}
+            registrationUid={registration.data?.uid!}
+            submission={registration.data?.submission}
+          />
+        )}
     </CommonPageContainer>
   );
 }

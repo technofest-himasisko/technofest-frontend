@@ -34,7 +34,7 @@ export default async function ParticipantEventEventList() {
     <section className="container">
       <h2 className="text-2xl font-semibold">Event yang Tersedia</h2>
       <div className="mt-10 space-y-4">
-        {/* {seminars.map((seminar) => (
+        {seminars.map((seminar) => (
           <EventItem
             key={seminar.codename}
             color={eventTypeToColor(seminar.eventable_type)}
@@ -49,7 +49,7 @@ export default async function ParticipantEventEventList() {
                 seminar.event_registrations?.length > 0,
             }}
           />
-        ))} */}
+        ))}
 
         {/* {competitions.map((competition) => (
           <EventItem
