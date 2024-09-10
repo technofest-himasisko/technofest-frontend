@@ -8,6 +8,7 @@ import FormMessage from "@/ui/atoms/form-message";
 import { Input } from "@/ui/atoms/input";
 import { Label } from "@/ui/atoms/label";
 import { UploadSimple } from "@phosphor-icons/react";
+import Link from "next/link";
 import { useRef } from "react";
 import { useFormState } from "react-dom";
 
@@ -28,38 +29,71 @@ export default function UploadSubmissionForm({
   }
 
   return (
-    <form
-      ref={ref}
-      action={formAction}
-      className="mt-4 flex w-full flex-col gap-y-4"
-    >
-      <input type="hidden" id="uid" name="uid" value={registrationUid} />
-      <input type="hidden" id="eventName" name="eventName" value={eventName} />
-
-      <div className="grow">
-        <FormItem>
-          <Label>Unggah bukti pembayaran</Label>
-          <Input type="file" id="submission" name="submission" />
-          <input type="hidden" name="submissionUrl" />
-          <FormMessage messages={state?.errors?.submission} />
-        </FormItem>
-      </div>
-
-      {state?.message && (
-        <Alert variant={state?.message?.type || "info"}>
-          <AlertDescription>{state?.message?.text}</AlertDescription>
-        </Alert>
+    <div>
+      {eventName === "photography" && (
+        <p>
+          Silakan unggah submission di{" "}
+          <Link
+            href="https://forms.gle/ASkqxUVSuqQNcGUCA"
+            className="underline"
+          >
+            Google Form
+          </Link>
+        </p>
       )}
 
-      <div>
-        <FormButton type="submit" className="w-full space-x-1 md:w-auto">
-          <UploadSimple
-            weight="duotone"
-            className="inline-block text-[1.5em]"
-          />
-          <span>Unggah</span>
-        </FormButton>
-      </div>
-    </form>
+      {eventName === "uiux" && (
+        <p>
+          Silakan unggah submission di{" "}
+          <Link
+            href="https://forms.gle/Xdwy6FhbL4YnduwA7"
+            className="underline"
+          >
+            {" "}
+            Google Form
+          </Link>
+        </p>
+      )}
+
+      {eventName === "poster" && (
+        <Link href="https://forms.gle/tZTi5zZvECMujtSG8" className="underline">
+          {" "}
+          Google Form
+        </Link>
+      )}
+    </div>
+    // <form
+    //   ref={ref}
+    //   action={formAction}
+    //   className="mt-4 flex w-full flex-col gap-y-4"
+    // >
+    //   <input type="hidden" id="uid" name="uid" value={registrationUid} />
+    //   <input type="hidden" id="eventName" name="eventName" value={eventName} />
+
+    //   <div className="grow">
+    //     <FormItem>
+    //       <Label>Unggah submission</Label>
+    //       <Input type="file" id="submission" name="submission" />
+    //       <input type="hidden" name="submissionUrl" />
+    //       <FormMessage messages={state?.errors?.submission} />
+    //     </FormItem>
+    //   </div>
+
+    //   {state?.message && (
+    //     <Alert variant={state?.message?.type || "info"}>
+    //       <AlertDescription>{state?.message?.text}</AlertDescription>
+    //     </Alert>
+    //   )}
+
+    //   <div>
+    //     <FormButton type="submit" className="w-full space-x-1 md:w-auto">
+    //       <UploadSimple
+    //         weight="duotone"
+    //         className="inline-block text-[1.5em]"
+    //       />
+    //       <span>Unggah</span>
+    //     </FormButton>
+    //   </div>
+    // </form>
   );
 }
