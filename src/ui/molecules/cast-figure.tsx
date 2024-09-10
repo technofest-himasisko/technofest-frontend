@@ -5,13 +5,13 @@ import Link from "next/link";
 export default function CastFigure() {
   return (
     <figure className="group relative flex aspect-[3/4] h-[26rem] flex-col justify-end overflow-hidden border border-primary/10 bg-gradient-to-b from-primary/25 to-secondary/10 to-60% transition duration-300 hover:border-primary/70">
-      <div className="flex h-full flex-col items-center justify-start pb-10">
+      <div className="flex h-full flex-col items-center justify-end pb-20">
         <Image
           src="/images/kemahyanto.png"
           alt=""
           width={400}
           height={400}
-          className="h-full w-full object-cover"
+          className="w-full object-cover"
         />
         <figcaption className="absolute -bottom-[72%] h-full w-full bg-slate-950/90 p-5 text-left backdrop-blur transition-all duration-300 group-hover:bottom-0">
           <h3 className="text-xl font-semibold uppercase md:text-3xl">
