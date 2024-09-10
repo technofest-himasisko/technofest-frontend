@@ -61,6 +61,10 @@ export function formatToRupiah(amount: number): string {
 export function generateEventRegistrationStatus(
   registration: EventRegistration,
 ): RegistrationStatus {
+  if (registration.event?.codename === "seminar") {
+    return RegistrationStatus.FINISHED;
+  }
+
   if (!registration.confirmed) {
     return RegistrationStatus.PREPARING_TEAM;
   }
@@ -79,9 +83,9 @@ export function generateEventRegistrationStatus(
     return RegistrationStatus.PAYMENT_REJECTED;
   }
 
-  if (!registration.submission) {
-    return RegistrationStatus.PENDING_SUBMISSION;
-  }
+  // if (!registration.submission) {
+  //   return RegistrationStatus.PENDING_SUBMISSION;
+  // }
 
   return RegistrationStatus.FINISHED;
 }

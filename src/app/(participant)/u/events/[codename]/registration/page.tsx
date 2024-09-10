@@ -94,7 +94,8 @@ export default async function Page({ params }: Props) {
       <ParticipantEventRegistrationWhatsapp
         isPaymentAccepted={
           registration.data?.event_registration_payment?.status ===
-          PaymentStatus.ACCEPTED
+            PaymentStatus.ACCEPTED ||
+          registration.data?.event?.codename === "seminar"
         }
         groupLink={registration.data?.event?.group_link || "https://google.com"}
       />
