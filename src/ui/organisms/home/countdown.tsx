@@ -6,14 +6,14 @@ import Reveal from "@/ui/atoms/reveal";
 import { CommonPageSection } from "@/ui/molecules/common-page-section";
 
 export default function HomeCountDown() {
-  const { countdownString } = useCountdown(new Date(2024, 8, 7));
+  const { countdownString } = useCountdown(new Date(2024, 8, 20));
 
   return (
     <CommonPageSection id="countdown" className="container">
       <div className="mx-auto flex flex-col items-center text-center">
         <Reveal>
           <p className="uppercase text-primary md:text-xl">
-            Penutupan Pendaftaran
+            Penutupan Pendaftaran Seminar
           </p>
         </Reveal>
         <Reveal>

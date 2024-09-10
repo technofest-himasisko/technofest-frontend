@@ -17,7 +17,7 @@ export default function EventSeminarHeader() {
           className="mx-auto rotate-45"
         />
       </div>
-      <div className="mt-28 md:mt-40">
+      <div className="mt-28 md:mt-48">
         <Reveal noDelay width="100%">
           <h1
             className={cn(
@@ -25,7 +25,7 @@ export default function EventSeminarHeader() {
               "max-w-4xl text-xl text-primary md:text-6xl",
             )}
           >
-            Internet of Things: Connecting Our World
+            Internet of Things: Smart Industry
           </h1>
         </Reveal>
 
@@ -39,7 +39,7 @@ export default function EventSeminarHeader() {
           <div className="mt-10 flex w-full flex-col justify-center gap-y-2 md:flex-row md:gap-x-4 md:gap-y-0">
             <Button variant="gradient" size="lg">
               <Link
-                href="#about"
+                href="/u/events"
                 className="flex flex-row items-center gap-x-2"
               >
                 Daftar Sekarang

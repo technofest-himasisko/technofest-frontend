@@ -46,10 +46,10 @@ const config = {
         },
       ],
     },
-    // {
-    //   label: "Seminar",
-    //   href: "/events/seminar",
-    // },
+    {
+      label: "Seminar",
+      href: "/events/seminar",
+    },
     // {
     //   label: "Merchandise",
     //   href: "/merchandise",

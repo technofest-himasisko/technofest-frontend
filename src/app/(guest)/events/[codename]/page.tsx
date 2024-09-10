@@ -33,7 +33,7 @@ export default async function Page({
             <EventCompetitionAgenda timelines={event.data.milestones} />
           )}
           <div className="pt-10 md:pt-20">
-            <EventCountdown />
+            <EventCountdown date={new Date(2024, 8, 7)} />
           </div>
         </div>
         <EventRegister />
@@ -49,9 +49,9 @@ export default async function Page({
         <EventSeminarHeader />
         <EventSeminarDescription />
         <EventSeminarSpeakers />
-        <EventSeminarModerator />
+        {/* <EventSeminarModerator /> */}
         <div className="mt-20 bg-gradient-to-b from-primary/5 to-secondary/20 py-20 md:py-40">
-          <EventCountdown />
+          <EventCountdown date={new Date(2024, 8, 20)} />
         </div>
         <EventRegister />
         <EventContactPersons contactPersons={event.data.contact_persons!} />

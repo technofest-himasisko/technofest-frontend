@@ -16,7 +16,6 @@ export default function EventSeminarSpeakers() {
       <Reveal width="100%">
         <div className="mt-10 flex flex-col items-center justify-center gap-y-10 md:flex-row md:gap-x-10 md:gap-y-0">
           <CastFigure />
-          <CastFigure />
         </div>
       </Reveal>
     </CommonPageSection>

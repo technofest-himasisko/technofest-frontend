@@ -14,12 +14,12 @@ export default function EventSeminarDescription() {
       </Reveal>
       <Reveal width="100%">
         <p className="mx-auto mt-4 max-w-3xl text-center font-light text-slate-400 md:text-xl">
-          16 September bakalan jadi momen seru yang enggak boleh kamu lewatkan!
-          Siap-siap buat join dalam seminar &quot;Great Leadership & Green Tech
-          ala Gen Z&quot;. Kita bakal bahas kepemimpinan keren yang bisa
-          mengubah dunia serta peran mahasiswa di teknologi ramah lingkungan
-          yang lagi hits. Ada pembicara asyik yaitu Pak Ferdi Kawi dan Pak
-          Kemahyanto, yang bakal bikin kamu thinking out of the box!
+          20 September bakalan jadi momen seru yang enggak boleh kamu lewatkan!
+          Siap-siap buat join dalam seminar &quot;Internet of Things (IoT):
+          Connecting Our World&quot;. Kita bakal bahas bagaimana cara kerja, dan
+          mengapa IoT menjadi penting dalam dunia teknologi saat ini. Ada
+          pembicara asyik yaitu Pak Kemahyanto, yang bakal bikin kamu thinking
+          out of the box!
         </p>
       </Reveal>
     </CommonPageSection>

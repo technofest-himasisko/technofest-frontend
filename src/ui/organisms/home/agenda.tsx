@@ -49,7 +49,7 @@ export default function HomeAgenda() {
         <Reveal opacityOnly>
           <Card className="max-w-3xl backdrop-blur">
             <p className="text-sm font-semibold text-primary md:text-base">
-              21 September 2024
+              20 September 2024
             </p>
             <h3 className="text-xl font-semibold uppercase md:text-3xl">
               Seminar

@@ -4,8 +4,12 @@ import useCountdown from "@/lib/hooks/use-countdown";
 import { cn } from "@/lib/utils/common";
 import Reveal from "@/ui/atoms/reveal";
 
-export default function EventCountdown() {
-  const { countdownString } = useCountdown(new Date(2024, 8, 7));
+interface Props {
+  date: Date;
+}
+
+export default function EventCountdown({ date }: Props) {
+  const { countdownString } = useCountdown(date);
 
   return (
     <section id="countdown" className="container">

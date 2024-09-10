@@ -5,29 +5,30 @@ import Link from "next/link";
 export default function CastFigure() {
   return (
     <figure className="group relative flex aspect-[3/4] h-[26rem] flex-col justify-end overflow-hidden border border-primary/10 bg-gradient-to-b from-primary/25 to-secondary/10 to-60% transition duration-300 hover:border-primary/70">
-      <div className="flex flex-col items-center justify-end px-8 pt-8">
+      <div className="flex h-full flex-col items-center justify-start pb-10">
         <Image
-          src="https://doodleipsum.com/700/avatar-3?i=8e35093c1d72d06087e5d708e7bce941"
+          src="/images/kemahyanto.png"
           alt=""
-          width={200}
-          height={200}
-          className="w-full"
+          width={400}
+          height={400}
+          className="h-full w-full object-cover"
         />
         <figcaption className="absolute -bottom-[72%] h-full w-full bg-slate-950/90 p-5 text-left backdrop-blur transition-all duration-300 group-hover:bottom-0">
           <h3 className="text-xl font-semibold uppercase md:text-3xl">
-            Mark Zuckebek
+            Kemahyanto Exaudi
           </h3>
           <p className="text-xs font-medium text-primary md:text-sm">
-            Founder of Facebuus and CEO of PT Margarin
+            Dosen Fasilkom Unsri Bidang Sistem Embedded dan Internet of Things
           </p>
           <div className="mt-6 opacity-0 transition-all duration-300 group-hover:opacity-100">
             <p className="font-light text-slate-400">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet
-              voluptates velit dolores corporis deleniti eum officiis animi
-              earum. Est aut explicabo sapiente exercitationem voluptatum
-              repellat dicta aliquid nesciunt numquam dolorum.
+              Kemahyanto Exaudi adalah dosen di Fakultas Ilmu Komputer
+              Universitas Sriwijaya, dengan fokus pada Sistem Embedded dan
+              Internet of Things. Ia memiliki latar belakang pendidikan dalam
+              bidang Sistem Komputer. Ia juga terlibat dalam berbagai penelitian
+              inovatif, termasuk dalam pengembangan sistem berbasis IoT.
             </p>
-            <p className="mt-4">
+            {/* <p className="mt-4">
               <Link
                 href=""
                 className="flex flex-row items-center gap-x-1 font-semibold hover:underline"
@@ -36,7 +37,7 @@ export default function CastFigure() {
                 <span>LinkedIn</span>
                 <ArrowSquareOut />
               </Link>
-            </p>
+            </p> */}
           </div>
         </figcaption>
       </div>
