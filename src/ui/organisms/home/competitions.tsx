@@ -18,6 +18,8 @@ import Link from "next/link";
 export default async function HomeCompetition() {
   const events = await eventsGetAll();
 
+  console.log(events);
+
   const competitions: Event<Competition>[] = events.data?.filter(
     (event) => event.eventable_type === EventType.COMPETITION,
   ) as Event<Competition>[];
